@@ -42,16 +42,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php"  style="color:white">Home</a></li>
-					<li id="dp_service_menu" class="dropdown">
-						<a href="#service" style="color:white" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="spot_page.php">Spot</a></li>
-							<li><a href="type_page.php">Type</a></li>
-						</ul>
-					</li>
-					<li><a href="#about" style="color:white">OurTeam</a></li>
-					<li><a href="#contact" style="color:white">Contact</a></li>					
+					<li><a href="index.php"  style="color:white">Home</a></li>
+					<li><a href="spot_page.php" style="color:white">Map</a></li>
+					<li class="active"><a href="" style="color:white">Classification</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -450,11 +443,7 @@ In Australia, spinner dolphins occur from Western Australia, through Northern Te
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
 					<div class="wow shake" data-wow-delay="0.4s">
-					<div class="page-scroll marginbot-30">
-						<a href="#intro" id="totop" class="btn btn-circle">
-							<i class="fa fa-angle-double-up animated"></i>
-						</a>
-					</div>
+					
 					</div>
 					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
 				</div>

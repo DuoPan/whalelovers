@@ -62,22 +62,17 @@ document.write(password());
                 </button>
                 <a class="navbar-brand" href="index.php">
 				<h1>Whale Lovers</h1>
-                </a>
+				</a>
+				<img src="assets/images/logo.png" height="50px"></img>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
 					<li class="active"><a href="#intro" style="color:white">Home</a></li>
-					<li id="dp_service_menu" class="dropdown">
-						<a href="#service" class="dropdown-toggle" data-toggle="dropdown" style="color:white">Services<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="spot_page.php" >Spot</a></li>
-							<li><a href="type_page.php" >Type</a></li>
-						</ul>
-					</li>
-					<li><a href="#about" style="color:white">OurTeam</a></li>
-					<li><a href="#contact" style="color:white">Contact</a></li>					
+					<li><a href="#service" style="color:white">Services</a></li>
+					<li><a href="#menu_map" style="color:white">Map</a></li>
+					<li><a href="#classification" style="color:white">Classification</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -181,9 +176,108 @@ document.write(password());
 	</section>
 	<!-- /Section: services -->
 	
+	
+	<!-- Section: map -->
+    <section id="menu_map" class="home-section text-center" >
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2>Map</h2>
+					<i class="fa fa-2x fa-angle-down"></i>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="wow bounceInUp" data-wow-delay="0.2s">
+                <div class="">
+                    <img src="assets/images/map.jpg" class="img-responsive"></img>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="wow bounceInUp" data-wow-delay="0.5s">
+                <div class="boxed-grey">
+					<p class="lead">description placeholder</p>
+					<div>
+						<button class="btn btn-primary" style="background-color:#0077be;" onclick="window.location='spot_page.php'">GO</button>
+					</div>
+				</div>
+				</div>
+            </div>
+			
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: Map -->
+
+
+
+	<!-- Section: classification -->
+    <section id="classification" class="home-section text-center" >
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2>Classification</h2>
+					<i class="fa fa-2x fa-angle-down"></i>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="wow bounceInUp" data-wow-delay="0.2s">
+                <div class="boxed-grey">
+					<p class="lead">description placeholder</p>
+					<div>
+						<button class="btn btn-primary" style="background-color:#0077be;" onclick="window.location='type_page.php'">GO</button>
+					</div>
+				</div>
+				</div>
+			</div>
+			
+            <div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="wow bounceInUp" data-wow-delay="0.5s">
+                <div class="">
+                    <img src="assets/images/classification.png" class="img-responsive"></img>
+                </div>
+				</div>
+            </div>
+			
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: Map -->
+
+
 
 	<!-- Section: about -->
-    <section id="about" class="home-section text-center">
+    <section id="about" class="home-section text-center hidden" >
 		<div class="heading-about">
 			<div class="container">
 			<div class="row">
@@ -261,7 +355,7 @@ document.write(password());
 	
 
 	<!-- Section: contact -->
-    <section id="contact" class="home-section text-center">
+    <section id="contact" class="home-section text-center hidden">
 		<div class="heading-contact">
 			<div class="container">
 			<div class="row">

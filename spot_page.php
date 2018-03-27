@@ -27,6 +27,7 @@
     .jumbotron {
         margin-bottom: 0px!important;
     }
+
 </style>
 
 <!-- Google Map API End -->
@@ -49,23 +50,16 @@
                 </button>
                 <a class="navbar-brand" href="index.php">
                     <h1>Whale Lovers</h1>
-
                 </a>
+                <img src="assets/images/logo.png" height="50px"></img>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php"  style="color:white">Home</a></li>
-					<li id="dp_service_menu" class="dropdown">
-						<a href="#service" style="color:white" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="spot_page.php">Spot</a></li>
-							<li><a href="type_page.php">Type</a></li>
-						</ul>
-					</li>
-					<li><a href="#about" style="color:white">OurTeam</a></li>
-					<li><a href="#contact" style="color:white">Contact</a></li>					
+              <li><a href="index.php" style="color:white;">Home</a></li>
+              <li class="active"><a href="#" style="color:white;">Map</a></li>
+              <li><a href="type_page.php" style="color:white;">Classification</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -77,16 +71,22 @@
 
   
   <!-- Top Pic -->
-  <div >
-     <img src="./assets/images/bg1.png" class="img-fluid" alt="Responsive image" width="100%" height="200">
-  </div>
+
   <!-- Top Pic End -->
+
 <div class="container">
  
+      <!-- Google Map  -->
+      <div class="row">
+        <div id="dp_map" class="col-md-6" style="width:60%;"></div>
+        <div class="col-md-4">
+          <button>dfdfad</button>
+        </div>
+      </div>
+    <!-- Google Map End -->
+ 
 
-  <!-- Google Map  -->
-  <div id="dp_map"></div>
-  <!-- Google Map End -->
+
   <!-- Table -->
   <?php
     $mysqli = new mysqli("localhost", "root", "", "asiadock");
