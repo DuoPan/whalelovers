@@ -35,7 +35,7 @@
 <title>Spots</title>
 </head>
 
-<body>
+<body style="padding-top: 120px">
 
 
   <!-- Nav Bar -->
