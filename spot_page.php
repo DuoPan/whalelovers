@@ -10,6 +10,13 @@
 <script src="./assets/bootstrap-table/src/bootstrap-table.js"></script>
 <!-- Bootstrap  End -->
 
+<!-- Fonts -->
+<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
+<!-- Squad theme CSS -->
+<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+
 <!-- Google Map API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
 <style>
@@ -30,25 +37,44 @@
 
 <body>
 
+
   <!-- Nav Bar -->
-  <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="index.php">Whale Lovers</a>
-  <ul class="nav navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="index.php">Home</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="spot_page.php">Spots</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="type_page.php">Types</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  </nav>
+ 
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background-color:#0077be">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.php">
+                    <h1>Whale Lovers</h1>
+
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+		      	<ul class="nav navbar-nav">
+					<li class="active"><a href="index.php"  style="color:white">Home</a></li>
+					<li id="dp_service_menu" class="dropdown">
+						<a href="#service" style="color:white" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="spot_page.php">Spot</a></li>
+							<li><a href="type_page.php">Type</a></li>
+						</ul>
+					</li>
+					<li><a href="#about" style="color:white">OurTeam</a></li>
+					<li><a href="#contact" style="color:white">Contact</a></li>					
+		      	</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
   <!-- Nav Bar End -->
+
   
   <!-- Top Pic -->
   <div >
@@ -146,5 +172,12 @@
     });  
 }) 
 </script>
+
+<!-- Custom Theme JavaScript -->
+<script src="assets/dp_homepage/js/jquery.easing.min.js"></script>	
+<script src="assets/dp_homepage/js/jquery.scrollTo.js"></script>
+<script src="assets/dp_homepage/js/wow.min.js"></script>
+<script src="assets/dp_homepage/js/custom.js"></script>
+
 </body>
 </html>

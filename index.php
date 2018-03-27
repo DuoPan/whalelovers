@@ -61,24 +61,23 @@ document.write(password());
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.php">
-                    <h1>Whale Lovers</h1>
-
+				<h1>Whale Lovers</h1>
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
-					<li class="active"><a href="#intro">Home</a></li>
+					<li class="active"><a href="#intro" style="color:white">Home</a></li>
 					<li id="dp_service_menu" class="dropdown">
-						<a href="#service" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+						<a href="#service" class="dropdown-toggle" data-toggle="dropdown" style="color:white">Services<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="spot_page.php">Spot</a></li>
-							<li><a href="type_page.php">Type</a></li>
+							<li><a href="spot_page.php" >Spot</a></li>
+							<li><a href="type_page.php" >Type</a></li>
 						</ul>
 					</li>
-					<li><a href="#about">OurTeam</a></li>
-					<li><a href="#contact">Contact</a></li>					
+					<li><a href="#about" style="color:white">OurTeam</a></li>
+					<li><a href="#contact" style="color:white">Contact</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
