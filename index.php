@@ -20,7 +20,35 @@
 	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
 </head>
 
+<!-- password locker -->
+<script type="text/javascript"> 
+// function password() { 
+// 	var pass1 = prompt('Enter Password',''); 
+// 	while (1) { 
+// 		if (!pass1) 
+// 		history.go(-1); 
+// 		if (pass1 == "whale") {//初始密码123 
+// 			alert('right!'); 
+// 			break; 
+// 		} 
+// 		var pass1 = 
+// 		prompt('Wrong! Enter again!'); 
+// 	} 
+// 	// if (pass1!="password") 
+// 	// history.go(-1); 
+// 	return " "; 
+} 
+document.write(password()); 
+</script> 
+<!-- password locker end -->
+
+
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+<!-- password locker -->
+
+<!-- password locker end -->
+
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -34,6 +62,7 @@
                 </button>
                 <a class="navbar-brand" href="index.php">
                     <h1>Whale Lovers</h1>
+
                 </a>
             </div>
 
@@ -60,8 +89,8 @@
 	<!-- Section: intro -->
     <section id="intro" class="intro">
 		<div class="slogan">
-			<h2>WELCOME TO <span class="text_color">Whale Lovers</span> </h2>
-			<h4>WE PROVIDE PROFESSIONAL INFORMATION ABOUT WHALES</h4>
+			<h2>Welcome to <span class="text_color">WhaleLovers</span> </h2>
+			<h4>Everything about Whales!</h4>
 		</div>
 		<div class="page-scroll">
 			<a href="#service" class="btn btn-circle">

@@ -64,7 +64,7 @@
   <!-- Table -->
   <?php
     $mysqli = new mysqli("localhost", "root", "", "asiadock");
-    $result = $mysqli->query("SELECT name, lat, lon, year FROM spot");
+    $result = $mysqli->query("SELECT vernacularName, decimalLatitude, decimalLongitude, year FROM spot_new");
       echo'
       <table id="dp_table"
         data-toggle="table"
@@ -89,9 +89,9 @@
           echo '
           <tr>
           <td>'; echo $index; echo '</td>
-          <td>'; echo $row['name']; echo '</td>
-          <td>'; echo $row['lat']; echo '</td>
-          <td>'; echo $row['lon']; echo '</td>
+          <td>'; echo $row['vernacularName']; echo '</td>
+          <td>'; echo $row['decimalLatitude']; echo '</td>
+          <td>'; echo $row['decimalLongitude']; echo '</td>
           <td>'; echo $row['year']; echo '</td>
           </tr>
           ';
