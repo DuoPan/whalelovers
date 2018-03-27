@@ -63,7 +63,10 @@
 
 <div class="container">
 <!-- summary -->
-
+<div class="jumbotron jumbotron-fluid">
+  <h3>Species you may see in Australian waters</h3>
+  <p class="lead">While there are 45 species of whale and dolphin that use Australian waters not many of these species are often seen by whale and dolphin watchers. Below is a description of more commonly encountered species, and some rarer ones that are occasionally seen because they use shallow waters close to the coast.</p>
+</div>
 <!-- summary end-->
 <div>
   
@@ -94,7 +97,18 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(1)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
+                <br/>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(2)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
+                <br/>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(3)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
+                
             </div>
         </div>
     </div>
@@ -127,7 +141,9 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(4)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -160,7 +176,9 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(5)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -194,7 +212,9 @@ Dwarf minke whales mostly swim alone or in pairs, although groups may form at fe
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(6)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -228,7 +248,9 @@ This species is generally seen in groups averaging about 10 animals. While kille
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(7)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -262,7 +284,9 @@ This species is generally seen in groups averaging about 10 animals. While kille
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(8)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -296,7 +320,9 @@ This species is found in waters that extend from the New South Wales/Queensland 
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(9)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -331,7 +357,9 @@ The Australian snubfin dolphin occurs only in waters off the northern half of Au
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(10)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -364,7 +392,9 @@ The Australian snubfin dolphin occurs only in waters off the northern half of Au
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(11)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
@@ -401,22 +431,42 @@ In Australia, spinner dolphins occur from Western Australia, through Northern Te
                 </div>
             </div>
             <div class="col-sm-2">
-                <p>bofang</p>
+                <button type="button" class="btn btn-default btn-block" onclick="playSound(12)">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
+                </button>
             </div>
         </div>
     </div>
   </div>
 
 
-</div>
-
-
+</div><!-- panels -->
+</div><!-- container -->
 
 <!-- Footer -->
-<div class="jumbotron jumbotron-fluid">
-  <a>say something</a>
-</div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow shake" data-wow-delay="0.4s">
+					<div class="page-scroll marginbot-30">
+						<a href="#intro" id="totop" class="btn btn-circle">
+							<i class="fa fa-angle-double-up animated"></i>
+						</a>
+					</div>
+					</div>
+					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
+				</div>
+			</div>	
+		</div>
+	</footer>
 <!-- Footer End -->
+
+<!-- audio invisible -->
+<audio id="player">
+</audio>
+<!-- audio invisible end -->
 
 <!-- Custom Theme JavaScript -->
 <script src="assets/dp_homepage/js/jquery.easing.min.js"></script>	
@@ -425,7 +475,13 @@ In Australia, spinner dolphins occur from Western Australia, through Northern Te
 <script src="assets/dp_homepage/js/custom.js"></script>
 
 <script>
- 
+
+ function playSound(e) {
+    var player = document.getElementById("player");
+    //var source = document.getElementById("audioSource");
+    player.src = "assets/sounds/"+e+".wav";
+    player.play();
+ }
 </script>
 </body>
 </html>

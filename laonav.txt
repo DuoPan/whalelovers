@@ -15,3 +15,9 @@
     </li>
   </ul>
   </nav>
+
+
+
+  <audio src="assets/sounds/1.wav" id="player">
+    <source id="audioSource" src=""></source>
+</audio>
