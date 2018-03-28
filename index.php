@@ -56,14 +56,15 @@ document.write(password());
 
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="navbar-header page-scroll">
+                <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.php">
-				<h1>Whale Lovers</h1>
+				<img class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
+				<a class="navbar-brand">
+				<h1>WhaleLovers</h1>
 				</a>
-				<img src="assets/images/logo.png" height="50px"></img>
+				
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,8 +72,8 @@ document.write(password());
 		      	<ul class="nav navbar-nav">
 					<li class="active"><a href="#intro" style="color:white">Home</a></li>
 					<li><a href="#service" style="color:white">Services</a></li>
-					<li><a href="#menu_map" style="color:white">Map</a></li>
-					<li><a href="#classification" style="color:white">Classification</a></li>					
+					<li><a href="#menu_map" style="color:white">Spot</a></li>
+					<li><a href="#classification" style="color:white">Class</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -119,46 +120,7 @@ document.write(password());
 			</div>
 		</div>
         <div class="row">
-            <div class="col-sm-3 col-md-3">
-				<div class="wow fadeInLeft" data-wow-delay="0.2s">
-                <div class="service-box">
-					<div class="service-icon">
-						<img src="assets/dp_homepage/img/icons/service-icon-1.png" alt="" />
-					</div>
-					<div class="service-desc">
-						<a href="spot_page.php"><h5>SPOT</h5></a>
-						<p>Provide whale watching spots infromation with Australia.</p>
-					</div>
-                </div>
-				</div>
-            </div>
-			<div class="col-sm-3 col-md-3">
-				<div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-box">
-					<div class="service-icon">
-						<img src="assets/dp_homepage/img/icons/service-icon-2.png" alt="" />
-					</div>
-					<div class="service-desc">
-					<a href="type_page.php"><h5>TYPE</h5></a>
-						<p>SAY SOMETHING</p>
-					</div>
-                </div>
-				</div>
-            </div>
-			<div class="col-sm-3 col-md-3">
-				<div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-box">
-					<div class="service-icon">
-						<img src="assets/dp_homepage/img/icons/service-icon-3.png" alt="" />
-					</div>
-					<div class="service-desc">
-						<h5>placeholder</h5>
-						<p>placeholder placeholder placeholder placeholder.</p>
-					</div>
-                </div>
-				</div>
-            </div>
-			<div class="col-sm-3 col-md-3">
+			<div class="col-sm-3 col-md-3 hidden">
 				<div class="wow fadeInRight" data-wow-delay="0.2s">
                 <div class="service-box">
 					<div class="service-icon">
@@ -171,6 +133,47 @@ document.write(password());
                 </div>
 				</div>
             </div>
+
+            <div class="col-sm-6 col-md-6">
+				<div class="wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="service-box">
+					<div class="service-icon">
+						<img src="assets/dp_homepage/img/icons/service-icon-1.png" alt="" />
+					</div>
+					<div class="service-desc">
+						<a href="spot_page.php"><h5>Whale Watching Spoting</h5></a>
+						<p>We're providing all the location of whale watching spots around Australia!</p>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-sm-6 col-md-6">
+				<div class="wow fadeInUp" data-wow-delay="0.2s">
+                <div class="service-box">
+					<div class="service-icon">
+						<img src="assets/dp_homepage/img/icons/service-icon-2.png" alt="" />
+					</div>
+					<div class="service-desc">
+					<a href="type_page.php"><h5>Whale Encyclopedia</h5></a>
+						<p>Want to know more about whales? You are in the right place!</p>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-sm-3 col-md-3 hidden">
+				<div class="wow fadeInUp" data-wow-delay="0.2s">
+                <div class="service-box">
+					<div class="service-icon">
+						<img src="assets/dp_homepage/img/icons/service-icon-3.png" alt="" />
+					</div>
+					<div class="service-desc">
+						<h5>placeholder</h5>
+						<p>placeholder placeholder placeholder placeholder.</p>
+					</div>
+                </div>
+				</div>
+            </div>
+			
         </div>		
 		</div>
 	</section>
@@ -185,7 +188,7 @@ document.write(password());
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Map</h2>
+					<h2>Spot</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 					</div>
 					</div>
@@ -204,16 +207,21 @@ document.write(password());
             <div class="col-xs-12 col-sm-6 col-md-6">
 				<div class="wow bounceInUp" data-wow-delay="0.2s">
                 <div class="">
-                    <img src="assets/images/map.jpg" class="img-responsive"></img>
+                    <img src="assets/images/home_map.png" class="img-responsive center-block"></img>
                 </div>
 				</div>
             </div>
 			<div class="col-xs-12 col-sm-6 col-md-6">
 				<div class="wow bounceInUp" data-wow-delay="0.5s">
                 <div class="boxed-grey">
-					<p class="lead">description placeholder</p>
+					<p class="lead text-left">
+					· Whale Lovers?<br/>
+					· Want to know the fast path to whale watching spot?<br/>
+· Planing your trip to whale watching?<br/><br/>
+· Enjoy our Whale Spotting service!
+					</p>
 					<div>
-						<button class="btn btn-primary" style="background-color:#0077be;" onclick="window.location='spot_page.php'">GO</button>
+						<button class="btn btn-primary" style="background-color:#0077be;width:200;" onclick="window.location='spot_page.php'">GO</button>
 					</div>
 				</div>
 				</div>
@@ -234,7 +242,7 @@ document.write(password());
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Classification</h2>
+					<h2>Class</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 					</div>
 					</div>
@@ -253,7 +261,11 @@ document.write(password());
 			<div class="col-xs-12 col-sm-6 col-md-6">
 				<div class="wow bounceInUp" data-wow-delay="0.2s">
                 <div class="boxed-grey">
-					<p class="lead">description placeholder</p>
+					<p class="lead text-right">
+					· Eager to know more about whales?<br/>
+· Listen some whale sounds to refresh your mind?<br/><br/>
+· Here is an Encyclopedia of whales in Australia!
+					</p>
 					<div>
 						<button class="btn btn-primary" style="background-color:#0077be;" onclick="window.location='type_page.php'">GO</button>
 					</div>
@@ -264,7 +276,7 @@ document.write(password());
             <div class="col-xs-12 col-sm-6 col-md-6">
 				<div class="wow bounceInUp" data-wow-delay="0.5s">
                 <div class="">
-                    <img src="assets/images/classification.png" class="img-responsive"></img>
+                    <img src="assets/images/home_class.png" class="img-responsive center-block"></img>
                 </div>
 				</div>
             </div>

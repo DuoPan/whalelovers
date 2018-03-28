@@ -33,18 +33,19 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.php">
-                    <h1>Whale Lovers</h1>
-                </a>
-                <img src="assets/images/logo.png" height="50px"></img>
+                <img class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
+				<a class="navbar-brand">
+				<h1>WhaleLovers</h1>
+				</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
 					<li><a href="index.php"  style="color:white">Home</a></li>
-					<li><a href="spot_page.php" style="color:white">Map</a></li>
-					<li class="active"><a href="" style="color:white">Classification</a></li>					
+					<li><a href="index.php#service" style="color:white">Services</a></li>
+                    <li><a href="spot_page.php" style="color:white">Spot</a></li>
+					<li class="active"><a href="" style="color:white">Class</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -412,7 +413,7 @@ The Australian snubfin dolphin occurs only in waters off the northern half of Au
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-block">
-                        <h4 class="card-title">DStenella longirostris</h4>
+                        <h4 class="card-title">Stenella longirostris</h4>
                     </div>
                     <div class="card-block">
                         <p class="card-text">
