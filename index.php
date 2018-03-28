@@ -84,7 +84,7 @@ document.write(password());
 	<!-- Section: intro -->
     <section id="intro" class="intro">
 		<div class="slogan">
-			<h2>Welcome to <span class="text_color">WhaleLovers</span> </h2>
+			<h1>Welcome to WhaleLovers</h1>
 			<h4>Everything about Whales!</h4>
 		</div>
 		<div class="page-scroll">
