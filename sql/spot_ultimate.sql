@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-03-28 06:45:22
+-- Generation Time: 2018-03-28 12:46:29
 -- 服务器版本： 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -4124,9 +4124,6 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Eubalaena australis', 'Southern right ', '-38.406829000000', '142.520867000000', '2014-07-11'),
 ('Tursiops truncatus', 'Common bottleno', '-35.564086000000', '138.630744000000', '2008-12-14'),
 ('Tursiops truncatus', 'Common bottleno', '-21.908110447200', '113.961027105700', '2012-06-01'),
-('Megaptera novaeangliae', 'Humpback whale', '-46.133300000000', '126.050000000000', '2000-11-03'),
-('Megaptera novaeangliae', 'Humpback whale', '-37.543200000000', '107.316600000000', '2003-12-07'),
-('Eubalaena australis', 'Southern right ', '-40.911600000000', '100.672800000000', '2003-12-09'),
 ('Tursiops truncatus', 'Common bottleno', '-32.600000000000', '115.700000000000', '2015-09-21'),
 ('Megaptera novaeangliae', 'Humpback whale', '-30.500000000000', '153.000000000000', '2015-10-19'),
 ('Tursiops truncatus', 'Common bottleno', '-33.600000000000', '115.100000000000', '2015-11-29'),
@@ -4202,11 +4199,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Tursiops truncatus', 'Common bottleno', '-38.212600000000', '145.046000000000', '2016-11-27'),
 ('Tursiops truncatus', 'Common bottleno', '-38.212600000000', '145.046000000000', '2016-11-27'),
 ('Delphinus delphis delphis', 'Common dolphin', '-38.302900000000', '141.615000000000', '2016-12-17'),
-('Orcinus orca', 'Killer whale', '-38.391100000000', '141.649000000000', '2013-10-18');
+('Orcinus orca', 'Killer whale', '-38.391100000000', '141.649000000000', '2013-10-18'),
+('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
+('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
+('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12');
 INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
-('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
-('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
-('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
 ('Balaenoptera acutorostrata', 'Dwarf minke wha', '-37.800000000000', '149.270000000000', '2013-09-18'),
 ('Delphinus delphis delphis', 'Common dolphin', '-37.560000000000', '149.910000000000', '2014-07-13'),
 ('Delphinus delphis delphis', 'Common dolphin', '-38.350000000000', '141.600000000000', '2007-07-12'),
@@ -4717,11 +4714,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Eubalaena australis', 'Southern right ', '-35.550000000000', '138.634700000000', '2006-09-14'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-15'),
 ('Eubalaena australis', 'Southern right ', '-35.530600000000', '138.711100000000', '2006-09-16'),
-('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-17');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-17'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-18'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-19'),
-('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-20'),
+('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-20');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-21'),
 ('Eubalaena australis', 'Southern right ', '-35.550000000000', '138.634700000000', '2006-09-21'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2006-09-22'),
@@ -5237,11 +5234,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Eubalaena australis', 'Southern right ', '-35.530000000000', '138.720000000000', '2010-09-09'),
 ('Eubalaena australis', 'Southern right ', '-35.525000000000', '138.704200000000', '2010-09-10'),
 ('Eubalaena australis', 'Southern right ', '-35.525000000000', '138.704200000000', '2010-09-11'),
-('Eubalaena australis', 'Southern right ', '-35.530000000000', '138.720000000000', '2010-09-12');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Eubalaena australis', 'Southern right ', '-35.530000000000', '138.720000000000', '2010-09-12'),
 ('Eubalaena australis', 'Southern right ', '-35.525000000000', '138.704200000000', '2010-09-13'),
 ('Eubalaena australis', 'Southern right ', '-35.529200000000', '138.697200000000', '2010-09-14'),
-('Eubalaena australis', 'Southern right ', '-35.524200000000', '138.694700000000', '2010-09-15'),
+('Eubalaena australis', 'Southern right ', '-35.524200000000', '138.694700000000', '2010-09-15');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Eubalaena australis', 'Southern right ', '-35.537500000000', '138.679200000000', '2010-09-17'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.700000000000', '2010-09-18'),
 ('Eubalaena australis', 'Southern right ', '-35.533300000000', '138.695000000000', '2010-09-19'),
@@ -5756,11 +5753,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Eubalaena australis', 'Southern right ', '-35.525000000000', '138.700000000000', '2013-08-06'),
 ('Eubalaena australis', 'Southern right ', '-35.533300000000', '138.695800000000', '2013-08-08'),
 ('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.704200000000', '2013-08-09'),
-('Eubalaena australis', 'Southern right ', '-35.529200000000', '138.775000000000', '2013-08-09');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Eubalaena australis', 'Southern right ', '-35.529200000000', '138.775000000000', '2013-08-09'),
 ('Eubalaena australis', 'Southern right ', '-35.616700000000', '138.570800000000', '2013-08-09'),
 ('Eubalaena australis', 'Southern right ', '-35.570000000000', '138.700000000000', '2013-08-10'),
-('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.700000000000', '2013-08-07'),
+('Eubalaena australis', 'Southern right ', '-35.520800000000', '138.700000000000', '2013-08-07');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Eubalaena australis', 'Southern right ', '-35.570000000000', '138.700000000000', '2013-08-11'),
 ('Eubalaena australis', 'Southern right ', '-35.612500000000', '138.566700000000', '2013-08-11'),
 ('Eubalaena australis', 'Southern right ', '-35.533300000000', '138.695800000000', '2013-08-12'),
@@ -6268,11 +6265,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Sousa sahulensis', 'Australian hump', '-11.266031670000', '132.116226700000', '2008-09-11'),
 ('Sousa sahulensis', 'Australian hump', '-11.220065000000', '132.136463300000', '2008-09-12'),
 ('Sousa sahulensis', 'Australian hump', '-11.173240000000', '132.152830000000', '2008-11-09'),
-('Sousa sahulensis', 'Australian hump', '-11.234315000000', '132.118555000000', '2008-11-09');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Sousa sahulensis', 'Australian hump', '-11.234315000000', '132.118555000000', '2008-11-09'),
 ('Sousa sahulensis', 'Australian hump', '-11.226813330000', '132.189521700000', '2008-11-09'),
 ('Sousa sahulensis', 'Australian hump', '-11.192153330000', '132.161228300000', '2008-11-11'),
-('Sousa sahulensis', 'Australian hump', '-11.260873330000', '132.108645000000', '2008-11-12'),
+('Sousa sahulensis', 'Australian hump', '-11.260873330000', '132.108645000000', '2008-11-12');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Sousa sahulensis', 'Australian hump', '-11.273985000000', '132.123338300000', '2008-11-12'),
 ('Sousa sahulensis', 'Australian hump', '-11.272145000000', '132.120113300000', '2008-11-13'),
 ('Sousa sahulensis', 'Australian hump', '-11.197360000000', '132.172240000000', '2008-12-15'),
@@ -6801,11 +6798,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Tursiops truncatus', 'Common bottleno', '-12.471333350000', '130.841833300000', '2008-09-19'),
 ('Tursiops truncatus', 'Common bottleno', '-12.523999990000', '130.797000000000', '2010-04-23'),
 ('Tursiops truncatus', 'Common bottleno', '-12.441666660000', '130.817666700000', '2010-04-28'),
-('Tursiops truncatus', 'Common bottleno', '-12.476666660000', '130.846666600000', '2010-09-16');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Tursiops truncatus', 'Common bottleno', '-12.476666660000', '130.846666600000', '2010-09-16'),
 ('Tursiops truncatus', 'Common bottleno', '-12.442666650000', '130.826166700000', '2011-02-07'),
 ('Tursiops truncatus', 'Common bottleno', '-12.050000000000', '135.456000000000', '2012-03-28'),
-('Tursiops truncatus', 'Common bottleno', '-12.168950010000', '135.197400000000', '2012-03-28'),
+('Tursiops truncatus', 'Common bottleno', '-12.168950010000', '135.197400000000', '2012-03-28');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Tursiops truncatus', 'Common bottleno', '-13.750000000000', '136.840000000000', '2009-01-22'),
 ('Tursiops truncatus', 'Common bottleno', '-12.765000050000', '130.348333300000', '2005-01-24'),
 ('Stenella longirostris', 'Spinner dolphin', '-11.583716630000', '136.331450000000', '2006-04-15'),
@@ -7331,11 +7328,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Sousa sahulensis', 'Australian hump', '-12.338580000000', '130.913070000000', '2008-04-23'),
 ('Sousa sahulensis', 'Australian hump', '-12.352900000000', '131.034750000000', '2008-04-23'),
 ('Sousa sahulensis', 'Australian hump', '-12.362430000000', '131.036430000000', '2008-04-23'),
-('Sousa sahulensis', 'Australian hump', '-12.325760000000', '131.042940000000', '2008-04-23');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Sousa sahulensis', 'Australian hump', '-12.325760000000', '131.042940000000', '2008-04-23'),
 ('Sousa sahulensis', 'Australian hump', '-12.355100000000', '131.034390000000', '2008-04-24'),
 ('Orcaella heinsohni', 'Australian snub', '-12.507268330000', '130.895651700000', '2008-08-28'),
-('Orcaella heinsohni', 'Australian snub', '-12.454398330000', '130.775773300000', '2008-10-28'),
+('Orcaella heinsohni', 'Australian snub', '-12.454398330000', '130.775773300000', '2008-10-28');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Orcaella heinsohni', 'Australian snub', '-12.340685000000', '130.874273300000', '2008-10-30'),
 ('Orcaella heinsohni', 'Australian snub', '-12.480788330000', '130.873095000000', '2009-03-09'),
 ('Orcaella heinsohni', 'Australian snub', '-12.440968330000', '130.771428300000', '2009-03-10'),
@@ -7865,11 +7862,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Sousa sahulensis', 'Australian hump', '-12.463720000000', '130.790720000000', '2013-03-21'),
 ('Sousa sahulensis', 'Australian hump', '-12.463717000000', '130.796716000000', '2013-03-21'),
 ('Sousa sahulensis', 'Australian hump', '-12.457760000000', '130.811890000000', '2013-03-21'),
-('Orcaella heinsohni', 'Australian snub', '-12.612020000000', '130.433750000000', '2011-11-12');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Orcaella heinsohni', 'Australian snub', '-12.612020000000', '130.433750000000', '2011-11-12'),
 ('Sousa sahulensis', 'Australian hump', '-12.497610000000', '130.831740000000', '2013-03-21'),
 ('Sousa sahulensis', 'Australian hump', '-12.509730000000', '130.840130000000', '2013-03-21'),
-('Sousa sahulensis', 'Australian hump', '-12.537100000000', '130.866620000000', '2013-03-21'),
+('Sousa sahulensis', 'Australian hump', '-12.537100000000', '130.866620000000', '2013-03-21');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Sousa sahulensis', 'Australian hump', '-12.544580000000', '130.871930000000', '2013-03-21'),
 ('Orcaella heinsohni', 'Australian snub', '-12.579450000000', '130.908400000000', '2013-03-21'),
 ('Sousa sahulensis', 'Australian hump', '-12.556810000000', '130.848280000000', '2013-03-21'),
@@ -8400,11 +8397,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Sousa sahulensis', 'Australian hump', '-12.278980000000', '131.009380000000', '2012-03-30'),
 ('Stenella longirostris', 'Spinner dolphin', '-12.781333000000', '130.035632000000', '2016-08-24'),
 ('Orcaella heinsohni', 'Australian snub', '-12.729558000000', '130.262505000000', '2016-08-24'),
-('Sousa sahulensis', 'Australian hump', '-12.593376000000', '130.915485000000', '2016-10-03');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Sousa sahulensis', 'Australian hump', '-12.593376000000', '130.915485000000', '2016-10-03'),
 ('Sousa sahulensis', 'Australian hump', '-12.511550000000', '130.842800000000', '2016-10-03'),
 ('Sousa sahulensis', 'Australian hump', '-12.397170000000', '130.817830000000', '2016-10-03'),
-('Sousa sahulensis', 'Australian hump', '-12.477630000000', '130.848360000000', '2016-10-04'),
+('Sousa sahulensis', 'Australian hump', '-12.477630000000', '130.848360000000', '2016-10-04');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Sousa sahulensis', 'Australian hump', '-12.319720000000', '131.029490000000', '2012-03-30'),
 ('Sousa sahulensis', 'Australian hump', '-12.489850000000', '130.864880000000', '2016-10-04'),
 ('Sousa sahulensis', 'Australian hump', '-12.485420000000', '130.873440000000', '2016-10-04'),
@@ -8934,11 +8931,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Orcaella heinsohni', 'Australian snub', '-11.295140000000', '132.155820000000', '2009-09-07'),
 ('Orcaella heinsohni', 'Australian snub', '-11.298650000000', '132.114020000000', '2009-09-07'),
 ('Sousa sahulensis', 'Australian hump', '-11.289380000000', '132.183470000000', '2009-09-07'),
-('Sousa sahulensis', 'Australian hump', '-11.289380000000', '132.183470000000', '2009-09-07');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Sousa sahulensis', 'Australian hump', '-11.289380000000', '132.183470000000', '2009-09-07'),
 ('Sousa sahulensis', 'Australian hump', '-11.289380000000', '132.183470000000', '2009-09-07'),
 ('Orcaella heinsohni', 'Australian snub', '-12.228060000000', '131.002630000000', '2011-10-22'),
-('Orcaella heinsohni', 'Australian snub', '-11.226230000000', '132.263330000000', '2009-09-08'),
+('Orcaella heinsohni', 'Australian snub', '-11.226230000000', '132.263330000000', '2009-09-08');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Orcaella heinsohni', 'Australian snub', '-11.226230000000', '132.263330000000', '2009-09-08'),
 ('Orcaella heinsohni', 'Australian snub', '-11.226230000000', '132.263330000000', '2009-09-08'),
 ('Sousa sahulensis', 'Australian hump', '-11.192890000000', '132.084320000000', '2009-09-08'),
@@ -9459,11 +9456,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Megaptera novaeangliae', 'Humpback whale', '-33.831558174000', '151.331398027000', '2009-06-19'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.823810650000', '151.317314280000', '2009-06-23'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.889770674000', '151.302758537000', '2009-07-09'),
-('Megaptera novaeangliae', 'Humpback whale', '-33.911976171000', '151.286218886000', '2009-07-10');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Megaptera novaeangliae', 'Humpback whale', '-33.911976171000', '151.286218886000', '2009-07-10'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.849460135000', '151.360221745000', '2009-07-14'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.845218356000', '151.349449115000', '2009-07-14'),
-('Megaptera novaeangliae', 'Humpback whale', '-33.825370590000', '151.346305614000', '2009-07-16'),
+('Megaptera novaeangliae', 'Humpback whale', '-33.825370590000', '151.346305614000', '2009-07-16');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Megaptera novaeangliae', 'Humpback whale', '-33.781349207000', '151.335730967000', '2009-07-16'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.947998490000', '151.285914560000', '2009-07-20'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.845699300000', '151.322197300000', '2009-07-21'),
@@ -9969,11 +9966,11 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Megaptera novaeangliae', 'Humpback whale', '-33.591657700000', '151.468637800000', '2015-06-29'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.571570000000', '151.360626000000', '2015-06-30'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.703990400000', '151.423858900000', '2015-06-30'),
-('Megaptera novaeangliae', 'Humpback whale', '-33.647324300000', '151.447612400000', '2015-06-30');
-INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
+('Megaptera novaeangliae', 'Humpback whale', '-33.647324300000', '151.447612400000', '2015-06-30'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.777246400000', '151.391093100000', '2015-07-15'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.706048200000', '151.462276400000', '2015-07-15'),
-('Megaptera novaeangliae', 'Humpback whale', '-33.566845000000', '151.475105000000', '2015-07-24'),
+('Megaptera novaeangliae', 'Humpback whale', '-33.566845000000', '151.475105000000', '2015-07-24');
+INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VALUES
 ('Megaptera novaeangliae', 'Humpback whale', '-33.469066600000', '151.528381500000', '2015-07-24'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.624976700000', '151.360041700000', '2015-08-01'),
 ('Megaptera novaeangliae', 'Humpback whale', '-33.417415400000', '151.490078800000', '2015-08-01'),
@@ -10233,9 +10230,6 @@ INSERT INTO `spot_ultimate` (`scientificname`, `name`, `lat`, `lon`, `year`) VAL
 ('Megaptera novaeangliae', 'Humpback whale', '-27.038590000000', '155.326670000000', '2016-10-29'),
 ('Megaptera novaeangliae', 'Humpback whale', '-26.967810000000', '155.355830000000', '2016-10-30'),
 ('Tursiops truncatus', 'Common bottleno', '-26.860510000000', '155.402140000000', '2016-10-30'),
-('Megaptera novaeangliae', 'Humpback whale', '-46.130001068115', '126.050003051758', '2002-11-03'),
-('Megaptera novaeangliae', 'Humpback whale', '-37.540000915527', '107.309997558594', '2003-12-07'),
-('Eubalaena australis', 'Southern right ', '-40.909999847412', '100.669998168945', '2003-12-09'),
 ('Tursiops truncatus', 'Common bottleno', '-42.219470000000', '148.630040000000', '2016-08-25'),
 ('Tursiops truncatus', 'Common bottleno', '-33.190000000000', '134.350000000000', '2009-02-23'),
 ('Tursiops truncatus', 'Common bottleno', '-35.560000000000', '137.630000000000', '2008-12-16'),
