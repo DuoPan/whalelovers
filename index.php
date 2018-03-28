@@ -220,9 +220,7 @@ document.write(password());
 · Planing your trip to whale watching?<br/><br/>
 · Enjoy our Whale Spotting service!
 					</p>
-					<div>
-						<button class="btn btn-primary" style="background-color:#0077be;width:200;" onclick="window.location='spot_page.php'">GO</button>
-					</div>
+					<button class="btn btn-primary btn-blcok"  style="background-color:#0077be;padding: 5px 50px;" onclick="window.location='spot_page.php'">GO</button>
 				</div>
 				</div>
             </div>
@@ -267,7 +265,7 @@ document.write(password());
 · Here is an Encyclopedia of whales in Australia!
 					</p>
 					<div>
-						<button class="btn btn-primary" style="background-color:#0077be;" onclick="window.location='type_page.php'">GO</button>
+						<button class="btn btn-primary" style="background-color:#0077be;padding: 5px 50px;" onclick="window.location='type_page.php'">GO</button>
 					</div>
 				</div>
 				</div>

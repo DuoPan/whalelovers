@@ -18,17 +18,27 @@
 <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
 
 <!-- Google Map API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
 <style>
     #dp_map {
-        height: 600px;
-        width: 100%;
     }
     .jumbotron {
         margin-bottom: 0px!important;
     }
+    div.polaroid {
+      width: 100%;
+      height: 500px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 25px;
+    }
 
+    div.container2 {
+      text-align: center;
+      padding: 10px 20px;
+    }
 </style>
+<script type="text/javascript" src="./src/markerclusterer.js"></script>
+<script type="text/javascript" src="./src/data.json"></script>
 
 <!-- Google Map API End -->
 
@@ -79,100 +89,117 @@
  
       <!-- Google Map  -->
       <div class="row">
-        <div id="dp_map" class="col-md-6" style="width:60%;"></div>
+        <div id="map" class="col-md-8"></div>
+        <script>
+            var customLabel = {
+            restaurant: {
+              label: 'R'
+            },
+            bar: {
+              label: 'B'
+            }
+            };
+            function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: new google.maps.LatLng(-25.2744, 133.7751),
+              zoom: 4,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+         //     scrollwheel: false
+            });
+            
+            var imgLoc = './assets/images/smallDesc/'
+            var allmarkers = [];
+            var infoWindow = new google.maps.InfoWindow;
+              //Reading Php File
+              downloadUrl('./Db_Connect.php', function(data) {
+                var xml = data.responseXML;
+                var markers = xml.documentElement.getElementsByTagName('marker');
+                Array.prototype.forEach.call(markers, function(markerElem) {
+                var name = markerElem.getAttribute('name');
+                var year = markerElem.getAttribute('year');
+                var point = new google.maps.LatLng(
+                  parseFloat(markerElem.getAttribute('lat')),
+                  parseFloat(markerElem.getAttribute('lng')));
+                  
+                var infowincontent = document.createElement('div');
+                var heading = document.createElement('strong');
+                heading.textContent = name
+                  infowincontent.appendChild(heading);
+                  infowincontent.appendChild(document.createElement('br'));
+                  
+
+                  var text = document.createElement('text');
+                  infowincontent.appendChild(text);  
+                  
+                var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	
+                google.maps.event.addListener(marker, 'click', function(evt) {
+                //Sample Click Event
+                  infoWindow.setContent(infowincontent);
+                  infoWindow.open(map, marker);
+                  var imgSrc = document.getElementById('img_desc');
+                  imgSrc.src = imgLoc+name+'.png';
+                });
+                allmarkers.push(marker);
+                
+                });
+                var markerCluster = new MarkerClusterer(map,allmarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+              });
+              }
+            
+            function downloadUrl(url, callback) {
+            var request = window.ActiveXObject ?
+              new ActiveXObject('Microsoft.XMLHTTP') :
+              new XMLHttpRequest;
+
+            request.onreadystatechange = function() {
+              if (request.readyState == 4) {
+              request.onreadystatechange = doNothing;
+              callback(request, request.status);
+              }
+            };
+
+            request.open('GET', url, true);
+            request.send(null);
+            }
+            function doNothing(){}
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
+    
         <div class="col-md-4">
-          <button>dfdfad</button>
+          <div class="polaroid">
+            <img id="img_desc" style="width:100%; padding: 25px 50px 75px 100px;"/>
+            <div class="container2">
+            <p>A small description</p>
+            </div>
+            <div class="container2">
+            <p>know more</p>
+            </div>
+          </div>
+            </div>
         </div>
+
       </div>
     <!-- Google Map End -->
  
 
 
-  <!-- Table -->
-  <?php
-    $mysqli = new mysqli("localhost", "root", "", "asiadock");
-    $result = $mysqli->query("SELECT vernacularName, decimalLatitude, decimalLongitude, year FROM spot_new");
-      echo'
-      <table id="dp_table"
-        data-toggle="table"
-        data-striped = "true"
-        data-pagination = "true"
-        data-page-size = "20"
-        data-page-list = [10,20,50,100]
-        data-show-columns="true"
-        data-search = "true"
-        >
-        <thead>
-          <tr>
-          <th data-sortable="true">ID</th>
-          <th data-sortable="true">Name</th>
-          <th >Latitude</th>
-          <th >Longitude</th>
-          <th data-sortable="true">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-        '; $index=1;while($row = $result->fetch_assoc()){
-          echo '
-          <tr>
-          <td>'; echo $index; echo '</td>
-          <td>'; echo $row['vernacularName']; echo '</td>
-          <td>'; echo $row['decimalLatitude']; echo '</td>
-          <td>'; echo $row['decimalLongitude']; echo '</td>
-          <td>'; echo $row['year']; echo '</td>
-          </tr>
-          ';
-          $index++;
-        }
-           echo '
-        </tbody>
-      </table>
-      ';
-  ?>
-  <!-- Table End -->
-  
 </div>
 
-<!-- Footer -->
-<div class="jumbotron jumbotron-fluid">
-  <a>say something</a>
-</div>
+  <!-- Footer -->
+
+	<footer style="bottom:0px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow shake" data-wow-delay="0.4s">
+					
+					</div>
+					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
+				</div>
+			</div>	
+		</div>
+	</footer>
 <!-- Footer End -->
-
-<script>
-  var uluru1 = {lat:-37.020100, lng:144.964600};
-  var map = new google.maps.Map(document.getElementById("dp_map"), {
-      zoom: 4,
-      center: uluru1
-  });
-
-  var currMarker=null;
-  $(function () {  
-    $('#dp_table').on('click-row.bs.table', function (e, row, element)   
-    {    
-      if(currMarker!=null){
-        currMarker.setMap(null);
-      }
-      var contentString = '<div id="content">'+
-            '<h3 id="firstHeading" class="firstHeading">'+row[1]+'</h3>'+
-            '<div id="bodyContent">'+
-            '<h4>'+row[4]+'</h4>'+
-            '</div>'+
-            '</div>';
-      currMarker = new google.maps.Marker({
-        position: {lat:parseFloat(row[2]),lng:parseFloat(row[3])},
-        map: map,
-        title: row[1]
-      });
-      var infowindow = new google.maps.InfoWindow({
-          content: contentString
-      });
-      currMarker.addListener('click', function() {
-          infowindow.open(map, currMarker);
-      });
-    });  
-}) 
-</script>
 
 <!-- Custom Theme JavaScript -->
 <script src="assets/dp_homepage/js/jquery.easing.min.js"></script>	
