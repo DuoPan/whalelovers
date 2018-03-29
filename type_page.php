@@ -19,7 +19,7 @@
 <style>
 
 </style>
-<title>Types</title>
+<title>Class</title>
 </head>
 
 <body style="padding-top: 120px">
@@ -251,6 +251,7 @@
                     <div class="card-block">
                         <p class="card-text">
                         The common bottlenose dolphin is grey in colour and grows to between 2 and 4 meters long. It has a short rounded snout, described as bottle-shaped. The large dorsal fin is slightly hooked and set half way along the body.<br/><br/> Overall the body colour is a series of grey tones with an indistinct paler grey wash on the flanks fading into an off-white belly.  This species occurs around much of Australia’s coastal shelf area and deeper offshore waters.
+                        <br/><br/>
                         </p>
                     </div>
                 </div>
@@ -283,7 +284,7 @@
                     <div class="card-block">
                         <p class="card-text">
                         Australian humpback dolphins are usually grey with various white scarring and dark flecking in some areas. They have a robust and medium sized body with a short, slightly recurved and triangular-shaped dorsal fin.
-<br/><br/>This species is found in waters that extend from the New South Wales/Queensland border across Northern Australia to Ningaloo Reef, near Exmouth.
+<br/><br/>This species is found in waters that extend from the New South Wales/Queensland border across Northern Australia to Ningaloo Reef, near Exmouth.<br/><br/><br/>
                         </p>
                     </div>
                 </div>

@@ -18,36 +18,17 @@
     <!-- Squad theme CSS -->
     <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
 	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+	<!-- Google Font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<style>
+	#artwords {
+        font-family: 'Tangerine', serif;
+        font-size: 36px;
+      }
+</style>
 </head>
 
-<!-- password locker -->
-<script type="text/javascript"> 
-// function password() { 
-// 	var pass1 = prompt('Enter Password',''); 
-// 	while (1) { 
-// 		if (!pass1) 
-// 		history.go(-1); 
-// 		if (pass1 == "whale") {//初始密码123 
-// 			alert('right!'); 
-// 			break; 
-// 		} 
-// 		var pass1 = 
-// 		prompt('Wrong! Enter again!'); 
-// 	} 
-// 	// if (pass1!="password") 
-// 	// history.go(-1); 
-// 	return " "; 
-} 
-document.write(password()); 
-</script> 
-<!-- password locker end -->
-
-
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-
-<!-- password locker -->
-
-<!-- password locker end -->
 
 	<!-- Preloader -->
 	<div id="preloader">
@@ -84,7 +65,7 @@ document.write(password());
 	<!-- Section: intro -->
     <section id="intro" class="intro">
 		<div class="slogan">
-			<h1>Welcome to WhaleLovers</h1>
+			<h1>Welcome to Whale Lovers</h1>
 			<h4>Everything about Whales!</h4>
 		</div>
 		<div class="page-scroll">
@@ -141,7 +122,7 @@ document.write(password());
 						<img src="assets/dp_homepage/img/icons/service-icon-1.png" alt="" />
 					</div>
 					<div class="service-desc">
-						<a href="spot_page.php"><h5>Whale Watching Spoting</h5></a>
+						<a href="spot_page.php"><h5>Whale Sighting Spots</h5></a>
 						<p>We're providing all the location of whale watching spots around Australia!</p>
 					</div>
                 </div>
@@ -188,7 +169,7 @@ document.write(password());
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Spot</h2>
+					<h2>Whale Sighting Spots</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 					</div>
 					</div>
@@ -215,10 +196,10 @@ document.write(password());
 				<div class="wow bounceInUp" data-wow-delay="0.5s">
                 <div class="boxed-grey">
 					<p class="lead text-left">
-					· Whale Lovers?<br/>
-					· Want to know the fast path to whale watching spot?<br/>
-· Planing your trip to whale watching?<br/><br/>
-· Enjoy our Whale Spotting service!
+					Whale Lovers?<br/>
+					Want to know the fast path to whale watching spot?<br/>
+Planing your trip to whale watching?<br/><br/><br/>
+Enjoy our Whale Spotting service!
 					</p>
 					<button class="btn btn-primary btn-blcok"  style="background-color:#0077be;padding: 5px 50px;" onclick="window.location='spot_page.php'">GO</button>
 				</div>
@@ -240,7 +221,7 @@ document.write(password());
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Class</h2>
+					<h2>Whale Encyclopedia</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 					</div>
 					</div>
@@ -260,9 +241,10 @@ document.write(password());
 				<div class="wow bounceInUp" data-wow-delay="0.2s">
                 <div class="boxed-grey">
 					<p class="lead text-right">
-					· Eager to know more about whales?<br/>
-· Listen some whale sounds to refresh your mind?<br/><br/>
-· Here is an Encyclopedia of whales in Australia!
+					Details Digger?<br/>
+					Eager to know more about whales?
+					<br/>Listen some whale sounds to refresh your mind?
+					<br/><br/><br/>Here is an Encyclopedia of whales in Australia!
 					</p>
 					<div>
 						<button class="btn btn-primary" style="background-color:#0077be;padding: 5px 50px;" onclick="window.location='type_page.php'">GO</button>
