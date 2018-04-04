@@ -4,10 +4,8 @@
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="./assets/bootstrap-table/src/bootstrap-table.css">
 <script src="./assets/jquery.min.js"></script>
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="./assets/bootstrap-table/src/bootstrap-table.js"></script>
 <!-- Bootstrap  End -->
 
 <!-- Fonts -->
@@ -19,8 +17,6 @@
 
 <!-- Google Map API -->
 <style>
-    #dp_map {
-    }
     .jumbotron {
         margin-bottom: 0px!important;
     }
@@ -53,6 +49,7 @@
 
 
 <title>Spot</title>
+<link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 
 <body style="padding-top: 120px">
@@ -76,10 +73,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
-              <li><a href="index.php" style="color:white;">Home</a></li>
-              <li><a href="index.php#service" style="color:white">Services</a></li>
+              <li><a href="index.html" style="color:white;">Home</a></li>
+              <li><a href="index.html#service" style="color:white">Services</a></li>
               <li class="active"><a href="#" style="color:white;">Spot</a></li>
-              <li><a href="type_page.php" style="color:white;">Class</a></li>					
+              <li><a href="type_page.html" style="color:white;">Class</a></li>					
 		      	</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -166,7 +163,7 @@
                   var imgSrc = document.getElementById('img_desc');
                   var imgdesc = document.getElementById('pdesc');
                   imgSrc.src = imgLoc+name.trim()+'.png';
-                  <!-- Loop is used to get the description using with whale name
+                  document.getElementById('knowmore').value=name.trim();
                   for(var i=0;i < hb1.length;i=i+1){
                     if(hb1[i][0] == name.trim()){
                       imgdesc.innerHTML = hb1[i][1]; 
@@ -233,8 +230,8 @@
 			</div>
 			<!-- Link to class -->
 			<div style = "text-align:center; width:100%; position: relative; bottom:0; padding: 10px 10px 10px 10px;">
-				<a href="./type_page.php"><p>Know more</p></a>
-			</div>
+        <button id="knowmore" class="btn btn-primary" value="" onclick="gotoDes()">Know more</button>
+      </div>
 		<!-- Container Polaroid ends here -->
 		  </div>
         </div>
@@ -266,6 +263,13 @@
 <script src="assets/dp_homepage/js/jquery.scrollTo.js"></script>
 <script src="assets/dp_homepage/js/wow.min.js"></script>
 <script src="assets/dp_homepage/js/custom.js"></script>
+<script>
+  function gotoDes() {
+    var name = document.getElementById('knowmore').value;
+    name = name.replace(/ /g,"_");
+    location.href="./type_page.html#"+name;
+  }
 
+</script>
 </body>
 </html>

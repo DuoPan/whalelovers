@@ -4,10 +4,8 @@
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="./assets/bootstrap-table/src/bootstrap-table.css">
 <script src="./assets/jquery.min.js"></script>
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="./assets/bootstrap-table/src/bootstrap-table.js"></script>
 <!-- Bootstrap  End -->
 <!-- Fonts -->
 <link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +18,7 @@
 
 </style>
 <title>Class</title>
+<link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 
 <body style="padding-top: 120px">
@@ -42,9 +41,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 		      	<ul class="nav navbar-nav">
-					<li><a href="index.php"  style="color:white">Home</a></li>
-					<li><a href="index.php#service" style="color:white">Services</a></li>
-                    <li><a href="spot_page.php" style="color:white">Spot</a></li>
+					<li><a href="index.html"  style="color:white">Home</a></li>
+					<li><a href="index.html#service" style="color:white">Services</a></li>
+                    <li><a href="spot_page.html" style="color:white">Spot</a></li>
 					<li class="active"><a href="" style="color:white">Class</a></li>					
 		      	</ul>
             </div>
@@ -67,12 +66,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingOne">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a data-toggle="collapse" href="#Humpback_whale" aria-expanded="true" aria-controls="Humpback_whale">
             Humpback whale (Megaptera novaeangliae)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" aria-labelledby="headingOne">
+    <div id="Humpback_whale" class="panel-collapse collapse in" aria-labelledby="headingOne">
         <div class="row" style="padding: 1%;">
             <div class="col-sm-5" >
                 <img src="assets/images/hw1.png" alt="Card image" class="img-responsive center-block"/>
@@ -87,15 +86,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(1)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
-                <button type="button" class="btn btn-default" onclick="playSound(2)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
-                <button type="button" class="btn btn-default" onclick="playSound(3)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/1.wav";></audio>
             </div>
         </div>
     </div>
@@ -105,12 +96,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingTwo">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a data-toggle="collapse" href="#Southern_right" aria-expanded="true" aria-controls="Southern_right">
         Southern right whale (Eubalaena australis)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse" aria-labelledby="headingTwo">
+    <div id="Southern_right" class="panel-collapse collapse" aria-labelledby="headingTwo">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/srw1.png" alt="Card image" class="img-responsive center-block"/>
@@ -125,9 +116,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(4)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/4.wav";></audio>
             </div>
         </div>
     </div>
@@ -137,12 +126,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingThree">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        <a data-toggle="collapse" href="#Blue_whale" aria-expanded="true" aria-controls="Blue_whale">
         BLUE WHALE (BALAENOPTERA MUSCULUS)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseThree" class="panel-collapse collapse" aria-labelledby="headingThree">
+    <div id="Blue_whale" class="panel-collapse collapse" aria-labelledby="headingThree">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/bw1.jpeg" alt="Card image" class="img-responsive center-block"/>
@@ -157,9 +146,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(5)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/5.wav";></audio>
             </div>
         </div>
     </div>
@@ -169,12 +156,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingFour">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        <a data-toggle="collapse" href="#Dwarf_minke_wha" aria-expanded="true" aria-controls="Dwarf_minke_wha">
         Dwarf minke whale (Balaenoptera acutorostrata)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseFour" class="panel-collapse collapse" aria-labelledby="headingFour">
+    <div id="Dwarf_minke_wha" class="panel-collapse collapse" aria-labelledby="headingFour">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/dmw1.png" alt="Card image" class="img-responsive center-block"/>
@@ -190,9 +177,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(6)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/6.wav";></audio>
             </div>
         </div>
     </div>
@@ -202,12 +187,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingFive">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        <a data-toggle="collapse" href="#Killer_whale" aria-expanded="true" aria-controls="Killer_whale">
         Killer whale (Orcinus orca)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseFive" class="panel-collapse collapse" aria-labelledby="headingFive">
+    <div id="Killer_whale" class="panel-collapse collapse" aria-labelledby="headingFive">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/kw1.png" alt="Card image" class="img-responsive center-block"/>
@@ -223,9 +208,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(7)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/7.wav";></audio>
             </div>
         </div>
     </div>
@@ -236,12 +219,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingSix">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        <a data-toggle="collapse" href="#Common_bottleno" aria-expanded="true" aria-controls="Common_bottleno">
         Common bottlenose dolphin (Tursiops truncatus)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseSix" class="panel-collapse collapse" aria-labelledby="headingSix">
+    <div id="Common_bottleno" class="panel-collapse collapse" aria-labelledby="headingSix">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/cbd1.png" alt="Card image" class="img-responsive center-block"/>
@@ -257,9 +240,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(8)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/8.wav";></audio>
             </div>
         </div>
     </div>
@@ -269,12 +250,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingSeven">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        <a data-toggle="collapse" href="#Australian_hump" aria-expanded="true" aria-controls="Australian_hump">
         Australian humpback dolphin (Sousa sahulensis)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseSeven" class="panel-collapse collapse" aria-labelledby="headingSeven">
+    <div id="Australian_hump" class="panel-collapse collapse" aria-labelledby="headingSeven">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/ahd1.png" alt="Card image" class="img-responsive center-block"/>
@@ -290,9 +271,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(9)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/9.wav";></audio>
             </div>
         </div>
     </div>
@@ -303,12 +282,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingEight">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        <a data-toggle="collapse" href="#Australian_snub" aria-expanded="true" aria-controls="Australian_snub">
         Australian snubfin dolphin (Orcaella heinsohni)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseEight" class="panel-collapse collapse" aria-labelledby="headingEight">
+    <div id="Australian_snub" class="panel-collapse collapse" aria-labelledby="headingEight">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/asd1.png" alt="Card image" class="img-responsive center-block"/>
@@ -324,9 +303,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(10)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/10.wav";></audio>
             </div>
         </div>
     </div>
@@ -336,12 +313,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingNine">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+        <a data-toggle="collapse" href="#Common_dolphin" aria-expanded="true" aria-controls="Common_dolphin">
         Common dolphin (Delphinus delphis)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseNine" class="panel-collapse collapse" aria-labelledby="headingNine">
+    <div id="Common_dolphin" class="panel-collapse collapse" aria-labelledby="headingNine">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/cd1.png" alt="Card image" class="img-responsive center-block"/>
@@ -356,9 +333,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(11)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/11.wav";></audio>
             </div>
         </div>
     </div>
@@ -370,12 +345,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"  id="headingTen">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+        <a data-toggle="collapse" href="#Spinner_dolphin" aria-expanded="true" aria-controls="Spinner_dolphin">
         Spinner dolphin (Stenella longirostris)<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
         </a>
       </h4>
     </div>
-    <div id="collapseTen" class="panel-collapse collapse" aria-labelledby="headingTen">
+    <div id="Spinner_dolphin" class="panel-collapse collapse" aria-labelledby="headingTen">
         <div class="row" style="padding: 1%">
             <div class="col-sm-5" >
                 <img src="assets/images/sd1.png" alt="Card image" class="img-responsive center-block"/>
@@ -391,9 +366,7 @@
                 </div>
             </div>
             <div style="padding-left:2%">
-                <button type="button" class="btn btn-default" onclick="playSound(12)">
-                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play
-                </button>
+                <audio controls src="assets/sounds/12.wav";></audio>
             </div>
         </div>
     </div>
@@ -419,11 +392,6 @@
 	</footer>
 <!-- Footer End -->
 
-<!-- audio invisible -->
-<audio id="player">
-</audio>
-<!-- audio invisible end -->
-
 <!-- Custom Theme JavaScript -->
 <script src="assets/dp_homepage/js/jquery.easing.min.js"></script>	
 <script src="assets/dp_homepage/js/jquery.scrollTo.js"></script>
@@ -431,13 +399,12 @@
 <script src="assets/dp_homepage/js/custom.js"></script>
 
 <script>
-
- function playSound(e) {
-    var player = document.getElementById("player");
-    //var source = document.getElementById("audioSource");
-    player.src = "assets/sounds/"+e+".wav";
-    player.play();
- }
+    var name = document.URL;
+    var strs = name.split("#");
+    if (strs.length == 2){
+        document.getElementById('Humpback_whale').classList.remove('in');
+        document.getElementById(strs[1]).classList.add('in');
+    }
 </script>
 </body>
 </html>
