@@ -1,6 +1,36 @@
-//console.log("run in map_search.js");
 function search() {
-    var toSearch = document.getElementById("whale-select").value;
+    var toSearch = $('#search-select-name').val()
+    if(toSearch === null)
+    {
+        document.getElementById('search-select-name-label').innerHTML='Please select at least one name';
+        document.getElementById('search-select-name-label').style="color:red";
+    }
+    else
+    {
+        document.getElementById('search-select-name-label').innerHTML='Names:';
+        document.getElementById('search-select-name-label').style="color:default";
+        search_advance(toSearch);
+    }
+}
+
+function clearMap() {
+    markerCluster.removeMarkers(allmarkers);
+    for (var i = 0; i < allmarkers.length; ++i) {
+        allmarkers[i].setMap(null);
+        allmarkers[i] = null;
+    }
+    allmarkers.length = 0;
+}
+
+
+function recenter() {
+    var center = new google.maps.LatLng(-25.2744, 133.7751);
+    map.panTo(center);
+    map.setZoom(4);
+}
+
+function search_advance(toSearch)
+{
     clearMap();
     var imgLoc = './assets/images/smallDesc/'
     var infoWindow = new google.maps.InfoWindow;
@@ -45,27 +75,13 @@ function search() {
                     }
                 }
             });
-            if(name == toSearch){
-                allmarkers.push(marker);
-            }
+            toSearch.forEach(function(element) {
+                if(name === element){
+                    allmarkers.push(marker);
+                }
+            }); 
         });
         markerCluster = new MarkerClusterer(map, allmarkers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     });
     setTimeout(function(){ recenter(); }, 200);
-}
-
-function clearMap() {
-    markerCluster.removeMarkers(allmarkers);
-    for (var i = 0; i < allmarkers.length; ++i) {
-        allmarkers[i].setMap(null);
-        allmarkers[i] = null;
-    }
-    allmarkers.length = 0;
-}
-
-
-function recenter() {
-    var center = new google.maps.LatLng(-25.2744, 133.7751);
-    map.panTo(center);
-    map.setZoom(4);
 }

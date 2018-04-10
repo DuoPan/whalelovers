@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
   <script src="./assets/jquery.min.js"></script>
   <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="./assets/selectize/css/selectize.css">
+  <link rel="stylesheet" href="./assets/selectize/css/selectize.default.css">
+  <script src="./assets/selectize/js/standalone/selectize.js"></script>
   <!-- Bootstrap  End -->
 
   <!-- Fonts -->
@@ -113,9 +117,12 @@
           <label class="btn btn-primary">
             <input type="radio" name="options" id="option3" autocomplete="off"> Radio
           </label>
-        </div>
-        <select id="whale-select">
-          <option value="Australian humpback dolphin" selected>Australian humpback dolphin</option>
+      </div>
+        
+      <div>
+        <label id="search-select-name-label" for="search-select-name">Names:</label>
+        <select id="search-select-name" placeholder="Select one or more..." multiple>
+          <option value="Australian humpback dolphin">Australian humpback dolphin</option>
           <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
           <option value="Blue whale">Blue whale</option>
           <option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
@@ -126,7 +133,10 @@
           <option value="Spinner dolphin">Spinner dolphin</option>
           <option value="Southern right whale">Southern right whale</option>
         </select>
-
+      </div>
+      <script>
+        $('#search-select-name').selectize();
+      </script>
     </div>
     <!-- Control Area End -->
 
