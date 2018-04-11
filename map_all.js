@@ -92,6 +92,12 @@ function initMap() {
   //     return;
   //   }
   // });
+  // Create the DIV to hold the control and call the CenterControl()
+  // constructor passing in this DIV.
+  var centerControlDiv = document.createElement('div');
+  var centerControl = new CenterControl(centerControlDiv, map);
+  centerControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(centerControlDiv);
 }
 
 function downloadUrl(url, callback) {
@@ -133,4 +139,32 @@ function showCurrentLocation(map) {
     // Browser doesn't support Geolocation
     //handleLocationError(false, infoWindow, map.getCenter());
   }
+}
+
+function CenterControl(controlDiv, map) {
+
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid #fff';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlUI.style.marginLeft = '5px';
+  controlDiv.appendChild(controlUI);
+
+  // Set CSS for the control interior.
+  var controlText = document.createElement('i');
+  controlText.classList.add("fa");
+  controlText.classList.add("fa-home");
+  controlText.style.fontSize = '24px';
+  controlUI.appendChild(controlText);
+
+  // Setup the click event listeners
+  controlUI.addEventListener('click', function() {
+    recenter();
+  });
+
 }

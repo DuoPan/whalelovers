@@ -37,10 +37,6 @@
       margin-bottom: 25px;
     }
 
-    div.container2 {
-      text-align: center;
-      padding: 10px 20px;
-    }
 
     #grad1 {
       padding-top: 5xp;
@@ -50,27 +46,9 @@
       background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
       /* Standard syntax (must be last) */
     }
-    #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 300px;
-    }
+
     #pac-input:focus {
       border-color: #4d90fe;
-    }
-    .controls {
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
   </style>
   <script type="text/javascript" src="./src/markerclusterer.js"></script>
@@ -135,65 +113,87 @@
     <!-- des -->
     <div class="jumbotron jumbotron-fluid">
     </div>
+    <br/>
     <!-- des end-->
     <!-- Control Area -->
-    <div>
-      <button class="btn btn-primary " aria-pressed="true" onclick="search()">Search</button>
-      <button class="btn btn-primary " aria-pressed="true" onclick="recenter()">Recenter</button>
-      <button class="btn btn-primary " aria-pressed="true" onclick="near()">Go</button>
-         
-      <div>
-        <label id="search-select-name-label" for="search-select-name">Names:</label>
-        <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
-          <option value="Australian humpback dolphin">Australian humpback dolphin</option>
-          <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
-          <option value="Blue whale">Blue whale</option>
-          <option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
-          <option value="Common dolphin">Common dolphin</option>
-          <option value="Dwarf minke whale">Dwarf minke whale</option>
-          <option value="Humpback whale">Humpback whale</option>
-          <option value="Killer whale">Killer whale</option>
-          <option value="Spinner dolphin">Spinner dolphin</option>
-          <option value="Southern right whale">Southern right whale</option>
-        </select>
+    <div class="panel panel-default">
+      <div class="panel-heading"  id="advanced-search-head">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#advanced-search" aria-expanded="true" aria-controls="advanced-search">
+              advanced search<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
+          </a>
+        </h4>
       </div>
-      <script>
-        $('#search-select-name').selectize({
-          plugins: ['remove_button'],
-        });
-      </script>
-
-      <div>
-        <div id="date-alert" class="alert alert-danger hidden " >
-            Start date should be smaller than end date
+      <div id="advanced-search" class="panel-collapse collapse" aria-labelledby="advanced-search-head">
+      <div class="row" style="display:flex;align-items:stretch;padding: 1%;">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <label id="search-select-name-label" for="search-select-name">Names</label>
+          <a id="popoverData" class="btn" href="#" data-content="xxxxxx say sth" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
+            <option value="Australian humpback dolphin">Australian humpback dolphin</option>
+            <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+            <option value="Blue whale">Blue whale</option>
+            <option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+            <option value="Common dolphin">Common dolphin</option>
+            <option value="Dwarf minke whale">Dwarf minke whale</option>
+            <option value="Humpback whale">Humpback whale</option>
+            <option value="Killer whale">Killer whale</option>
+            <option value="Spinner dolphin">Spinner dolphin</option>
+            <option value="Southern right whale">Southern right whale</option>
+          </select>
+          <script>
+            $('#search-select-name').selectize({
+              plugins: ['remove_button'],
+            });
+            $('#popoverData').popover();
+          </script>
         </div>
-        <label for="date-start-input">Start Date</label>
-        <div class="input-group date form_date col-md-4" data-date-format="dd/mm/yyyy" data-link-field="date-start-input" data-link-format="yyyy-mm-dd" >
-            <input class="form-control" size="16" type="text" value="31/12/1999" placeholder="31/12/1999" readonly>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <button class="btn btn-primary" style="position: absolute; bottom: 5px;" aria-pressed="true" onclick="search()">Search</button>
         </div>
-        <input type="hidden" id="date-start-input" value="1999-12-31" /><br/>
-        <label for="date-end-input">End Date</label>
-        <div class="input-group date form_date col-md-4" data-date-format="dd/mm/yyyy" data-link-field="date-end-input" data-link-format="yyyy-mm-dd" >
-            <input class="form-control" size="16" type="text" value="" placeholder="Today" readonly>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-        </div>
-        <input type="hidden" id="date-end-input" value="" /><br/>
       </div>
-      <script type="text/javascript">
-        $('.form_date').datetimepicker({
-          weekStart: 1,
-          todayBtn:  1,
-          autoclose: 1,
-          todayHighlight: 1,
-          startView: 2,
-          minView: 2,
-          forceParse: 0
-        });
-      </script>
-      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <div class="row" style="padding: 1%;">
+        <div class="col-md-6">
+          <label for="date-start-input">Start Date</label>
+          <span id="date-alert" class="badge progress-bar-danger hidden">Start date should be smaller than end date</span>
+          <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-start-input" data-link-format="yyyy-mm-dd" >
+              <input class="form-control" size="16" type="text" value="31/12/1999" placeholder="31/12/1999" readonly>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          </div>
+          <input type="hidden" id="date-start-input" value="1999-12-31" /><br/>
+        </div>
+        <div class="col-md-6">
+          <label for="date-end-input">End Date</label>
+          <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-end-input" data-link-format="yyyy-mm-dd" >
+              <input class="form-control" size="16" type="text" value="" placeholder="Today" readonly>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          </div>
+          <input type="hidden" id="date-end-input" value="" /><br/>
+        </div>
+        <script type="text/javascript">
+          $('.form_date').datetimepicker({
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+          });
+        </script>
+      </div>
+      <hr style="margin-top:0px;"/>
+      <div class="row" style="padding: 1%;">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
+        </div>
+        <div>
+          <button class="btn btn-primary " aria-pressed="true" onclick="near()">Go</button>
+        </div>
+      </div>
+      </div>
     </div>
     <!-- Control Area End -->
 
