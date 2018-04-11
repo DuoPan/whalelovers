@@ -50,6 +50,28 @@
       background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
       /* Standard syntax (must be last) */
     }
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+    }
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+    .controls {
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
   </style>
   <script type="text/javascript" src="./src/markerclusterer.js"></script>
   <script type="text/javascript" src="./src/data.json"></script>
@@ -112,9 +134,10 @@
     <!-- link nav bar  end-->
     <!-- Control Area -->
     <div>
-      <button class="btn btn-primary  active" aria-pressed="true" onclick="search()">Search</button>
-      <button class="btn btn-primary " aria-pressed="false" onclick="recenter()">Recenter</button>
-        
+      <button class="btn btn-primary " aria-pressed="true" onclick="search()">Search</button>
+      <button class="btn btn-primary " aria-pressed="true" onclick="recenter()">Recenter</button>
+      <button class="btn btn-primary " aria-pressed="true" onclick="near()">Go</button>
+         
       <div>
         <label id="search-select-name-label" for="search-select-name">Names:</label>
         <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
@@ -166,6 +189,7 @@
           forceParse: 0
         });
       </script>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     </div>
     <!-- Control Area End -->
 
@@ -178,7 +202,7 @@
         var markerCluster;
       </script>
       <script src="./map_all.js"></script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=places&callback=initMap"></script>
 
       <div class="col-md-4">
         <!-- Container used for displaying small description -->

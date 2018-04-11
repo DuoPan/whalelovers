@@ -160,3 +160,75 @@ function trasformYear(year)
     } 
     return Date.parse(theDate[2] + '-' + theDate[1] + '-' + theDate[0]);
 }
+
+function near()
+{
+    //console.log(document.getElementById('pac-input').value);
+    var lc = document.getElementById('pac-input').value;
+    if(lc == "")
+        return;
+    fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+lc+"&key=AIzaSyAnBwZbNOuAY_LK2r-QFWA6u0y5B5EVpDY")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(myJson) {
+        //console.log(myJson);
+        //console.log(myJson['results'][0]['geometry']['bounds']);
+        //console.log(myJson['results'][0]['geometry']['location']);
+        var locationSearch= myJson['results'][0]['geometry']['location'];
+        clearMap();
+        var imgLoc = './assets/images/smallDesc/'
+        var infoWindow = new google.maps.InfoWindow;
+        downloadUrl('./Db_Connect.php', function (data) {
+            var xml = data.responseXML;
+            var markers = xml.documentElement.getElementsByTagName('marker');
+            Array.prototype.forEach.call(markers, function (markerElem) {
+                var name = markerElem.getAttribute('name');
+                var year = markerElem.getAttribute('year');
+                var point = new google.maps.LatLng(
+                    parseFloat(markerElem.getAttribute('lat')),
+                    parseFloat(markerElem.getAttribute('lng')));
+    
+                var infowincontent = document.createElement('div');
+                var heading = document.createElement('strong');
+                var yearFound = document.createElement('text');
+                yearFound.textContent = year;
+                heading.textContent = name;
+                infowincontent.appendChild(heading);
+                infowincontent.appendChild(document.createElement('br'));
+                infowincontent.appendChild(yearFound);
+                
+                //console.log(locationSearch.lat);
+                //console.log(parseFloat(markerElem.getAttribute('lat')));
+                if(Math.abs(parseFloat(locationSearch.lat)-parseFloat(markerElem.getAttribute('lat'))) <= 3
+                  && Math.abs(parseFloat(locationSearch.lng)-parseFloat(markerElem.getAttribute('lng')) <= 5)){}
+                else{
+                    return;
+                }
+
+                var marker = new google.maps.Marker({ position: point, icon: './assets/images/whale.png' });
+                google.maps.event.addListener(marker, 'click', function (evt) {
+                    //Sample Click Event
+                    infoWindow.setContent(infowincontent);
+                    infoWindow.open(map, marker);
+                    var defaultDivTag = document.getElementById('defaultFrame');
+                    defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
+                    var divTag = document.getElementById('markerSelectFrame');
+                    divTag.style.display = 'block'; //Making Frame Visible when marker is selected
+                    var imgSrc = document.getElementById('img_desc');
+                    var imgdesc = document.getElementById('pdesc');
+                    imgSrc.src = imgLoc + name.trim() + '.png';
+                    document.getElementById('knowmore').value = name.trim();
+                    for (var i = 0; i < hb1.length; i = i + 1) {
+                        if (hb1[i][0] == name.trim()) {
+                            imgdesc.innerHTML = hb1[i][1];
+                        }
+                    }
+                });
+                allmarkers.push(marker);
+            });
+            markerCluster = new MarkerClusterer(map, allmarkers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+        });
+        setTimeout(function(){ recenter(); }, 200);
+    });
+}

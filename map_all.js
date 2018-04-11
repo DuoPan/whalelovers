@@ -80,8 +80,20 @@ function initMap() {
         });
         markerCluster = new MarkerClusterer(map,allmarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.setComponentRestrictions(
+    {'country': ['au']});
+  // searchBox.addListener('places_changed', function() {
+  //   var places = searchBox.getPlaces();
+  //   if (places.length == 0) {
+  //     return;
+  //   }
+  // });
 }
-    
+
 function downloadUrl(url, callback) {
     var request = window.ActiveXObject ?
       new ActiveXObject('Microsoft.XMLHTTP') :
