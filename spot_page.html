@@ -7,10 +7,12 @@
   <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
   <script src="./assets/jquery.min.js"></script>
   <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  <link href="./assets/datepicker/bootstrap-datetimepicker.css" rel="stylesheet">
   
   <link rel="stylesheet" href="./assets/selectize/css/selectize.css">
   <link rel="stylesheet" href="./assets/selectize/css/selectize.default.css">
   <script src="./assets/selectize/js/standalone/selectize.js"></script>
+  <script type="text/javascript" src="./assets/datepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
   <!-- Bootstrap  End -->
 
   <!-- Fonts -->
@@ -90,7 +92,7 @@
             <a href="#" style="color:white;">Spot</a>
           </li>
           <li>
-            <a href="type_page.html" style="color:white;">Class</a>
+            <a href="type_page.html" style="color:white;">Classification</a>
           </li>
         </ul>
       </div>
@@ -107,21 +109,10 @@
     <div>
       <button class="btn btn-primary  active" aria-pressed="true" onclick="search()">Search</button>
       <button class="btn btn-primary " aria-pressed="false" onclick="recenter()">Recenter</button>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-          </label>
-      </div>
         
       <div>
         <label id="search-select-name-label" for="search-select-name">Names:</label>
-        <select id="search-select-name" placeholder="Select one or more..." multiple>
+        <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
           <option value="Australian humpback dolphin">Australian humpback dolphin</option>
           <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
           <option value="Blue whale">Blue whale</option>
@@ -135,7 +126,40 @@
         </select>
       </div>
       <script>
-        $('#search-select-name').selectize();
+        $('#search-select-name').selectize({
+          plugins: ['remove_button'],
+        });
+      </script>
+
+      <div>
+        <div id="date-alert" class="alert alert-danger hidden " >
+            Start date should be smaller than end date
+        </div>
+        <label for="date-start-input">Start Date</label>
+        <div class="input-group date form_date col-md-4" data-date-format="dd/mm/yyyy" data-link-field="date-start-input" data-link-format="yyyy-mm-dd" >
+            <input class="form-control" size="16" type="text" value="31/12/1999" placeholder="31/12/1999" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+        <input type="hidden" id="date-start-input" value="1999-12-31" /><br/>
+        <label for="date-end-input">End Date</label>
+        <div class="input-group date form_date col-md-4" data-date-format="dd/mm/yyyy" data-link-field="date-end-input" data-link-format="yyyy-mm-dd" >
+            <input class="form-control" size="16" type="text" value="" placeholder="Today" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+        <input type="hidden" id="date-end-input" value="" /><br/>
+      </div>
+      <script type="text/javascript">
+        $('.form_date').datetimepicker({
+          weekStart: 1,
+          todayBtn:  1,
+          autoclose: 1,
+          todayHighlight: 1,
+          startView: 2,
+          minView: 2,
+          forceParse: 0
+        });
       </script>
     </div>
     <!-- Control Area End -->
