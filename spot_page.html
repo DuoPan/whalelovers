@@ -36,8 +36,6 @@
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       margin-bottom: 25px;
     }
-
-
     #grad1 {
       padding-top: 5xp;
       height: 1px;
@@ -46,9 +44,14 @@
       background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
       /* Standard syntax (must be last) */
     }
-
     #pac-input:focus {
       border-color: #4d90fe;
+    }
+    .row-f1{
+      margin-top : -10px
+    }
+    .row-f2{
+      margin-top : -20px
     }
   </style>
   <script type="text/javascript" src="./src/markerclusterer.js"></script>
@@ -125,7 +128,7 @@
         </h4>
       </div>
       <div id="advanced-search" class="panel-collapse collapse" aria-labelledby="advanced-search-head">
-      <div class="row" style="display:flex;align-items:stretch;padding: 1%;">
+      <div class="row row-f1" style="display:flex;align-items:stretch;padding: 1%;">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <label id="search-select-name-label" for="search-select-name">Names</label>
           <a id="popoverData" class="btn" href="#" data-content="xxxxxx say sth" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
@@ -152,7 +155,7 @@
           <button class="btn btn-primary" style="position: absolute; bottom: 5px;" aria-pressed="true" onclick="search()">Search</button>
         </div>
       </div>
-      <div class="row" style="padding: 1%;">
+      <div class="row row-f2" style="padding: 1%;">
         <div class="col-md-6">
           <label for="date-start-input">Start Date</label>
           <span id="date-alert" class="badge progress-bar-danger hidden">Start date should be smaller than end date</span>
@@ -184,8 +187,8 @@
           });
         </script>
       </div>
-      <hr style="margin-top:0px;"/>
-      <div class="row" style="padding: 1%;">
+      <hr style="margin-top:-8px;"/>
+      <div class="row row-f2" style="padding: 1%;">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
         </div>
