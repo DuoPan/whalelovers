@@ -172,7 +172,7 @@ function near()
         return response.json();
     })
     .then(function(myJson) {
-        //console.log(myJson);
+        console.log(myJson);
         //console.log(myJson['results'][0]['geometry']['bounds']);
         //console.log(myJson['results'][0]['geometry']['location']);
         var locationSearch= myJson['results'][0]['geometry']['location'];
@@ -200,8 +200,8 @@ function near()
                 
                 //console.log(locationSearch.lat);
                 //console.log(parseFloat(markerElem.getAttribute('lat')));
-                if(Math.abs(parseFloat(locationSearch.lat)-parseFloat(markerElem.getAttribute('lat'))) <= 3
-                  && Math.abs(parseFloat(locationSearch.lng)-parseFloat(markerElem.getAttribute('lng')) <= 5)){}
+                if(Math.abs(parseFloat(locationSearch.lat)-parseFloat(markerElem.getAttribute('lat'))) <= 1
+                  && Math.abs(parseFloat(locationSearch.lng)-parseFloat(markerElem.getAttribute('lng'))) <= 1){}
                 else{
                     return;
                 }
