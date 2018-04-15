@@ -20,7 +20,7 @@
 <style>
 
 </style>
-<title>Posts</title>
+<title>Post</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 

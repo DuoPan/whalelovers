@@ -172,7 +172,7 @@ function near()
         return response.json();
     })
     .then(function(myJson) {
-        console.log(myJson);
+        //console.log(myJson);
         //console.log(myJson['results'][0]['geometry']['bounds']);
         //console.log(myJson['results'][0]['geometry']['location']);
         var locationSearch= myJson['results'][0]['geometry']['location'];
