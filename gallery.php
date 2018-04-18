@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
 <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
 <script src="./assets/jquery.min.js"></script>
@@ -80,6 +81,12 @@
 					<option value="desc">Oldest</option>
 				</select>
 			</div>
+			<form method="POST" action="save.php" enctype="multipart/form-data">
+				<button class="btn btn-light" type="submit">Upload</button>
+				<div>
+				<input type="file" data-clear-btn="false" name="image" accept="image/*" capture>
+				</div>
+			</form>
 		</div>
 
         
@@ -111,16 +118,8 @@
 
    
     </div><!-- container -->
-   
 
-
-
-
-
-
-
-    
-	<!-- Footer -->
+    <!-- Footer -->
 
 	<footer>
 		<div class="container">
@@ -138,6 +137,7 @@
 <script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
 <script type="text/javascript">
 	baguetteBox.run('.tz-gallery');
+
 </script>
 </body>
 

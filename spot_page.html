@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
   <script src="./assets/jquery.min.js"></script>
@@ -120,19 +120,20 @@
     <br/>
     <!-- des end-->
     <!-- Control Area -->
-    <!-- <div class="panel panel-default"> 
+    <div class="panel panel-default"> 
       <div class="panel-heading"  id="advanced-search-head">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="#advanced-search" aria-expanded="true" aria-controls="advanced-search">
-              advanced search<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
+              Search<i class="fa fa-2x fa-angle-down" style="float:right;margin-top:-5px;"></i>
           </a>
         </h4>
       </div>
-      <div id="advanced-search" class="panel-collapse collapse" aria-labelledby="advanced-search-head"> -->
-      <div class="row row-f1" style="display:flex;align-items:stretch;padding: 1%;">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+      <div id="advanced-search" class="panel-collapse collapse" aria-labelledby="advanced-search-head">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
           <label id="search-select-name-label" for="search-select-name">Names</label>
-          <a id="popoverData" class="btn" href="#" data-content="xxxxxx say sth" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <a id="popoverData" class="btn" href="#" data-content="Search by name" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="search()">Search</button>
           <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
             <option value="Australian humpback dolphin">Australian humpback dolphin</option>
             <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
@@ -149,32 +150,33 @@
             $('#search-select-name').selectize({
               plugins: ['remove_button'],
             });
-            $('#popoverData').popover();
           </script>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <button class="btn btn-primary" style="position: absolute; bottom: 5px;" aria-pressed="true" onclick="search()">Search</button>
-        </div>
+        <!-- <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+          <button class="btn btn-primary"  aria-pressed="true" onclick="search()">Search</button>
+        </div> -->
       </div>
-      <div class="row row-f2" style="padding: 1%;">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
         <div class="col-md-6">
           <label for="date-start-input">Start Date</label>
+          <a id="popoverData2" class="btn" href="#" data-content="show results from this date" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
           <span id="date-alert" class="badge progress-bar-danger hidden">Start date should be smaller than end date</span>
           <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-start-input" data-link-format="yyyy-mm-dd" >
               <input class="form-control" size="16" type="text" value="31/12/1999" placeholder="31/12/1999" readonly>
               <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>
-          <input type="hidden" id="date-start-input" value="1999-12-31" /><br/>
+          <input type="hidden" id="date-start-input" value="1999-12-31" />
         </div>
         <div class="col-md-6">
           <label for="date-end-input">End Date</label>
+          <a id="popoverData3" class="btn" href="#" data-content="show results end by this date" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
           <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-end-input" data-link-format="yyyy-mm-dd" >
               <input class="form-control" size="16" type="text" value="" placeholder="Today" readonly>
               <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>
-          <input type="hidden" id="date-end-input" value="" /><br/>
+          <input type="hidden" id="date-end-input" value="" />
         </div>
         <script type="text/javascript">
           $('.form_date').datetimepicker({
@@ -188,20 +190,19 @@
           });
         </script>
       </div>
-      <div class="row row-f2" style="padding: 1%;">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;padding-bottom: 1%;">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <label for="pac-input">Location</label>
+          <a id="popoverData4" class="btn" href="#" data-content="show results within this area" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>  
           <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
         </div>
-        <div>
-          <button class="btn btn-primary " aria-pressed="true" onclick="near2()">Go</button>
-        </div>
       </div>
-      <!-- </div> -->
-    <!-- </div> -->
+      </div>
+    </div>
     <!-- Control Area End -->
 
     <!-- Google Map  -->
-    <div class="row">
+    <div class="row-fluid">
       <div id="map" class="col-md-8"></div>
       <script>
         var map;
@@ -211,7 +212,7 @@
       <script src="./map_all.js"></script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=places&callback=initMap"></script>
 
-      <div class="col-md-4">
+      <div class="col-md-4" >
         <!-- Container used for displaying small description -->
 
         <!-- Default Container-->
@@ -247,11 +248,10 @@
           <div style="text-align:center; width:100%; position: relative; bottom:0; padding: 10px 10px 10px 10px;">
             <button id="knowmore" class="btn btn-primary" value="" onclick="gotoDes()">Know more</button>
           </div>
-          <!-- Container Polaroid ends here -->
-        </div>
-      </div>
-    </div>
-    <!-- Google Map End -->
+        </div><!-- Container Polaroid ends here -->
+      </div><!--  row col-4 End -->
+    </div><!-- Google Map row End -->
+  
 
 
 
@@ -285,7 +285,10 @@
       name = name.replace(/ /g, "_");
       location.href = "./type_page.html#" + name;
     }
-    
+    $('#popoverData').popover();
+    $('#popoverData2').popover();
+    $('#popoverData3').popover();
+    $('#popoverData4').popover();
   </script>
 </body>
 
