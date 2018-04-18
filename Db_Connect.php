@@ -19,7 +19,7 @@ if (!$db_selected) {
 
 
 // Select all the rows in the markers table
-$query = "SELECT * FROM spot_ultimate";
+$query = "SELECT * FROM spot_ultimate_geo";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
@@ -39,6 +39,8 @@ while ($row = @mysqli_fetch_assoc($result)){
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lon'] . '" ';
   echo 'year="' . $row['year'] . '" ';
+  echo 'city="' . $row['city'] . '" ';
+  echo 'state="' . $row['state'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }
