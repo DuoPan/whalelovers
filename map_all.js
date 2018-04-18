@@ -82,18 +82,11 @@ function initMap() {
   });
 
   // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.setComponentRestrictions(
-    {'country': ['au']});
-  // searchBox.addListener('places_changed', function() {
-  //   var places = searchBox.getPlaces();
-  //   if (places.length == 0) {
-  //     return;
-  //   }
-  // });
-  // Create the DIV to hold the control and call the CenterControl()
-  // constructor passing in this DIV.
+  // var input = document.getElementById('pac-input');
+  // var autocomplete = new google.maps.places.Autocomplete(input);
+  // autocomplete.setComponentRestrictions(
+  //   {'country': ['au']});
+ 
   var centerControlDiv = document.createElement('div');
   var centerControl = new CenterControl(centerControlDiv, map);
   centerControlDiv.index = 1;
