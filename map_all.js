@@ -155,9 +155,14 @@ function CenterControl(controlDiv, map) {
   controlText.style.fontSize = '24px';
   controlUI.appendChild(controlText);
 
-  // Setup the click event listeners
+
+ // Setup the click event listeners
   controlUI.addEventListener('click', function() {
     recenter();
   });
+  // controlUI.addEventListener('mouseover', function() {
+ 
+  //   console.log('buhui');
+  // });
 
 }

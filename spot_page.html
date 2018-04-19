@@ -53,6 +53,10 @@
     .row-f2{
       margin-top : -20px
     }
+    .chartStyle {
+      max-width: 800px;
+      max-height: 400px;
+    }
   </style>
   <script type="text/javascript" src="./src/markerclusterer.js"></script>
   <script type="text/javascript" src="./src/data.json"></script>
@@ -132,9 +136,9 @@
       <div class="row" style="padding-left: 1%;padding-right: 1%;">
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
           <label id="search-select-name-label" for="search-select-name">Names</label>
-          <a id="popoverData" class="btn" href="#" data-content="Search by name" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <a id="popoverData" class="btn" href="#" data-content="Choose one/or more specifes to find out their occurrence location from the history data" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
           <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="search()">Search</button>
-          <select id="search-select-name" placeholder="Select one or more, default is all" multiple>
+          <select id="search-select-name" placeholder="Select one or more option, the default includes all the options" multiple>
             <option value="Australian humpback dolphin">Australian humpback dolphin</option>
             <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
             <option value="Blue whale">Blue whale</option>
@@ -159,7 +163,7 @@
       <div class="row" style="padding-left: 1%;padding-right: 1%;">
         <div class="col-md-6">
           <label for="date-start-input">Start Date</label>
-          <a id="popoverData2" class="btn" href="#" data-content="show results from this date" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <a id="popoverData2" class="btn" href="#" data-content="Specify the start date of the historical occurrence data" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
           <span id="date-alert" class="badge progress-bar-danger hidden">Start date should be smaller than end date</span>
           <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-start-input" data-link-format="yyyy-mm-dd" >
               <input class="form-control" size="16" type="text" value="31/12/1999" placeholder="31/12/1999" readonly>
@@ -170,7 +174,7 @@
         </div>
         <div class="col-md-6">
           <label for="date-end-input">End Date</label>
-          <a id="popoverData3" class="btn" href="#" data-content="show results end by this date" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <a id="popoverData3" class="btn" href="#" data-content="Specify the end date of the historical occurrence data" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
           <div class="input-group date form_date" data-date-format="dd/mm/yyyy" data-link-field="date-end-input" data-link-format="yyyy-mm-dd" >
               <input class="form-control" size="16" type="text" value="" placeholder="Today" readonly>
               <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -190,11 +194,11 @@
           });
         </script>
       </div>
-      <div class="row" style="padding-left: 1%;padding-right: 1%;padding-bottom: 1%;">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
           <label for="search-select-loc">Location</label>
-          <a id="popoverData4" class="btn" href="#" data-content="show results within this area" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>  
-          <select id="search-select-loc" placeholder="Select one or more, default is all" multiple>
+          <a id="popoverData4"  href="#" data-content="Choose States to see which species can be found in that place" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>  
+          <select id="search-select-loc" placeholder="Select one or more option, the default includes all the options" multiple>
               <option value="Jervis Bay Territory">Jervis Bay Territory</option>
               <option value="New South Wales">New South Wales</option>
               <option value="Northern Territory">Northern Territory</option>
@@ -211,6 +215,68 @@
             </script>
         </div>
       </div>
+      </div>
+    </div>
+    <!-- prediction part-->
+    <div class="panel panel-default"> 
+      <div class="panel-heading"  id="advanced-prediction-head">
+        <h4 class="panel-title">
+          <a style="display: flex;justify-content: space-between;align-items: center" data-toggle="collapse" href="#advanced-prediction" aria-expanded="true" aria-controls="advanced-prediction">
+            Prediction<i class="fa fa-2x fa-angle-down"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="advanced-prediction" class="panel-collapse collapse" aria-labelledby="advanced-prediction-head">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
+        <div class="col-lg-6 col-md-6">
+          <label id="prediction-select-name-label" for="prediction-select-name">Names</label>
+          <a id="popoverData5" href="#" data-content="Show the frequency of whales" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="predict1()">Predict</button>
+          <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="clearPredict1()">Clear</button>
+          <select id="prediction-select-name" placeholder="Please choose one or two kinds of whales" multiple>
+            <option value="Australian humpback dolphin">Australian humpback dolphin</option>
+            <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+            <option value="Blue whale">Blue whale</option>
+            <option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+            <option value="Common dolphin">Common dolphin</option>
+            <option value="Dwarf minke whale">Dwarf minke whale</option>
+            <option value="Humpback whale">Humpback whale</option>
+            <option value="Killer whale">Killer whale</option>
+            <option value="Spinner dolphin">Spinner dolphin</option>
+            <option value="Southern right whale">Southern right whale</option>
+          </select>
+          <script>
+            $('#prediction-select-name').selectize({
+              plugins: ['remove_button'],
+              maxItems: 2,
+            });
+          </script>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <label for="prediction-select-loc">Location</label>
+          <a id="popoverData6"  href="#" data-content="show results within this area" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>  
+          <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="predict()">Predict</button>
+          <select id="prediction-select-loc" placeholder="Select the states which you want to predict" multiple>
+              <option value="Jervis Bay Territory">Jervis Bay Territory</option>
+              <option value="New South Wales">New South Wales</option>
+              <option value="Northern Territory">Northern Territory</option>
+              <option value="Queensland">Queensland</option>
+              <option value="South Australia">South Australia</option>
+              <option value="Tasmania">Tasmania</option>
+              <option value="Victoria">Victoria</option>
+              <option value="Western Australia">Western Australia</option>
+            </select>
+            <script>
+              $('#prediction-select-loc').selectize({
+                plugins: ['remove_button'],
+              });
+            </script>
+        </div>
+      </div>
+        <!-- chart -->
+        <div style="display:flex; justify-content: center; align-items: center;">
+            <canvas id="myChart" class="hidden chartStyle" ></canvas>
+        </div><!-- end chart -->
       </div>
     </div>
     <!-- Control Area End -->
@@ -293,6 +359,8 @@
   <script src="assets/dp_homepage/js/wow.min.js"></script>
   <script src="assets/dp_homepage/js/custom.js"></script>
   <script src="map_search.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+ 
   <script>
     function gotoDes() {
       var name = document.getElementById('knowmore').value;
@@ -303,6 +371,8 @@
     $('#popoverData2').popover();
     $('#popoverData3').popover();
     $('#popoverData4').popover();
+    $('#popoverData5').popover();
+    $('#popoverData6').popover();
   </script>
 </body>
 

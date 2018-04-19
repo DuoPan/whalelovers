@@ -19,7 +19,7 @@ if (!$db_selected) {
 
 
 // Select all the rows in the markers table
-$query = "SELECT * FROM spot_ultimate_geo";
+$query = "SELECT * FROM spot_iteration2";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
