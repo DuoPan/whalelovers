@@ -19,7 +19,7 @@
 
 
 	// Select all the rows in the markers table
-	$query = "SELECT name,count(name) as total,lat,lon,month FROM spot_iteration2 group by name,month ORDER BY month,name ASC";
+	$query = "SELECT name,count(name) as total,months FROM spot_iteration2 group by name,months ORDER BY months,name ASC";
 	$result = $db_selected->query($query);
 	if (!$result) {
 	  die('Invalid query: ' . mysqli_error());
