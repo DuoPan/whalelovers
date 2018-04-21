@@ -39,7 +39,7 @@ function search() {
     if(locSearch === null)
     {
         locSearch=["alllocs"]; 
-    }console.log(locSearch);
+    }//console.log(locSearch);
     search_advance(nameSearch, dateStart, dateEnd, locSearch);
 }
 
