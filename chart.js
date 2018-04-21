@@ -101,7 +101,7 @@ function handleData(nameSearch,found,chartName,neededData){
 		"margin-right":70,
 		"dataProvider": found,
 		"titles": [{
-				"text": "Monthly Frequency Distribution",
+				"text": "Occurence Frequency by Month",
 			}],
 		"valueAxes": [{
 			"axisAlpha": 0,
