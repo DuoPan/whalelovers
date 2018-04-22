@@ -53,6 +53,25 @@
     .row-f2{
       margin-top : -20px
     }
+    .show {
+    visibility: visible !important; 
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
   </style>
   <script type="text/javascript" src="./src/markerclusterer.js"></script>
   <script type="text/javascript" src="./src/data.json"></script>
@@ -126,7 +145,7 @@
       <div class="panel-heading"  id="advanced-search-head">
         <h4 class="panel-title">
           <a style="display: flex;justify-content: space-between;align-items: center" data-toggle="collapse" href="#advanced-search" aria-expanded="true" aria-controls="advanced-search">
-              Predict<i class="fa fa-2x fa-angle-down"></i>
+              Prediction<i class="fa fa-2x fa-angle-down"></i>
           </a>
         </h4>
       </div>
@@ -160,18 +179,18 @@
             <label id="search-select-month-label" for="search-select-month">Month</label>
             <a id="popoverData" class="btn" href="#" data-content="Choose one/or more months to find out their occurrence time from the history data" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
             <select id="search-select-month" placeholder="Select one or more option, the default includes all the options" multiple>
-              <option value="January">January</option>   ,  (September),  (October),  (November),  (December)
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August/option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
             </select>
             <script>
               $('#search-select-month').selectize({
@@ -212,9 +231,11 @@
         var map;
         var allmarkers = [];
         var markerCluster;
+        var heatmap;
+        var heatmapData = [];
       </script>
       <script src="./map_all.js"></script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
 
       <div class="col-md-4" >
         <!-- Container used for displaying small description -->
@@ -256,11 +277,9 @@
       </div><!--  row col-4 End -->
     </div><!-- Google Map row End -->
   
-
-
-
   </div>
 
+  <div id="snackbar">No occurrence records have been found in the month specified.</div>
   <!-- Footer -->
 
   <footer style="bottom:0px;">
@@ -268,7 +287,6 @@
       <div class="row">
         <div class="col-md-12 col-lg-12">
           <div class="wow shake" data-wow-delay="0.4s">
-
           </div>
           <p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
         </div>
@@ -283,7 +301,6 @@
   <script src="assets/dp_homepage/js/wow.min.js"></script>
   <script src="assets/dp_homepage/js/custom.js"></script>
   <script src="map_search.js"></script>
- 
   <script>
     function gotoDes() {
       var name = document.getElementById('knowmore').value;
@@ -296,7 +313,9 @@
     $('#popoverData4').popover();
     $('#popoverData5').popover();
     $('#popoverData6').popover();
-  </script>
+
+   
+</script>
 </body>
 
 </html>

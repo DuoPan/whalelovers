@@ -41,6 +41,7 @@ while ($row = @mysqli_fetch_assoc($result)){
   echo 'year="' . $row['year'] . '" ';
   echo 'city="' . $row['city'] . '" ';
   echo 'state="' . $row['state'] . '" ';
+  echo 'month="' . $row['months'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }
