@@ -61,20 +61,9 @@ function search_advance(nameSearch, monSearch, locSearch)
             var defaultDivTag = document.getElementById('defaultFrame');
             defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
             var divTag = document.getElementById('markerSelectFrame');
-            divTag.style.display = 'block'; //Making Frame Visible when marker is selected
-                
-            var infowincontent = document.createElement('div');
-            var heading = document.createElement('strong');
-            var yearFound = document.createElement('text');
-            yearFound.textContent = year;
-            heading.textContent = name;
-            infowincontent.appendChild(heading);
-            infowincontent.appendChild(document.createElement('br'));
-            infowincontent.appendChild(yearFound);
-            //infowincontent.appendChild(document.createElement('br'));
-            //var text = document.createElement('text');
-            //infowincontent.appendChild(text);  
-            
+            divTag.style.display = 'none'; //Making Frame Visible when marker is selected
+            document.getElementById('predictionFrame').style.display = 'block';     
+        
             if(nameSearch[0]!=="allnames")
             {
                 var isNameExist = false;
@@ -126,8 +115,91 @@ function search_advance(nameSearch, monSearch, locSearch)
         });
     });
     setTimeout(function(){ recenter(); }, 200);
+
+    showDes(nameSearch);   
+    
 }
 
+function showDes(nameSearch) {
+    var mainDiv = document.getElementById('predictionFrame');
+    while (mainDiv.firstChild) {
+        mainDiv.removeChild(mainDiv.firstChild);
+    }
+    var preNameSearchMon={"Australian humpback dolphin":"Mar, Oct, Nov",
+    "Australian snubfin dolphin":"Nov",
+    "Blue whale":"Sep",
+    "Common dolphin":"Apr",
+    "Common bottlenose dolphin":"Mar, Oct, Nov",
+    "Dwarf minke whale":"July, Sep",
+    "Humpback whale":"Oct",
+    "Killer whale":"July",
+    "Southern right whale":"July, Aug",
+    "Spinner dolphin":"Nov"};
+    var preNameSearchLoc={"Australian humpback dolphin":"North and East",
+    "Australian snubfin dolphin":"North",
+    "Blue whale":"South West",
+    "Common dolphin":"South and South East",
+    "Common bottlenose dolphin":"North and South East",
+    "Dwarf minke whale":"South East",
+    "Humpback whale":"South East and North East",
+    "Killer whale":"South and South East",
+    "Southern right whale":"South and South East",
+    "Spinner dolphin":"North and North East"};
+    var div1 = document.createElement('div');
+    div1.style.fontSize='20px';
+    div1.style.padding='20px 20px 20px 20px';
+    div1.style.verticalAlign='middle';
+    var div1_1 = document.createElement('b');
+    div1_1.innerHTML='Prediction Detail';
+    var div1_2 = document.createElement('br');
+    var div1_3 = document.createElement('div');
+    div1_3.id='grad1';
+    div1.appendChild(div1_1);
+    div1.appendChild(div1_2);
+    div1.appendChild(div1_3);
+    mainDiv.appendChild(div1);
+
+    if(nameSearch[0]==="allnames")
+    {
+        nameSearch = ["Australian humpback dolphin",
+        "Australian snubfin dolphin",
+        "Blue whale",
+        "Common dolphin",
+        "Common bottlenose dolphin",
+        "Dwarf minke whale",
+        "Humpback whale",
+        "Killer whale",
+        "Southern right whale",
+        "Spinner dolphin"];
+    }
+    
+    nameSearch.forEach(function(element) {
+        var detail = preNameSearchMon[element];
+        var locDetail = preNameSearchLoc[element];
+        var b = document.createElement('strong');
+        b.innerHTML=element;
+        b.classList.add("predictionTitle");
+        var c = document.createElement('small');
+        var d = document.createElement('small');
+        d.innerHTML=detail;
+        c.innerHTML="Most likely to be seen: ";
+        c.classList.add("predictionSub");
+        d.classList.add("predictionMon");
+        var e = document.createElement('small');
+        var f = document.createElement('small');
+        e.innerHTML=" at ";
+        f.innerHTML=locDetail;
+        f.classList.add("predictionMon");
+        var br1 = document.createElement('br');
+        var br2 = document.createElement('br');
+        mainDiv.appendChild(b);
+        mainDiv.appendChild(br1);
+        mainDiv.appendChild(c);mainDiv.appendChild(d);mainDiv.appendChild(e);mainDiv.appendChild(f);
+        mainDiv.appendChild(br2);
+    }); 
+    
+    
 
 
-            
+   // mainDiv.appendChild(ulText);
+}

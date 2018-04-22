@@ -65,6 +65,7 @@ function initMap() {
           defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
           var divTag = document.getElementById('markerSelectFrame');
           divTag.style.display = 'block'; //Making Frame Visible when marker is selected
+          document.getElementById('predictionFrame').style.display = 'none'; 
           var imgSrc = document.getElementById('img_desc');
           var imgdesc = document.getElementById('pdesc');
           imgSrc.src = imgLoc+name.trim()+'.png';
@@ -253,6 +254,7 @@ function resetMap() {
           defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
           var divTag = document.getElementById('markerSelectFrame');
           divTag.style.display = 'block'; //Making Frame Visible when marker is selected
+          document.getElementById('predictionFrame').style.display = 'none'; 
           var imgSrc = document.getElementById('img_desc');
           var imgdesc = document.getElementById('pdesc');
           imgSrc.src = imgLoc+name.trim()+'.png';
@@ -273,4 +275,10 @@ function resetMap() {
     map.panTo(center);
     map.setZoom(4);
   }, 200);
+
+  var defaultDivTag = document.getElementById('defaultFrame');
+  defaultDivTag.style.display = 'block'; //Hiding Default Frame when Marker is selected
+  var divTag = document.getElementById('markerSelectFrame');
+  divTag.style.display = 'none'; //Making Frame Visible when marker is selected
+  document.getElementById('predictionFrame').style.display = 'none'; 
 }
