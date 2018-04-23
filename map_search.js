@@ -116,11 +116,11 @@ function search_advance(nameSearch, monSearch, locSearch)
     });
     setTimeout(function(){ recenter(); }, 200);
 
-    showDes(nameSearch);   
+    showDes(nameSearch,monSearch,locSearch);   
     
 }
 
-function showDes(nameSearch) {
+function showDes(nameSearch,monSearch,locSearch) {
     var mainDiv = document.getElementById('predictionFrame');
     while (mainDiv.firstChild) {
         mainDiv.removeChild(mainDiv.firstChild);
@@ -172,7 +172,105 @@ function showDes(nameSearch) {
         "Southern right whale",
         "Spinner dolphin"];
     }
+   
+    var preMonthFliter={"1":["Common bottlenose dolphin","Southern right whale","Humpback whale","Australian humpback dolphin","Common dolphin","Australian snubfin dolphin","Killer whale","Spinner dolphin"],
+    "2":["Killer whale","Southern right whale","Common dolphin","Common bottlenose dolphin","Spinner dolphin","Australian humpback dolphin","Humpback whale","Australian snubfin dolphin","Blue whale"],
+    "3":["Killer whale","Southern right whale","Common dolphin","Common bottlenose dolphin","Australian humpback dolphin","Humpback whale","Australian snubfin dolphin","Blue whale"],
+    "4":["Australian humpback dolphin","Australian snubfin dolphin","Blue whale","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "5":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale"],
+    "6":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "7":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "8":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "9":["Australian humpback dolphin","Australian snubfin dolphin","Blue whale","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale"],
+    "10":["Australian humpback dolphin","Australian snubfin dolphin","Blue whale","Common dolphin","Common bottlenose dolphin","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "11":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "12":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale"]};
+    if(monSearch[0]!=="allmonths")
+    {
+        var allnamesbymonth = [];
+        monSearch.forEach(function(element) {
+            preMonthFliter[element].forEach(function(singlename){
+                var isexist=false;
+                allnamesbymonth.forEach(function(existname){
+                    if(existname === singlename)
+                        isexist=true;
+                });
+                if(isexist===false)
+                    allnamesbymonth.push(singlename);
+            });
+        }); 
+   
+        var all = ["Australian humpback dolphin",
+        "Australian snubfin dolphin",
+        "Blue whale",
+        "Common dolphin",
+        "Common bottlenose dolphin",
+        "Dwarf minke whale",
+        "Humpback whale",
+        "Killer whale",
+        "Southern right whale",
+        "Spinner dolphin"];
+        var outall = [];
+        all.forEach(function(aname){
+            if(nameSearch.includes(aname) && allnamesbymonth.includes(aname)){
+                outall.push(aname);
+            }  
+        });
+        nameSearch=outall;
+        // console.log(nameSearch);
+    }
+  
     
+    var preLocationFliter={"Jervis Bay Territory":["Southern right whale","Humpback whale"],
+    "New South Wales":["Killer whale","Southern right whale","Common dolphin","Common bottlenose dolphin","Humpback whale","Blue whale","Dwarf minke whale"],
+    "Northern Territory":["Killer whale","Common bottlenose dolphin","Australian humpback dolphin","Humpback whale","Australian snubfin dolphin","Spinner dolphin"],
+    "Queensland":["Australian humpback dolphin","Australian snubfin dolphin","Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale","Spinner dolphin"],
+    "South Australia":["Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale"],
+    "Tasmania":["Common dolphin","Common bottlenose dolphin","Humpback whale","Killer whale","Southern right whale"],
+    "Victoria":["Common dolphin","Common bottlenose dolphin","Dwarf minke whale","Humpback whale","Killer whale","Southern right whale"],
+    "Western Australia":["Blue whale","Common bottlenose dolphin","Humpback whale","Killer whale","Southern right whale"]};
+    
+    if(locSearch[0]!=="alllocs")
+    {
+        var allnamesbymonth = [];
+        locSearch.forEach(function(element) {
+            preLocationFliter[element].forEach(function(singlename){
+                var isexist=false;
+                allnamesbymonth.forEach(function(existname){
+                    if(existname === singlename)
+                        isexist=true;
+                });
+                if(isexist===false)
+                    allnamesbymonth.push(singlename);
+            });
+        }); 
+   
+        var all = ["Australian humpback dolphin",
+        "Australian snubfin dolphin",
+        "Blue whale",
+        "Common dolphin",
+        "Common bottlenose dolphin",
+        "Dwarf minke whale",
+        "Humpback whale",
+        "Killer whale",
+        "Southern right whale",
+        "Spinner dolphin"];
+        var outall = [];
+        all.forEach(function(aname){
+            if(nameSearch.includes(aname) && allnamesbymonth.includes(aname)){
+                outall.push(aname);
+            }  
+        });
+        nameSearch=outall;
+        //console.log(nameSearch);
+    }
+
+    if(nameSearch.length === 0){
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+    }
+
     nameSearch.forEach(function(element) {
         var detail = preNameSearchMon[element];
         var locDetail = preNameSearchLoc[element];
