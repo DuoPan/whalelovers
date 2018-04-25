@@ -55,17 +55,6 @@
     <!-- /.container -->
   </nav>
   <!-- Nav Bar End -->
-  <?php 
-	$folder = dirname('./assets/photos/*');
-	$files = array();
-	$handle = opendir($folder);
-	while(false!==($file=readdir($handle))){
-		if($file!='.' && $file!='..' && $file!='.DS_Store'){
-			$files[] = $file;
-		}
-	}
-
-  ?>
   
 	<div class="container">
 		<!-- link nav bar -->
@@ -75,34 +64,15 @@
 		<!-- des -->
 		<div class="jumbotron jumbotron-fluid">
 			<h3>All the posts are here</h3>
-			<p class="lead">Share your experences. There are <span style="color:blue"><?php echo count($files); ?></span> photos</p>		  
+			<p class="lead">Share your experences. There are <span style="color:blue"></span> photos</p>		  
 		</div>
 		<!-- des end-->
-		<button onclick="nextPage()">Next</button>
-		<div id="currPage">1</div>
+        <button id='nextButton' onclick="nextPage()">Next</button>
+        <button id='previousButton' onclick="previousPage()">Previous</button>
+		<div id="currPage"></div>
         <div class="tz-gallery">
-            <div class="row">
-                <?php 
-                    $page=1;
-                    for($i = 0; $i < 12; $i+=1) {
-                        if($i+$page*12>=count($files)){
-                            echo 'meiyou';
-                        }
-                        else {
-                            echo '<div class="col-sm-6 col-md-4">';
-                            echo '<div class="thumbnail">';
-                            echo '<a class="lightbox" href="./assets/photos/';echo $files[$i+$page*12];echo '">';
-                            echo '<img src="assets/photos/';echo $files[$i+$page*12];echo '">';
-                            echo '</a>';
-                            echo '<div class="caption">';
-                            echo '<h3>Thumbnail label</h3>';
-                            echo '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    }
-                ?>
+            <div class="row" id="putpics">
+                
             </div>
         </div>
 
@@ -115,9 +85,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
-					<div class="wow shake" data-wow-delay="0.4s">
-					
-					</div>
 					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
 				</div>
 			</div>	
@@ -125,16 +92,7 @@
 	</footer>
 <!-- Footer End -->
 <script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
-<script type="text/javascript">
-	baguetteBox.run('.tz-gallery');
-
- function nextPage() {
-	document.getElementById('tz-gallery');
-	<?php 
-		$page=0;
-	?>
- }
-</script>
+<script type="text/javascript" src="gallery.js"></script>
 </body>
 
 </html>
