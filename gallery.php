@@ -46,7 +46,8 @@
 					<li><a href="index.html#service" style="color:white">Service</a></li>
 					<li><a href="spot_page.html" style="color:white">Spot</a></li>
 					<li><a href="type_page.html" style="color:white">Classification</a></li>	
-					<li class="active"><a href="" style="color:white">Post</a></li>					
+					<li><a href="safety.html" style="color:white">Safety</a></li>	
+					<li class="active"><a href="" style="color:white">Gallery</a></li>					
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
