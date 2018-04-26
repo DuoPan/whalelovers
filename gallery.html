@@ -18,7 +18,22 @@
 <link rel="stylesheet" href="./assets/gallery/baguetteBox.min.css">
 <link rel="stylesheet" href="./assets/gallery/thumbnail-gallery.css">
 <style>
-
+#progress{
+    height:10px;
+    width:500px;
+    border: 1px solid gold;
+    position: relative;
+    border-radius: 5px;
+}
+#progress .progress-item{
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: chartreuse;
+    border-radius: 5px;
+    transition: width .3s linear;
+}
 </style>
 <title>Gallery</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
@@ -80,7 +95,10 @@
         </ul>
       </nav>
       <a class="btn" style="background-color: #0077be;color:#fff" href="post.html">I want to post!</a>
-  </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+        I want to post!
+      </button>
+    </div>
     <!-- Pagination end-->
   
     <div class="tz-gallery">
@@ -119,8 +137,59 @@
 		</div>
 	</footer>
 <!-- Footer End -->
+
+<!-- Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Your Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="file" name="pic" id="pic" accept="image/*"/>
+          <input type="button" onClick="upload()" value="Upload" />
+          <div id="progress">
+            <div class="progress-item"></div>
+          </div>
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
 <script type="text/javascript" src="gallery.js"></script>
 </body>
-
+<script>
+    function upload(){
+      var url="upload.php";
+      var pic = document.getElementById('pic').files[0];
+      var xhr = new XMLHttpRequest();
+      var form = new FormData();
+      form.append("pic", pic);
+      xhr.open("POST", url, true);
+      xhr.onload = function(){
+        if (xhr.status === 200)
+          console.log('chenggong');
+        else
+          console.log('wrong');
+      }
+      xhr.upload.onprogress = function (event) {
+        if (event.lengthComputable) {
+          var complete = (event.loaded / event.total * 100);
+          document.querySelector("#progress .progress-item").style.width = complete+"%";
+        }
+      };
+      xhr.send(form);
+    }
+</script>
 </html>
