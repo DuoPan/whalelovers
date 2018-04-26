@@ -17,7 +17,6 @@
 
 <link rel="stylesheet" href="./assets/gallery/baguetteBox.min.css">
 <link rel="stylesheet" href="./assets/gallery/thumbnail-gallery.css">
-<link rel="stylesheet" href="./assets/gallery/gallery.css">
 <style>
 
 </style>
@@ -64,23 +63,49 @@
 		<!-- des -->
 		<div class="jumbotron jumbotron-fluid">
 			<h3>All the posts are here</h3>
-			<p class="lead">Share your experences. There are <span style="color:blue"></span> photos</p>		  
+			<p class="lead">Share your experences. There are <span id="destotal" style="color:blue"></span> photos</p>		  
 		</div>
-		<!-- des end-->
-        <button id='nextButton' onclick="nextPage()">Next</button>
-        <button id='previousButton' onclick="previousPage()">Previous</button>
-		<div id="currPage"></div>
-        <div class="tz-gallery">
-            <div class="row" id="putpics">
-                
-            </div>
+    <!-- des end-->
+    <!-- Pagination -->
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item" id='previousButton'>
+          <a class="page-link" onclick="previousPage()">Previous</a>
+        </li>
+        <li class="page-item"><a><span id="currPage">1</span> / <span id="navtotal"></span></a></li>
+        <li class="page-item" id='nextButton'>
+          <a class="page-link" onclick="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Pagination end-->
+  
+    <div class="tz-gallery">
+        <div class="row" id="putpics">
+            
         </div>
+    </div>
 
-   
-    </div><!-- container -->
+    <!-- Pagination -->
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item" id='previousButton'>
+          <a class="page-link" onclick="previousPage()">Previous</a>
+        </li>
+        <li class="page-item"><a><span id="currPage2">1</span> / <span id="navtotal2"></span></a></li>
+        <li class="page-item" id='nextButton'>
+          <a class="page-link" onclick="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Pagination end-->
 
-    <!-- Footer -->
+  </div><!-- container -->
 
+  
+
+
+  <!-- Footer -->
 	<footer>
 		<div class="container">
 			<div class="row">
