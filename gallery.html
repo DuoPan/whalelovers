@@ -34,6 +34,7 @@
     border-radius: 5px;
     transition: width .3s linear;
 }
+
 </style>
 <title>Gallery</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
@@ -69,7 +70,7 @@
     <!-- /.container -->
   </nav>
   <!-- Nav Bar End -->
-  
+
 	<div class="container">
 		<!-- link nav bar -->
 		<div>
@@ -95,12 +96,12 @@
         </ul>
       </nav>
       <a class="btn" style="background-color: #0077be;color:#fff" href="post.html">I want to post!</a>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+      <button type="button" class="btn btn-primary" onclick="clearUpload()">
         I want to post!
       </button>
     </div>
     <!-- Pagination end-->
-  
+    <!-- data-toggle="modal" data-target="#uploadModal"  -->
     <div class="tz-gallery">
         <div class="row" id="putpics">
             
@@ -125,7 +126,7 @@
 
   
 
-
+ 
   <!-- Footer -->
 	<footer>
 		<div class="container">
@@ -149,12 +150,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="form">
           <input type="file" name="pic" id="pic" accept="image/*"/>
           <input type="button" onClick="upload()" value="Upload" />
           <div id="progress">
             <div class="progress-item"></div>
           </div>
+          <div>  
+            <img id="imgPreview" style="width:300px;height:200px;"/>  
+          </div>  
+          <div id="uploadResult" class="hidden">Upload Successfully!</div>
         </form> 
       </div>
       <div class="modal-footer">
@@ -170,26 +175,65 @@
 <script type="text/javascript" src="gallery.js"></script>
 </body>
 <script>
-    function upload(){
-      var url="upload.php";
-      var pic = document.getElementById('pic').files[0];
-      var xhr = new XMLHttpRequest();
-      var form = new FormData();
-      form.append("pic", pic);
-      xhr.open("POST", url, true);
-      xhr.onload = function(){
-        if (xhr.status === 200)
-          console.log('chenggong');
-        else
-          console.log('wrong');
-      }
-      xhr.upload.onprogress = function (event) {
-        if (event.lengthComputable) {
-          var complete = (event.loaded / event.total * 100);
-          document.querySelector("#progress .progress-item").style.width = complete+"%";
-        }
-      };
-      xhr.send(form);
+  function upload(){
+    var url="upload.php";
+    var pic = document.getElementById('pic').files[0];
+    if(pic===undefined){
+      return;
     }
+    var xhr = new XMLHttpRequest();
+    var form = new FormData();
+    form.append("pic", pic);
+    xhr.open("POST", url, true);
+    xhr.onload = function(){
+      if (xhr.status === 200) {
+      }
+    }
+    xhr.upload.onprogress = function (event) {
+      if (document.getElementById("pic").value === "") return;
+      if (event.lengthComputable) {
+        var complete = (event.loaded / event.total * 100);
+        document.querySelector("#progress .progress-item").style.width = complete+"%";
+      }
+    };
+    xhr.onloadend = function() {
+      var x = document.getElementById("uploadResult");
+      x.classList.remove("hidden");
+    }
+    xhr.onerror = function() {
+    }
+    xhr.send(form);
+  }
+
+  function preview(){  
+    var fileEle=document.getElementById("pic");  
+    var file=fileEle.files[0];  
+    var reader = new FileReader();  
+    reader.onload = function(e) {  
+        var img=document.getElementById("imgPreview");  
+        img.src=e.target.result  
+    };  
+    reader.readAsDataURL(file)  
+  }  
+  $("#pic").change(function(){
+    document.getElementById("uploadResult").classList.add("hidden");
+    var pic = document.getElementById('pic').files[0];
+    if(pic===undefined){
+      document.getElementById("imgPreview").src = "";
+      document.querySelector("#progress .progress-item").style.width = 0+"%";
+      return;
+    }
+    preview();
+  });
+
+  function clearUpload() {
+    $('#uploadModal').modal('show');
+    document.getElementById("pic").value = "";  
+    document.getElementById("imgPreview").src = "";
+    document.querySelector("#progress .progress-item").style.width = 0+"%";
+    document.getElementById("uploadResult").classList.add("hidden");
+    
+  }
+</script>  
 </script>
 </html>
