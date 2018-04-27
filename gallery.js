@@ -109,3 +109,67 @@ function previousPage() {
 	}
 	displayPage(parseInt(page.innerHTML));
 }
+
+
+function upload(){
+  var url="upload.php";
+  var pic = document.getElementById('pic').files[0];
+  if(pic===undefined){
+    return;
+  }
+  var xhr = new XMLHttpRequest();
+  var form = new FormData();
+  form.append("pic", pic);
+  xhr.open("POST", url, true);
+  xhr.onload = function(){
+    if (xhr.status === 200) {
+    }
+  }
+  xhr.upload.onprogress = function (event) {
+    if (document.getElementById("pic").value === "") return;
+    if (event.lengthComputable) {
+      var complete = (event.loaded / event.total * 100);
+      document.querySelector("#progress .progress-item").style.width = complete+"%";
+    }
+  };
+  xhr.onloadend = function() {
+    var x = document.getElementById("uploadResult");
+    x.classList.remove("hidden");
+  }
+  xhr.onerror = function() {
+  }
+  xhr.send(form);
+}
+
+function preview(){  
+  var fileEle=document.getElementById("pic");  
+  var file=fileEle.files[0];  
+  var reader = new FileReader();  
+  reader.onload = function(e) {  
+      var img=document.getElementById("imgPreview");  
+      img.src=e.target.result  
+  };  
+  reader.readAsDataURL(file)  
+}  
+$("#pic").change(function(){
+  document.getElementById("uploadResult").classList.add("hidden");
+  var pic = document.getElementById('pic').files[0];
+  if(pic===undefined){
+    document.getElementById("imgPreview").src = "";
+    document.querySelector("#progress .progress-item").style.width = 0+"%";
+    return;
+  }
+  preview();
+});
+
+function clearUpload() {
+  $('#uploadModal').modal('show');
+  document.getElementById("pic").value = "";  
+  document.getElementById("imgPreview").src = "";
+  document.querySelector("#progress .progress-item").style.width = 0+"%";
+  document.getElementById("uploadResult").classList.add("hidden");
+  
+  var width = $("#uploadModal").width()-40;
+  document.getElementById('imgPreview').style.maxWidth = width+"px";
+
+}
