@@ -19,7 +19,7 @@ if (!$db_selected) {
 
 
 // Select all the rows in the markers table
-$query = "SELECT * FROM spot_iteration2";
+$query = "SELECT * FROM spot_display";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());

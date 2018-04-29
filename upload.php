@@ -1,21 +1,45 @@
 <?php
-    $isUploaded = false;
-    $pic = $_FILES['pic']['tmp_name'];
-    if($pic){
-        $uploadDir = 'assets/photos'; 
-        if(!file_exists($uploadDir)){        
-            mkdir($uploadDir, 0777);    
-				}
-				$targetFileName = time() . $_FILES['pic']['name'];
-        $targetFile = $uploadDir . '/' . $targetFileName;
-        //$targetFile = $uploadDir . '/' . time() . $_FILES['pic']['name'];
-        $isUploaded = move_uploaded_file($pic, $targetFile) ? true : false;
-		}
-		
-    if(!$isUploaded)
-    {
+// namespace {
+
+//     $mydoc = new DOMDocument();
+//     $mydoc->loadHTMLFile('gallery.html');
+//     $mydoc->getElementById("tishi")->nodeValue = "shenhezhong";
+//     echo $mydoc->saveHTML();
+//     return;
+// }
+namespace Sightengine { 
+    
+    require_once 'include/vendor/autoload.php';
+    $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
+    $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);
+    
+   
+    // var_dump($output);
+    $weapon = $output->weapon;
+    $alcohol = $output->alcohol;
+    $drugs = $output->drugs;
+    $nudity = $output->nudity->safe;
+    if($nudity < 0.8) {
+        echo "bad";
         return;
     }
+    else {
+        echo "good";
+    }
+} 
+namespace {
+    $pic = $_FILES['pic']['tmp_name'];
+    $uploadDir = 'assets/photos'; 
+    if(!file_exists($uploadDir)){        
+        mkdir($uploadDir, 0777);    
+    }
+    $targetFileName = time() . $_FILES['pic']['name'];
+    $targetFile = $uploadDir . '/' . $targetFileName;
+    move_uploaded_file($pic, $targetFile) ? true : false;
+        
+    // echo $pic;echo"**";"/Applications/XAMPP/xamppfiles/temp/php07K54I"
+    // echo $targetFileName;echo"**";"1524973354a7.jpg"
+    // echo $targetFile;"assets/photos/1524973354a7.jpg"
 
     require("include/Db_Config.php");
     header("Access-Control-Allow-Origin: *");
@@ -41,6 +65,6 @@
     	die('Invalid query: ' . mysqli_error($db_selected));
     }
 
-		$db_selected->close();
-
+	$db_selected->close();
+}
 ?>

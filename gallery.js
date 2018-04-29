@@ -117,12 +117,18 @@ function upload(){
   if(pic===undefined){
     return;
   }
+  document.getElementById("tishi").innerHTML = "Checking Content ...";
   var xhr = new XMLHttpRequest();
   var form = new FormData();
   form.append("pic", pic);
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {
+      // console.log(xhr.responseText);
+      if(xhr.responseText === "good")
+        document.getElementById("tishi").innerHTML = "Upload Successfully.";
+      else 
+        document.getElementById("tishi").innerHTML = "This photo contains bad content, upload failed.";
     }
   }
   xhr.upload.onprogress = function (event) {
@@ -163,6 +169,7 @@ $("#pic").change(function(){
 });
 
 function clearUpload() {
+  document.getElementById("tishi").innerHTML = "";
   $('#uploadModal').modal('show');
   document.getElementById("pic").value = "";  
   document.getElementById("imgPreview").src = "";
