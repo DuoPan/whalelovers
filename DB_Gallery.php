@@ -40,6 +40,8 @@ while ($row = @mysqli_fetch_assoc($result)){
   echo 'date="' . $row['date'] . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
+  echo 'author="' . $row['author'] . '" ';
+  echo 'description="' . $row['description'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }

@@ -4,8 +4,6 @@ namespace Sightengine {
     $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
     $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);
     
-   
-    // var_dump($output);
     $weapon = $output->weapon;
     $alcohol = $output->alcohol;
     $drugs = $output->drugs;
@@ -50,7 +48,10 @@ namespace {
     	die('Not connected : ' . mysqli_error());
     }
     // Select all the rows in the markers table
-    $query = "INSERT INTO gallery (filename, date, lat, lng, author, description) VALUES ('$targetFileName','2018-04-21 00:00:00','1.1','1.1','dfdf','afda')";
+    $dt = date("Y-m-d H:i:s");
+    $author = $_POST['author'];
+    $des = $_POST['des'];
+    $query = "INSERT INTO gallery (filename, date, lat, lng, author, description) VALUES ('$targetFileName','$dt','1.1','1.1','$author','$des')";
     $result = $db_selected->query($query);
     if (!$result) {
     	die('Invalid query: ' . mysqli_error($db_selected));

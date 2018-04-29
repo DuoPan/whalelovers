@@ -52,36 +52,33 @@ function displayPage(pageNum) {
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function(markerElem) {
           var filename = markerElem.getAttribute('filename');
-          filenames.push(filename);
-        });
-        filenames.forEach(function(file){
-            var mainDiv = document.getElementById('putpics');
-            var div1 = document.createElement('div');
-            div1.classList.add("col-sm-6");
-            div1.classList.add("col-md-4");
-            var div2 = document.createElement('div');
-            div2.classList.add("thumbnail");
-            var div3 = document.createElement('a');
-            div3.classList.add("lightbox");
-            div3.href="assets/photos/"+file;
-            var div4 = document.createElement('img');
-            div4.src = "assets/photos/"+file;
-            var div5 = document.createElement('div');
-            div5.classList.add("caption");
-            var h3 = document.createElement('h3');
-            h3.innerHTML = "Thumbnail label";
-            var p = document.createElement('p');
-            p.innerHTML = "Thumbnail orem ipsum dolor sit amet, consectetur adipisicing elit, sed";
-            mainDiv.appendChild(div1);
-            div1.appendChild(div2);
-            div2.appendChild(div3);
-            div3.appendChild(div4);
-            div2.appendChild(div5);
-            div5.appendChild(h3);
-            div5.appendChild(p);
+          var mainDiv = document.getElementById('putpics');
+          var div1 = document.createElement('div');
+          div1.classList.add("col-sm-6");
+          div1.classList.add("col-md-4");
+          var div2 = document.createElement('div');
+          div2.classList.add("thumbnail");
+          var div3 = document.createElement('a');
+          div3.classList.add("lightbox");
+          div3.href="assets/photos/"+filename;
+          var div4 = document.createElement('img');
+          div4.src = "assets/photos/"+filename;
+          var div5 = document.createElement('div');
+          div5.classList.add("caption");
+          var h3 = document.createElement('h3');
+          h3.innerHTML = markerElem.getAttribute('author');
+          var p = document.createElement('p');
+          p.innerHTML = markerElem.getAttribute('description');
+          mainDiv.appendChild(div1);
+          div1.appendChild(div2);
+          div2.appendChild(div3);
+          div3.appendChild(div4);
+          div2.appendChild(div5);
+          div5.appendChild(h3);
+          div5.appendChild(p);
         });
         baguetteBox.run('.tz-gallery');
-    });
+      });
 }
 
 function nextPage() {
@@ -112,6 +109,16 @@ function previousPage() {
 
 
 function upload(){
+  if (document.getElementById('author').value===""){
+    document.getElementById('author').style.borderColor = 'red';
+    return;
+  }
+  document.getElementById('author').style.borderColor = '';
+  if (document.getElementById('des').value===""){
+    document.getElementById('des').style.borderColor = 'red';
+    return;
+  }
+  document.getElementById('des').style.borderColor = '';
   var url="upload.php";
   var pic = document.getElementById('pic').files[0];
   if(pic===undefined){
@@ -121,6 +128,8 @@ function upload(){
   var xhr = new XMLHttpRequest();
   var form = new FormData();
   form.append("pic", pic);
+  form.append("author",document.getElementById('author').value);
+  form.append("des",document.getElementById('des').value);
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {
@@ -174,6 +183,8 @@ $("#pic").change(function(){
 function clearUpload() {
   document.getElementById("uploadBtn").disabled = false;
   document.getElementById("tishi").innerHTML = "";
+  document.getElementById("author").value = "";
+  document.getElementById("des").value = "";
   $('#uploadModal').modal('show');
   document.getElementById("pic").value = "";  
   document.getElementById("imgPreview").src = "";

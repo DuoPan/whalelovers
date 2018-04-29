@@ -113,7 +113,7 @@ input[type="file"] {
     <!-- Pagination end-->
     <!-- data-toggle="modal" data-target="#uploadModal"  -->
     <div class="tz-gallery">
-        <div class="row" id="putpics">
+        <div id="putpics" style="display: flex; flex-wrap: wrap; justify-content: stretch;align-items:flex-end">
             
         </div>
     </div>
@@ -159,14 +159,13 @@ input[type="file"] {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form id="form">
+      <form id="form">
+      <div class="modal-body">    
           <div class="upload-btn-wrapper">
             <label for="pic" class="custom-file-upload">
                 <i class="fa fa-cloud-upload"></i>Choose A File
             </label>
             <input type="file" name="pic" id="pic" accept="image/*"/>
-            <input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
           </div>
           <div id="progress">
             <div class="progress-item"></div>
@@ -177,19 +176,19 @@ input[type="file"] {
           <div style="display: flex;justify-content: space-around">  
             <img id="imgPreview" style="max-height:400px;"/>  
           </div>  
-          <!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->
-        </form> 
+          <!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->    
       </div>
       <div class="modal-footer">
         <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start">
           <label for="author">Author:</label>
-          <input type="text" class="form-control" id="author">
+          <input name="author" type="text" class="form-control" id="author">
           <label for="des">Description:</label>
-          <input type="text" class="form-control" id="des">
+          <input name="des" type="text" class="form-control" id="des">
         </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
       </div>
+      </form> 
     </div>
   </div>
 </div>
