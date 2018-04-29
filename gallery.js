@@ -135,7 +135,6 @@ function upload(){
   xhr.upload.onprogress = function (event) {
     if (document.getElementById("pic").value === "") return;
     if (event.lengthComputable) {
-      console.log(event.total);
       var complete = (event.loaded / event.total * 100);
       document.querySelector("#progress .progress-item").style.width = complete+"%";
     }
@@ -181,7 +180,10 @@ function clearUpload() {
   document.querySelector("#progress .progress-item").style.width = 0+"%";
   //document.getElementById("uploadResult").classList.add("hidden");
   
-  var width = $("#uploadModal").width()-40;
+  var width1 = $(".modal-dialog").width()-40;
+  var width2 = $("#uploadModal").width()-40;
+  //console.log(width1);console.log(width2);
+  var width = width1 < 0 ? width2 : width1;
   document.getElementById('imgPreview').style.maxWidth = width+"px";
 
 }
