@@ -1,14 +1,6 @@
 <?php
-// namespace {
-
-//     $mydoc = new DOMDocument();
-//     $mydoc->loadHTMLFile('gallery.html');
-//     $mydoc->getElementById("tishi")->nodeValue = "shenhezhong";
-//     echo $mydoc->saveHTML();
-//     return;
-// }
 namespace Sightengine { 
-    
+    return;
     require_once 'include/vendor/autoload.php';
     $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
     $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);

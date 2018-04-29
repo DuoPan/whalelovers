@@ -166,7 +166,7 @@ input[type="file"] {
                 <i class="fa fa-cloud-upload"></i>Choose A File
             </label>
             <input type="file" name="pic" id="pic" accept="image/*"/>
-            <input type="button" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
+            <input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
           </div>
           <div id="progress">
             <div class="progress-item"></div>
@@ -177,7 +177,7 @@ input[type="file"] {
           <div style="display: flex;justify-content: space-around">  
             <img id="imgPreview" style="max-height:400px;"/>  
           </div>  
-          <div id="uploadResult" class="hidden">Upload Successfully!</div>
+          <!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->
         </form> 
       </div>
       <div class="modal-footer">
