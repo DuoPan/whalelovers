@@ -1,25 +1,26 @@
 <?php
 // do no add any other echo in this file.
 namespace Sightengine { 
-    // require_once 'include/vendor/autoload.php';
-    // $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
-    // $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);
+    require_once 'include/vendor/autoload.php';
+    $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
+    $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);
     
-    // $weapon = $output->weapon; 
-    // $alcohol = $output->alcohol;
-    // $drugs = $output->drugs; 
-    // $nudity = $output->nudity->safe;
-    // if($nudity < 0.8 || $alcohol > 0.8 || $weapon > 0.8 || $drugs > 0.8) {
-    //     echo "bad";
-    //     return;
-    // }
-    // else {
-    //     echo "good";
-    // }
+    $weapon = $output->weapon; 
+    $alcohol = $output->alcohol;
+    $drugs = $output->drugs; 
+    $nudity = $output->nudity->safe;
+    if($nudity < 0.8 || $alcohol > 0.8 || $weapon > 0.8 || $drugs > 0.8) {
+        echo "bad";
+        return;
+    }
+    else {
+        echo "good";
+    }
 } 
 namespace {
     $pic = $_FILES['pic']['tmp_name'];
     $uploadDir = 'assets/photos'; 
+    // $uploadDir = "/var/www/html/assets/photos"
     if(!file_exists($uploadDir)){        
         mkdir($uploadDir, 0777);    
     }
