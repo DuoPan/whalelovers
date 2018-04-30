@@ -2,6 +2,10 @@ var page = document.getElementById('currPage');
 page.innerHTML = 1;
 var filenames = [];
 
+var lng = 0;
+var lat = 0;
+getLocation();
+
 displayPage(1);
 var countImages = 0;
 var countPages = 0;
@@ -130,6 +134,8 @@ function upload(){
   form.append("pic", pic);
   form.append("author",document.getElementById('author').value);
   form.append("des",document.getElementById('des').value);
+  form.append("lat", lat !== 0 ? lat : 0);
+  form.append("lng", lng !== 0 ? lng : 0); 
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {
@@ -197,4 +203,16 @@ function clearUpload() {
   var width = width1 < 0 ? width2 : width1;
   document.getElementById('imgPreview').style.maxWidth = width+"px";
 
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+  }
+}
+
+function showPosition(position) {
+  lat = position.coords.latitude;
+  lng = position.coords.longitude; 
 }
