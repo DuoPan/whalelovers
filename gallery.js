@@ -61,6 +61,7 @@ function displayPage(pageNum) {
           div1.classList.add("col-sm-6");
           div1.classList.add("col-md-4");
           var div2 = document.createElement('div');
+          div2.style.height = '400px';
           div2.classList.add("thumbnail");
           var div3 = document.createElement('a');
           div3.classList.add("lightbox");
@@ -73,6 +74,25 @@ function displayPage(pageNum) {
           h3.innerHTML = markerElem.getAttribute('author');
           var p = document.createElement('p');
           p.innerHTML = markerElem.getAttribute('description');
+          var like = document.createElement('span');
+          like.classList.add("glyphicon");
+          like.classList.add("glyphicon-heart-empty");
+          like.style.fontSize = '25px';
+          like.style.float = 'right';
+          like.style.color = 'grey';
+          like.addEventListener('click', function(event) {
+            clickLike(event.target);
+          });
+          var comment = document.createElement('span');
+          comment.classList.add("glyphicon");
+          comment.classList.add("glyphicon-comment");
+          comment.style.fontSize = '25px';
+          comment.style.float = 'right';
+          comment.style.color = 'grey';
+          comment.style.marginRight = '5px';
+          comment.addEventListener('click', function(event) {
+            clickComment(event.target);
+          });
           mainDiv.appendChild(div1);
           div1.appendChild(div2);
           div2.appendChild(div3);
@@ -80,6 +100,8 @@ function displayPage(pageNum) {
           div2.appendChild(div5);
           div5.appendChild(h3);
           div5.appendChild(p);
+          div5.appendChild(like);
+          div5.appendChild(comment);
         });
         baguetteBox.run('.tz-gallery');
       });
@@ -144,7 +166,7 @@ function upload(){
       if(xhr.responseText === "good")
         document.getElementById("tishi").innerHTML = "Upload Successfully.";
       else 
-        document.getElementById("tishi").innerHTML = "This photo contains bad content, upload failed.";
+        document.getElementById("tishi").innerHTML = "This photo may contains sensitive contents, upload failed.";
     }
   }
   xhr.upload.onprogress = function (event) {
@@ -215,4 +237,22 @@ function getLocation() {
 function showPosition(position) {
   lat = position.coords.latitude;
   lng = position.coords.longitude; 
+}
+
+function clickLike(it) {
+  if(it.style.color === 'grey')
+  {
+    it.style.color = 'red';
+    it.classList.remove('glyphicon-heart-empty');
+    it.classList.add('glyphicon-heart');
+  }else{
+    it.style.color = 'grey';
+    it.classList.remove('glyphicon-heart');
+    it.classList.add('glyphicon-heart-empty');
+  }
+}
+
+function clickComment(it) {
+  console.log('begin comment');
+  window.location.replace('comment.html');
 }
