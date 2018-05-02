@@ -63,6 +63,9 @@ function displayPage(pageNum) {
           var div2 = document.createElement('div');
           div2.style.height = '400px';
           div2.classList.add("thumbnail");
+          div2.style.display = "flex";
+          div2.style.flexDirection = "column";
+          div2.style.justifyContent = "space-between";
           var div3 = document.createElement('a');
           div3.classList.add("lightbox");
           div3.href="assets/photos/"+filename;

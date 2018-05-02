@@ -12,7 +12,7 @@ namespace Google\Cloud\Vision\V1{
     $isWhale = false;
     if ($labels) {
         foreach ($labels as $label) {
-            echo ($label->getDescription() . ' ');
+            // echo ($label->getDescription() . ' ');
             if(strcmp($label->getDescription(), 'whale') == 0
               || strcmp($label->getDescription(), 'whales') == 0
               || strcmp($label->getDescription(), 'dolphins') == 0
