@@ -1,22 +1,39 @@
 <?php
 // do no add any other echo in this file.
-namespace Sightengine { 
+namespace Google\Cloud\Vision\V1{
     require_once 'include/vendor/autoload.php';
-    $client = new SightengineClient('84221062', 'YB3w7wnfoRNnMf5qzCwv');//API KEY
-    $output = $client->check(['nudity','wad'])->set_file($_FILES['pic']['tmp_name']);
-    
-    $weapon = $output->weapon; 
-    $alcohol = $output->alcohol;
-    $drugs = $output->drugs; 
-    $nudity = $output->nudity->safe;
-    if($nudity < 0.8 || $alcohol > 0.8 || $weapon > 0.8 || $drugs > 0.8) {
-        echo "bad";
-        return;
+    putenv('GOOGLE_APPLICATION_CREDENTIALS=./include/FIT5120-458c75cb13b0.json');
+    putenv('TMPDIR=./temp'); // fix temp floder premisson when big file.
+
+    $imageAnnotator = new ImageAnnotatorClient();
+    $image = file_get_contents($_FILES['pic']['tmp_name']);
+    $response = $imageAnnotator->labelDetection($image);
+    $labels = $response->getLabelAnnotations();
+    $isWhale = false;
+    if ($labels) {
+        foreach ($labels as $label) {
+            echo ($label->getDescription() . ' ');
+            if(strcmp($label->getDescription(), 'whale') == 0
+              || strcmp($label->getDescription(), 'whales') == 0
+              || strcmp($label->getDescription(), 'dolphins') == 0
+              || strcmp($label->getDescription(), 'dolphin') == 0
+              || strcmp($label->getDescription(), 'mammal') == 0
+              || strcmp($label->getDescription(), 'marine') == 0
+              ){
+                  $isWhale = true;
+                  break;
+              }
+        }
+    } 
+    if ($isWhale) {
+        echo 'good';
     }
     else {
-        echo "good";
+        echo('bad');
+        return;
     }
-} 
+}
+
 namespace {
     $pic = $_FILES['pic']['tmp_name'];
     $uploadDir = 'assets/photos'; 
@@ -44,13 +61,11 @@ namespace {
     return $xmlStr;
     }
 
-    // Opens a connection to a MySQL server
     $db_selected= new mysqli ('localhost', $username, $password,$database);
     if (!$db_selected) {
     	die('Not connected : ' . mysqli_error());
     }
 
-    // Select all the rows in the markers table
     $dt = date("Y-m-d H:i:s");
     $author = $_POST['author'];
     $des = $_POST['des'];
