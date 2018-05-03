@@ -2,11 +2,11 @@ var page = document.getElementById('currPage');
 page.innerHTML = 1;
 var filenames = [];
 
-var lng = 0;
-var lat = 0;
+// var lng = 0;
+// var lat = 0;
 var ip;
 var likeFileNames = [];
-getLocation();
+// getLocation();
 getIP();
 
 
@@ -170,14 +170,20 @@ function upload(){
   if(pic===undefined){
     return;
   }
+  if(marker.position === undefined) {
+    return;
+  }
   document.getElementById("tishi").innerHTML = "Checking Content ...";
   var xhr = new XMLHttpRequest();
   var form = new FormData();
   form.append("pic", pic);
   form.append("author",document.getElementById('author').value);
   form.append("des",document.getElementById('des').value);
-  form.append("lat", lat !== 0 ? lat : 0);
-  form.append("lng", lng !== 0 ? lng : 0); 
+  //console.log(marker.position.lat());
+  // form.append("lat", lat !== 0 ? lat : 0);
+  // form.append("lng", lng !== 0 ? lng : 0); 
+  form.append("lat", marker.position.lat());
+  form.append("lng", marker.position.lng());
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {
@@ -244,15 +250,14 @@ function clearUpload() {
   //console.log(width1);console.log(width2);
   var width = width1 < 0 ? width2 : width1;
   document.getElementById('imgPreview').style.maxWidth = width+"px";
-
 }
 
-function getLocation() {
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-  }
-}
+// function getLocation() {
+//   if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(showPosition);
+//   } else {
+//   }
+// }
 
 function getIP()
 {
@@ -263,10 +268,10 @@ function getIP()
 }
 
 
-function showPosition(position) {
-  lat = position.coords.latitude;
-  lng = position.coords.longitude; 
-}
+// function showPosition(position) {
+//   lat = position.coords.latitude;
+//   lng = position.coords.longitude; 
+// }
 
 function clickLike(it,theImg) {
   var temp = theImg.src.split('/');

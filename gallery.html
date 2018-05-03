@@ -73,7 +73,10 @@ textarea {
   resize: vertical;
   
 }
-
+#postMap{
+  height: 500px;
+  width: 100%;
+}
 </style>
 <title>Gallery</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
@@ -239,6 +242,15 @@ textarea {
           <label for="des">Description:</label>
           <input name="des" type="text" class="form-control" id="des">
         </div>
+        <div id="postMap"></div>
+        <script>
+          var postmap;
+          var myCenter;
+          var marker;
+          var infoWindow;
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
       </div>
@@ -249,7 +261,7 @@ textarea {
 
 <script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
 <script type="text/javascript" src="gallery.js"></script>
-
+<script type="text/javascript" src="gallery_map.js"></script>
 </body>
  
 </html>
