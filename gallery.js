@@ -53,6 +53,14 @@ function loadTotalNum(url, callback) {
 function doNothing() {}
 
 function displayPage(pageNum) {
+  loadLikeData('DB_Comment_Showlike.php',ip,function(data) {
+    likeFileNames = [];
+    var xml = data.responseXML;
+    var markers = xml.documentElement.getElementsByTagName('marker');
+    Array.prototype.forEach.call(markers, function(marker) {
+      likeFileNames.push(marker.getAttribute('filename'));
+    });
+  });
     filenames = [];
     loadImages('./DB_Gallery.php', pageNum, function(data) {
         var xml = data.responseXML;
@@ -250,14 +258,7 @@ function getIP()
 {
   $.get("http://ipinfo.io", function(response) {
     ip = response.ip;
-    loadLikeData('DB_Comment_Showlike.php',ip,function(data) {
-      var xml = data.responseXML;
-      var markers = xml.documentElement.getElementsByTagName('marker');
-      Array.prototype.forEach.call(markers, function(marker) {
-        likeFileNames.push(marker.getAttribute('filename'));
-      });
-      displayPage(1);
-    });
+    displayPage(1);
   }, "jsonp");
 }
 
