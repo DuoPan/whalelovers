@@ -261,7 +261,8 @@ function clickComment(theImg) {
   var temp = theImg.src.split('/');
   imgName = temp[temp.length-1];
     if (x.style.display === "table-cell") {
-        return;
+       x.style.display = "none";
+       clickComment(theImg);
     } 
     else {
         x.style.display = "table-cell";

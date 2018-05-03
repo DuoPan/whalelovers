@@ -17,7 +17,6 @@ if (!$db_selected) {
   die('Not connected : ' . mysqli_error());
 }
 
-
 // Select all the rows in the markers table
 $imgName = $_GET['imgName'];
 $name = $_GET['name'];
@@ -32,7 +31,7 @@ $row = @mysqli_fetch_assoc($result1);
 $id=$row['total'];
 
 
-$query = "INSERT INTO comment (filename, id, message, name) VALUES ('$imgName','$id','$name','$message')";
+$query = "INSERT INTO comment (filename, id, message, name) VALUES ('$imgName','$id','$message', '$name')";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
