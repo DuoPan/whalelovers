@@ -17,6 +17,9 @@
 
 <link rel="stylesheet" href="./assets/gallery/baguetteBox.min.css">
 <link rel="stylesheet" href="./assets/gallery/thumbnail-gallery.css">
+
+<!-- side comment-->
+
 <style>
 #progress{
     height:10px;
@@ -46,12 +49,37 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+.mainbar {
+  display: table-cell;
+}
+.sidebar {
+  /* background-color: olive; */
+  height: 100%;
+  overflow-y:scroll; 
+  display: none;
+  width: 25vw;
+  min-width: 200px;
+  max-width: 25vw;
+  border:1px solid rgb(69, 180, 245);
+  vertical-align: top;
+  /* transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out; */
+}
+.container2 {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+textarea {
+  resize: vertical;
+  
+}
+
 </style>
 <title>Gallery</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 
-<body style="padding-top: 80px">
+<body style="padding-top: 80px;">
 
 	<!-- Nav Bar -->
   <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
@@ -82,7 +110,7 @@ input[type="file"] {
   <!-- Nav Bar End -->
 
 	<div class="container">
-		<!-- link nav bar -->
+    <!-- link nav bar -->
 		<div>
 			<p><a href="index.html">Home</a> -> Gallery</p>
 		</div>
@@ -110,13 +138,40 @@ input[type="file"] {
       </button>
     </div>
     <!-- Pagination end-->
+    <div class="container2">
+    <div class="mainbar"><!-- main part-->
+
+
     <!-- data-toggle="modal" data-target="#uploadModal"  -->
     <div class="tz-gallery">
         <div id="putpics" style="display: flex; flex-wrap: wrap; justify-content: stretch;align-items:flex-end">
             
         </div>
     </div>
+    </div><!-- main part end-->
+    <div class="sidebar" id="commentArea"><!-- sidebar-->
+      <div>
+        <span>Comments For</span>
+        <img id="comImg" style="width:100%"></img>
+      </div>
+      <hr/>
+      <div id="comHistory"></div><!-- get from database-->
+      <hr/>
 
+      <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start;margin:10px;">
+        <label for="commentName">Name:</label>
+        <input name="commentName" type="text" class="form-control" id="commentName">
+        <label for="commentDetail">Message *:</label>
+        <textarea name="commentDetail" class="form-control" id="commentDetail"></textarea>
+        <br/>
+        <div style="align-self: flex-end">
+          <button onclick="postComment()">Post</button>
+          <button onclick="cancelComment()">Close</button>
+        </div>
+        
+      </div>
+    </div><!-- sidebar end-->
+    </div><!-- container2 end-->
     <!-- Pagination -->
     <nav aria-label="...">
       <ul class="pagination">
@@ -130,8 +185,8 @@ input[type="file"] {
       </ul>
     </nav>
     <!-- Pagination end-->
+  </div><!-- main part end-->
 
-  </div><!-- container -->
 
   
 
@@ -192,11 +247,9 @@ input[type="file"] {
   </div>
 </div>
 
-
 <script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
 <script type="text/javascript" src="gallery.js"></script>
+
 </body>
-<script>
  
-</script>  
 </html>

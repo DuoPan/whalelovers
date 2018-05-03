@@ -94,7 +94,7 @@ function displayPage(pageNum) {
           comment.style.color = 'grey';
           comment.style.marginRight = '5px';
           comment.addEventListener('click', function(event) {
-            clickComment(event.target);
+            clickComment(div4);
           });
           mainDiv.appendChild(div1);
           div1.appendChild(div2);
@@ -255,7 +255,94 @@ function clickLike(it) {
   }
 }
 
-function clickComment(it) {
-  console.log('begin comment');
-  window.location.replace('comment.html');
+var imgName = "";
+function clickComment(theImg) {
+  var x = document.getElementById("commentArea");
+  var temp = theImg.src.split('/');
+  imgName = temp[temp.length-1];
+    if (x.style.display === "table-cell") {
+        return;
+    } 
+    else {
+        x.style.display = "table-cell";
+        document.getElementById("comImg").src=theImg.src;
+        clearComments();
+        loadCommentData('./DB_Comment.php', imgName, function(data) {
+          var xml = data.responseXML;
+          var markers = xml.documentElement.getElementsByTagName('marker');
+          var mainDiv = document.getElementById("comHistory");
+          Array.prototype.forEach.call(markers, function(marker) {
+            var aPairDiv = document.createElement('div');
+            // var nameDiv = document.createElement('span');
+            // var comDiv = document.createElement('span');
+            // nameDiv.innerHTML = marker.getAttribute('name');
+            // comDiv.innerHTML = marker.getAttribute('message');
+            aPairDiv.innerHTML = marker.getAttribute('name') + ": " + marker.getAttribute('message');
+            mainDiv.appendChild(aPairDiv)
+          });
+        });
+    }
+}
+
+function loadCommentData(url, imgName, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
+    }
+  };
+  request.open('GET', url+"?imgName="+imgName, true);
+  request.send(null);
+};
+
+function clearComments() {
+  var mainDiv = document.getElementById("comHistory");
+  while (mainDiv.firstChild) {
+    mainDiv.removeChild(mainDiv.firstChild);
+  }
+  document.getElementById("commentDetail").style.borderColor='';
+  document.getElementById("commentDetail").value='';
+  document.getElementById("commentName").value='';
+}
+
+function postComment() {
+  var name = document.getElementById("commentName").value;
+  var message = document.getElementById("commentDetail").value;
+  if (name === "") {
+    name = "Anonymous";
+  }
+  if (message === ""){
+    document.getElementById("commentDetail").style.borderColor='red';
+    return;
+  }
+  postCommentData('./DB_Comment_Post.php', imgName, name, message, function(data) {
+    var mainDiv = document.getElementById("comHistory");
+    var aPairDiv = document.createElement('div');
+    aPairDiv.innerHTML = name + ": " + message;
+    mainDiv.appendChild(aPairDiv)
+    document.getElementById("commentName").value="";
+    document.getElementById("commentDetail").value="";
+    document.getElementById("commentDetail").style.borderColor="";
+  });
+}
+
+function postCommentData(url, imgName, name, message, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
+    }
+  };
+  request.open('GET', url+"?imgName="+imgName+"&name="+name+"&message="+message, true);
+  request.send(null);
+};
+
+function cancelComment() {
+  document.getElementById("commentArea").style.display="none";
 }
