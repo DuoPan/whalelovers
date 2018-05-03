@@ -261,7 +261,7 @@ function clearUpload() {
 
 function getIP()
 {
-  $.get("http://ipinfo.io", function(response) {
+  $.get("https://ipinfo.io", function(response) {
     ip = response.ip;
     displayPage(1);
   }, "jsonp");
