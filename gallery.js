@@ -72,7 +72,7 @@ function displayPage(pageNum) {
           div1.classList.add("col-sm-6");
           div1.classList.add("col-md-4");
           var div2 = document.createElement('div');
-          div2.style.height = '400px';
+          div2.style.height = '350px';
           div2.classList.add("thumbnail");
           div2.style.display = "flex";
           div2.style.flexDirection = "column";
@@ -84,10 +84,10 @@ function displayPage(pageNum) {
           div4.src = "assets/photos/"+filename;
           var div5 = document.createElement('div');
           div5.classList.add("caption");
-          var h3 = document.createElement('h3');
-          h3.innerHTML = markerElem.getAttribute('author');
-          var p = document.createElement('p');
-          p.innerHTML = markerElem.getAttribute('description');
+          // var h3 = document.createElement('h3');
+          // h3.innerHTML = markerElem.getAttribute('author');
+          // var p = document.createElement('p');
+          // p.innerHTML = markerElem.getAttribute('description');
           var like = document.createElement('span');
           like.classList.add("glyphicon");
           like.style.fontSize = '25px';
@@ -118,8 +118,8 @@ function displayPage(pageNum) {
           div2.appendChild(div3);
           div3.appendChild(div4);
           div2.appendChild(div5);
-          div5.appendChild(h3);
-          div5.appendChild(p);
+          // div5.appendChild(h3);
+          // div5.appendChild(p);
           div5.appendChild(like);
           div5.appendChild(comment);
         });
@@ -186,7 +186,7 @@ function upload(){
       if(xhr.responseText === "good")
         document.getElementById("tishi").innerHTML = "Upload Successfully.";
       else 
-        document.getElementById("tishi").innerHTML = "This photo may contains sensitive contents, upload failed.";
+        document.getElementById("tishi").innerHTML = "There seems no whales in this photo, upload failed.";
     }
   }
   xhr.upload.onprogress = function (event) {
