@@ -4,7 +4,9 @@ var filenames = [];
 
 var lng = 0;
 var lat = 0;
+var ip;
 getLocation();
+getIP();
 
 displayPage(1);
 var countImages = 0;
@@ -84,7 +86,7 @@ function displayPage(pageNum) {
           like.style.float = 'right';
           like.style.color = 'grey';
           like.addEventListener('click', function(event) {
-            clickLike(event.target);
+            clickLike(event.target,div4);
           });
           var comment = document.createElement('span');
           comment.classList.add("glyphicon");
@@ -237,22 +239,34 @@ function getLocation() {
   }
 }
 
+function getIP()
+{
+  $.get("http://ipinfo.io", function(response) {
+    ip = response.ip;
+  }, "jsonp");
+}
+
+
 function showPosition(position) {
   lat = position.coords.latitude;
   lng = position.coords.longitude; 
 }
 
-function clickLike(it) {
+function clickLike(it,theImg) {
+  var temp = theImg.src.split('/');
+  var likeName = temp[temp.length-1];
   if(it.style.color === 'grey')
   {
     it.style.color = 'red';
     it.classList.remove('glyphicon-heart-empty');
     it.classList.add('glyphicon-heart');
+    postLikeData('DB_Comment_Like.php',ip, likeName,function(data) {});
   }else{
     it.style.color = 'grey';
     it.classList.remove('glyphicon-heart');
     it.classList.add('glyphicon-heart-empty');
-  }
+    postDislikeData('DB_Comment_Dislike.php',ip, likeName,function(data) {});
+  }              
 }
 
 var imgName = "";
@@ -274,10 +288,6 @@ function clickComment(theImg) {
           var mainDiv = document.getElementById("comHistory");
           Array.prototype.forEach.call(markers, function(marker) {
             var aPairDiv = document.createElement('div');
-            // var nameDiv = document.createElement('span');
-            // var comDiv = document.createElement('span');
-            // nameDiv.innerHTML = marker.getAttribute('name');
-            // comDiv.innerHTML = marker.getAttribute('message');
             aPairDiv.innerHTML = marker.getAttribute('name') + ": " + marker.getAttribute('message');
             mainDiv.appendChild(aPairDiv)
           });
@@ -346,4 +356,32 @@ function postCommentData(url, imgName, name, message, callback) {
 
 function cancelComment() {
   document.getElementById("commentArea").style.display="none";
+}
+
+function postLikeData(url, ip, imgName, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
+    }
+  };
+  request.open('GET', url+"?imgName="+imgName+"&ip="+ip, true);
+  request.send(null);
+}
+
+function postDislikeData(url, ip, imgName, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
+    }
+  };
+  request.open('GET', url+"?imgName="+imgName+"&ip="+ip, true);
+  request.send(null);
 }
