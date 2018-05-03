@@ -5,10 +5,11 @@ var filenames = [];
 var lng = 0;
 var lat = 0;
 var ip;
+var likeFileNames = [];
 getLocation();
 getIP();
 
-displayPage(1);
+
 var countImages = 0;
 var countPages = 0;
 loadTotalNum('./DB_Gallery_Count.php', function(data) {
@@ -81,10 +82,16 @@ function displayPage(pageNum) {
           p.innerHTML = markerElem.getAttribute('description');
           var like = document.createElement('span');
           like.classList.add("glyphicon");
-          like.classList.add("glyphicon-heart-empty");
           like.style.fontSize = '25px';
           like.style.float = 'right';
-          like.style.color = 'grey';
+          if(likeFileNames.includes(filename)) {
+            like.style.color = 'red';
+            like.classList.add("glyphicon-heart");
+          }
+          else {
+            like.style.color = 'grey';
+            like.classList.add("glyphicon-heart-empty");
+          }
           like.addEventListener('click', function(event) {
             clickLike(event.target,div4);
           });
@@ -243,6 +250,14 @@ function getIP()
 {
   $.get("http://ipinfo.io", function(response) {
     ip = response.ip;
+    loadLikeData('DB_Comment_Showlike.php',ip,function(data) {
+      var xml = data.responseXML;
+      var markers = xml.documentElement.getElementsByTagName('marker');
+      Array.prototype.forEach.call(markers, function(marker) {
+        likeFileNames.push(marker.getAttribute('filename'));
+      });
+      displayPage(1);
+    });
   }, "jsonp");
 }
 
@@ -383,5 +398,19 @@ function postDislikeData(url, ip, imgName, callback) {
     }
   };
   request.open('GET', url+"?imgName="+imgName+"&ip="+ip, true);
+  request.send(null);
+}
+
+function loadLikeData(url, ip, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
+    }
+  };
+  request.open('GET', url+"?ip="+ip, true);
   request.send(null);
 }
