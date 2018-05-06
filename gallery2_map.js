@@ -53,6 +53,10 @@ function initMap() {
       knowmoreBtn.style.marginLeft = "40%";
       knowmoreBtn.classList.add("btn-sm");
       knowmoreBtn.classList.add("btn-primary");
+      knowmoreBtn.addEventListener("click", function(){
+        name = name.replace(/ /g, "_");
+        location.href = "./type_page.html#" + name.trim();
+      });
       whaleImg.style.width = "320px";
       infowincontent.appendChild(heading);
       infowincontent.appendChild(document.createElement('br'));
@@ -185,3 +189,4 @@ function placeMarker(location) {
   postmapInfoWindow.setContent(infowincontent);
   postmapInfoWindow.open(postmap, postmapMarker);
 }
+
