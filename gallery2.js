@@ -102,6 +102,9 @@ function addPost() {
   var width2 = $("#uploadModal").width()-40;
   var width = width1 < 0 ? width2 : width1;
   document.getElementById('imgPreview').style.maxWidth = width+"px";
+
+  // do map
+  resizeMap();
 }
 
 function upload(){
@@ -120,19 +123,17 @@ function upload(){
   if(pic===undefined){
     return;
   }
-  // if(marker.position === undefined) {
-  //   return;
-  // }
+  if(postmapMarker.position === undefined) {
+    return;
+  }
   document.getElementById("tishi").innerHTML = "Checking Content ...";
   var xhr = new XMLHttpRequest();
   var form = new FormData();
   form.append("pic", pic);
   form.append("author",document.getElementById('author').value);
   form.append("des",document.getElementById('des').value);
-  // form.append("lat", marker.position.lat());
-  // form.append("lng", marker.position.lng());
-    form.append("lat", 0);
-  form.append("lng", 0);
+  form.append("lat", postmapMarker.position.lat());
+  form.append("lng", postmapMarker.position.lng());
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {

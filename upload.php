@@ -77,6 +77,16 @@ namespace {
     	die('Invalid query: ' . mysqli_error($db_selected));
     }
 
+    // insert in to display
+    $dt2 = date("d/m/Y");
+    $query2 = "INSERT INTO spot_display (name, lat, lon, year, city) VALUES ('other','$lat','$lng','$dt2','$targetFileName')";
+    $result2 = $db_selected->query($query2);
+    if (!$result2) {
+    	die('Invalid query: ' . mysqli_error($db_selected));
+    }
+
+
+
 	$db_selected->close();
 }
 ?>

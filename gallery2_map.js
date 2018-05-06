@@ -75,20 +75,6 @@ function initMap() {
 
         infoWindow.setContent(infowincontent);
         infoWindow.open(map, marker);
-        // var defaultDivTag = document.getElementById('defaultFrame');
-        // defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
-        // var divTag = document.getElementById('markerSelectFrame');
-        // divTag.style.display = 'block'; //Making Frame Visible when marker is selected
-        // document.getElementById('predictionFrame').style.display = 'none'; 
-        // var imgSrc = document.getElementById('img_desc');
-        // var imgdesc = document.getElementById('pdesc');
-        // imgSrc.src = imgLoc+name.trim()+'.png';
-        // document.getElementById('knowmore').value=name.trim();
-        // for(var i=0;i < hb1.length;i=i+1){
-        //   if(hb1[i][0] == name.trim()){
-        //     imgdesc.innerHTML = hb1[i][1]; 
-        //   }
-        // }
       });
       allmarkers.push(marker);
     });
@@ -100,23 +86,39 @@ function initMap() {
   map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(centerControlDiv);
   centerControlDiv.dataToggle="tooltip";
   centerControlDiv.title="Back to Default View!";
+
+  // second map
+  postmapCenter = new google.maps.LatLng(-25.2744, 133.7751);
+  postmap = new google.maps.Map(document.getElementById('postMap'), {
+      center: postmapCenter,
+      zoom: 4,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+  });
+
+  postmapInfoWindow = new google.maps.InfoWindow();
+  postmapMarker=new google.maps.Marker({
+  
+  });
+  google.maps.event.addListener(postmap, 'click', function(event) {
+      placeMarker(event.latLng);
+  });
 }
 
-  function downloadUrl(url, callback) {
-    var request = window.ActiveXObject ?
-      new ActiveXObject('Microsoft.XMLHTTP') :
-      new XMLHttpRequest;
-  
-    request.onreadystatechange = function() {
-      if (request.readyState == 4) {
-      request.onreadystatechange = function(){};
-      callback(request, request.status);
-      }
-    };
-  
-    request.open('GET', url, true);
-    request.send(null);
-  }
+function downloadUrl(url, callback) {
+  var request = window.ActiveXObject ?
+    new ActiveXObject('Microsoft.XMLHTTP') :
+    new XMLHttpRequest;
+
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+    request.onreadystatechange = function(){};
+    callback(request, request.status);
+    }
+  };
+
+  request.open('GET', url, true);
+  request.send(null);
+}
   
 
 function CenterControl(controlDiv, map) {
@@ -158,6 +160,28 @@ function showGallerySpot(filename) {
     var lngg = markers[0].getAttribute('lng');
     var center = new google.maps.LatLng(latt, lngg);
     map.panTo(center);
-    map.setZoom(13);
+    map.setZoom(8);
   });
+}
+
+function resizeMap() {
+  postmapMarker.setMap(null);
+  google.maps.event.trigger(postmap, "resize");
+  postmap.panTo(postmapCenter);
+  postmap.setZoom(4); 
+}
+
+function placeMarker(location) {
+  postmapMarker.setMap(null);
+  postmapMarker = new google.maps.Marker({
+      position: location, 
+      map: postmap,
+      icon: './assets/images/whale.png'
+  });
+  var infowincontent = document.createElement('div');
+  infowincontent.style.paddingRight='20px';
+  infowincontent.textContent="lat: "+parseFloat(location.lat().toFixed(6))+", lng: "+parseFloat(location.lng().toFixed(6));
+
+  postmapInfoWindow.setContent(infowincontent);
+  postmapInfoWindow.open(postmap, postmapMarker);
 }
