@@ -43,34 +43,39 @@ function initMap() {
       var infowincontent = document.createElement('div');
       var heading = document.createElement('strong');
       var yearFound = document.createElement('text');
+      var whaleImg = document.createElement('img');
       yearFound.textContent = year;
       heading.textContent = name;
+      if (name !== "other") {
+        whaleImg.src = imgLoc+name.trim()+'.png';
+      }
+      whaleImg.style.width = "320px";
       infowincontent.appendChild(heading);
       infowincontent.appendChild(document.createElement('br'));
       infowincontent.appendChild(yearFound);
-      //infowincontent.appendChild(document.createElement('br'));
-      //var text = document.createElement('text');
-      //infowincontent.appendChild(text);  
+      infowincontent.appendChild(document.createElement('br'));
+      infowincontent.appendChild(whaleImg); 
         
       var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	
       google.maps.event.addListener(marker, 'click', function(evt) {
         //Sample Click Event
+
         infoWindow.setContent(infowincontent);
         infoWindow.open(map, marker);
-        var defaultDivTag = document.getElementById('defaultFrame');
-        defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
-        var divTag = document.getElementById('markerSelectFrame');
-        divTag.style.display = 'block'; //Making Frame Visible when marker is selected
-        document.getElementById('predictionFrame').style.display = 'none'; 
-        var imgSrc = document.getElementById('img_desc');
-        var imgdesc = document.getElementById('pdesc');
-        imgSrc.src = imgLoc+name.trim()+'.png';
-        document.getElementById('knowmore').value=name.trim();
-        for(var i=0;i < hb1.length;i=i+1){
-          if(hb1[i][0] == name.trim()){
-            imgdesc.innerHTML = hb1[i][1]; 
-          }
-        }
+        // var defaultDivTag = document.getElementById('defaultFrame');
+        // defaultDivTag.style.display = 'none'; //Hiding Default Frame when Marker is selected
+        // var divTag = document.getElementById('markerSelectFrame');
+        // divTag.style.display = 'block'; //Making Frame Visible when marker is selected
+        // document.getElementById('predictionFrame').style.display = 'none'; 
+        // var imgSrc = document.getElementById('img_desc');
+        // var imgdesc = document.getElementById('pdesc');
+        // imgSrc.src = imgLoc+name.trim()+'.png';
+        // document.getElementById('knowmore').value=name.trim();
+        // for(var i=0;i < hb1.length;i=i+1){
+        //   if(hb1[i][0] == name.trim()){
+        //     imgdesc.innerHTML = hb1[i][1]; 
+        //   }
+        // }
       });
       allmarkers.push(marker);
     });
