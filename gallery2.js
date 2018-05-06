@@ -3,7 +3,7 @@ var countPages = 0;
 var page = document.getElementById('currPage');
 page.innerHTML = 1;
 
-loadTotalNum('./DB_Gallery_Count.php', function(data) {
+loadFromDB('./DB_Gallery_Count.php', function(data) {
 	var xml = data.responseXML;
 	var markers = xml.documentElement.getElementsByTagName('marker');
 	countImages = parseInt(markers[0].getAttribute('total'));
@@ -13,7 +13,7 @@ loadTotalNum('./DB_Gallery_Count.php', function(data) {
 
 displayPage(1);
 
-function loadTotalNum(url, callback) {
+function loadFromDB(url, callback) {
     var request = window.ActiveXObject ?
       new ActiveXObject('Microsoft.XMLHTTP') :
       new XMLHttpRequest;
@@ -27,7 +27,7 @@ function loadTotalNum(url, callback) {
     request.send(null);
 }
 
-function loadImages(url, page, callback) {
+function loadFromDBOnePara(url, page, callback) {
   var request = window.ActiveXObject ?
     new ActiveXObject('Microsoft.XMLHTTP') :
     new XMLHttpRequest;
@@ -42,7 +42,7 @@ function loadImages(url, page, callback) {
 }
 
 function displayPage(pageNum) {
-  loadImages('./DB_Gallery.php', pageNum, function(data) {
+  loadFromDBOnePara('./DB_Gallery.php', pageNum, function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var mainDiv = document.getElementById('putpics');
@@ -56,6 +56,11 @@ function displayPage(pageNum) {
       img.style.width = '100%';
       mainDiv.appendChild(div1);
       div1.appendChild(img);
+
+      // handle map
+      div1.addEventListener("click", function(){
+        showGallerySpot(filename);
+      })
     });
   });
 }

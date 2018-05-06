@@ -44,11 +44,15 @@ function initMap() {
       var heading = document.createElement('strong');
       var yearFound = document.createElement('text');
       var whaleImg = document.createElement('img');
+      var knowmoreBtn = document.createElement('button');
+      infowincontent.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
       yearFound.textContent = year;
       heading.textContent = name;
-      if (name !== "other") {
-        whaleImg.src = imgLoc+name.trim()+'.png';
-      }
+      knowmoreBtn.innerHTML = "Know More";
+      knowmoreBtn.style.marginTop = "10px";
+      knowmoreBtn.style.marginLeft = "40%";
+      knowmoreBtn.classList.add("btn-sm");
+      knowmoreBtn.classList.add("btn-primary");
       whaleImg.style.width = "320px";
       infowincontent.appendChild(heading);
       infowincontent.appendChild(document.createElement('br'));
@@ -56,6 +60,15 @@ function initMap() {
       infowincontent.appendChild(document.createElement('br'));
       infowincontent.appendChild(whaleImg); 
         
+      if (name !== "other") {
+        whaleImg.src = imgLoc+name.trim()+'.png';
+        infowincontent.appendChild(document.createElement('br'));
+        infowincontent.appendChild(knowmoreBtn); 
+      }
+      else { // customer uploaded marker
+        whaleImg.src = './assets/photos/'+markerElem.getAttribute('city');;
+      }
+
       var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	
       google.maps.event.addListener(marker, 'click', function(evt) {
         //Sample Click Event
@@ -135,4 +148,16 @@ function recenter() {
   var center = new google.maps.LatLng(-25.2744, 133.7751);
   map.panTo(center);
   map.setZoom(4);
+}
+
+function showGallerySpot(filename) {
+  loadFromDBOnePara('./DB_LatlngByFilename.php', filename, function(data) {
+    var xml = data.responseXML;
+    var markers = xml.documentElement.getElementsByTagName('marker');
+    var latt = markers[0].getAttribute('lat');
+    var lngg = markers[0].getAttribute('lng');
+    var center = new google.maps.LatLng(latt, lngg);
+    map.panTo(center);
+    map.setZoom(13);
+  });
 }
