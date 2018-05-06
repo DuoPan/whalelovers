@@ -134,6 +134,7 @@ function upload(){
   form.append("des",document.getElementById('des').value);
   form.append("lat", postmapMarker.position.lat());
   form.append("lng", postmapMarker.position.lng());
+  form.append("species",document.getElementById('select-species').value);
   xhr.open("POST", url, true);
   xhr.onload = function(){
     if (xhr.status === 200) {

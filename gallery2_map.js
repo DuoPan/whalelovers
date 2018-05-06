@@ -47,16 +47,30 @@ function initMap() {
       var knowmoreBtn = document.createElement('button');
       infowincontent.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
       yearFound.textContent = year;
-      heading.textContent = name;
+      if(name.includes('-user')){
+        var temp = name.split('-');
+        heading.textContent = temp[0];
+        knowmoreBtn.addEventListener("click", function(){
+          temp[0] = temp[0].replace(/ /g, "_");
+          location.href = "./type_page.html#" + temp[0];
+        });
+      }else{
+        if(name !== "other" && name !== "Other"){
+          heading.textContent = name;
+          knowmoreBtn.addEventListener("click", function(){
+            name = name.replace(/ /g, "_");
+            location.href = "./type_page.html#" + name.trim();
+          });
+        }
+        else{
+          heading.textContent = "Unknown (User Uploded)";
+        }
+      }
       knowmoreBtn.innerHTML = "Know More";
       knowmoreBtn.style.marginTop = "10px";
       knowmoreBtn.style.marginLeft = "40%";
       knowmoreBtn.classList.add("btn-sm");
       knowmoreBtn.classList.add("btn-primary");
-      knowmoreBtn.addEventListener("click", function(){
-        name = name.replace(/ /g, "_");
-        location.href = "./type_page.html#" + name.trim();
-      });
       whaleImg.style.width = "320px";
       infowincontent.appendChild(heading);
       infowincontent.appendChild(document.createElement('br'));
@@ -64,13 +78,16 @@ function initMap() {
       infowincontent.appendChild(document.createElement('br'));
       infowincontent.appendChild(whaleImg); 
         
-      if (name !== "other") {
+      if(name.includes('-user') || name === "other" || name === "Other") {
+        whaleImg.src = './assets/photos/'+markerElem.getAttribute('city');
+      }
+      else {
         whaleImg.src = imgLoc+name.trim()+'.png';
+      }
+
+      if (name !== "other" && name !== "Other") {
         infowincontent.appendChild(document.createElement('br'));
         infowincontent.appendChild(knowmoreBtn); 
-      }
-      else { // customer uploaded marker
-        whaleImg.src = './assets/photos/'+markerElem.getAttribute('city');;
       }
 
       var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	

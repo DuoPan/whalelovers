@@ -79,7 +79,11 @@ namespace {
 
     // insert in to display
     $dt2 = date("d/m/Y");
-    $query2 = "INSERT INTO spot_display (name, lat, lon, year, city) VALUES ('other','$lat','$lng','$dt2','$targetFileName')";
+    $name = $_POST['species'];
+    if($name == 'Other') {
+        $name = 'other';
+    }
+    $query2 = "INSERT INTO spot_display (name, lat, lon, year, city) VALUES ('$name','$lat','$lng','$dt2','$targetFileName')";
     $result2 = $db_selected->query($query2);
     if (!$result2) {
     	die('Invalid query: ' . mysqli_error($db_selected));

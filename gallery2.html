@@ -10,6 +10,7 @@
 <!-- Squad theme CSS -->
 <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
 <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+
 <style>
 #mainArea {
 	width: 100%; padding: 0;
@@ -155,19 +156,33 @@ input[type="file"] {
 						<!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->    
 				</div>
 				<div class="modal-footer">
-					<div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start">
-						<label for="author">Author:</label>
-						<input name="author" type="text" class="form-control" id="author">
-						<label for="des">Description:</label>
-						<input name="des" type="text" class="form-control" id="des">
-					</div>
 					<div id="postMap"></div>
 					<script>
 						var postmap;
 						var postmapCenter;
 						var postmapMarker;
 						var postmapInfoWindow;
-					</script>
+          </script>
+          <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start">
+            <label for="select-species">Specie:</label>
+            <select id="select-species" style="width:100%;">
+              <option value="Other">Other</option>
+              <option value="Australian humpback dolphin-user">Australian humpback dolphin</option>
+              <option value="Australian snubfin dolphin-user">Australian snubfin dolphin</option>
+              <option value="Blue whale-user">Blue whale</option>
+              <option value="Common bottlenose dolphin-user">Common bottlenose dolphin</option>
+              <option value="Common dolphin-user">Common dolphin</option>
+              <option value="Dwarf minke whale-user">Dwarf minke whale</option>
+              <option value="Humpback whale-user">Humpback whale</option>
+              <option value="Killer whale-user">Killer whale</option>
+              <option value="Spinner dolphin-user">Spinner dolphin</option>
+              <option value="Southern right whale-user">Southern right whale</option>
+            </select>
+					  <label for="author">Author:</label>
+						<input name="author" type="text" class="form-control" id="author">
+						<label for="des">Description:</label>
+						<input name="des" type="text" class="form-control" id="des">
+          </div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
 				</div>
