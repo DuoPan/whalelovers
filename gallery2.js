@@ -50,7 +50,8 @@ function displayPage(pageNum) {
       var filename = markerElem.getAttribute('filename');
       var div1 = document.createElement('div');
       div1.style.width = '100%';
-      div1.style.border = '3px solid grey';
+      // div1.style.border = '3px solid grey';
+      div1.style.border = '1px solid white';
       var img = document.createElement('img');
       img.src = "assets/photos/"+filename;
       img.style.width = '100%';

@@ -183,6 +183,7 @@ function showGallerySpot(filename) {
     map.panTo(center);
     map.setZoom(8);
   });
+  location.href = "./gallery2.html#gallery_map";
 }
 
 function resizeMap() {
