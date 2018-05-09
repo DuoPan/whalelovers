@@ -106,6 +106,7 @@ function initMap() {
     });
     markerCluster = new MarkerClusterer(map,allmarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   });
+
   var centerControlDiv = document.createElement('div');
   var centerControl = new CenterControl(centerControlDiv, map);
   centerControlDiv.index = 1;
@@ -128,6 +129,12 @@ function initMap() {
   google.maps.event.addListener(postmap, 'click', function(event) {
       placeMarker(event.latLng);
   });
+
+  //document.getElementById('uploadModal').style.display='none';
+  $('#uploadModal').modal('show');
+ setTimeout(() => {
+    $('#uploadModal').modal('hide');
+ }, 1);
 }
 
 function downloadUrl(url, callback) {
@@ -193,8 +200,9 @@ function showGallerySpot(filename) {
 }
 
 function resizeMap() {
-  postmapMarker.setMap(null);
+  console.log('sb4');
   google.maps.event.trigger(postmap, "resize");
+  postmapMarker.setMap(null);
   postmap.panTo(postmapCenter);
   postmap.setZoom(4); 
 }
