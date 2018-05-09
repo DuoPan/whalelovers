@@ -71,7 +71,13 @@ namespace {
     $des = $_POST['des'];
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
-    $query = "INSERT INTO gallery (filename, date, lat, lng, author, description) VALUES ('$targetFileName','$dt','$lat','$lng','$author','$des')";
+    $name = $_POST['species'];
+    $name2 = $name;
+    $weizhi = strpos($name2, '-');
+    if($weizhi) {
+        $name2=substr($name2,0,$weizhi);
+    }
+    $query = "INSERT INTO gallery (filename, date, lat, lng, author, description,type) VALUES ('$targetFileName','$dt','$lat','$lng','$author','$des','$name2')";
     $result = $db_selected->query($query);
     if (!$result) {
     	die('Invalid query: ' . mysqli_error($db_selected));
@@ -79,10 +85,6 @@ namespace {
 
     // insert in to display
     $dt2 = date("d/m/Y");
-    $name = $_POST['species'];
-    if($name == 'Other') {
-        $name = 'other';
-    }
     $query2 = "INSERT INTO spot_display (name, lat, lon, year, city) VALUES ('$name','$lat','$lng','$dt2','$targetFileName')";
     $result2 = $db_selected->query($query2);
     if (!$result2) {

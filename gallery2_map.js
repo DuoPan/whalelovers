@@ -179,7 +179,7 @@ function recenter() {
 }
 
 function showGallerySpot(filename) {
-  loadFromDBOnePara('./DB_LatlngByFilename.php', filename, function(data) {
+  loadFromDBOnePara('./DB_LatlngByFilename.php', filename,'nothing', function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var latt = markers[0].getAttribute('lat');
@@ -214,3 +214,100 @@ function placeMarker(location) {
   postmapInfoWindow.open(postmap, postmapMarker);
 }
 
+function clearMap() {
+  markerCluster.removeMarkers(allmarkers);
+  for (var i = 0; i < allmarkers.length; ++i) {
+      allmarkers[i].setMap(null);
+      allmarkers[i] = null;
+  }
+  allmarkers.length = 0;
+  userMarkers = {};
+}
+
+function changeMap(whaleType) {
+  clearMap();
+  var imgLoc = './assets/images/smallDesc/';
+  var infoWindow = new google.maps.InfoWindow;
+  downloadUrl('./Db_Connect.php', function(data) {
+    var xml = data.responseXML;
+    var markers = xml.documentElement.getElementsByTagName('marker');
+    var passIndex = 0;
+    Array.prototype.forEach.call(markers, function(markerElem,index) {
+      var name = markerElem.getAttribute('name');
+      if(whaleType !== "All"){
+        if(!name.includes(whaleType)) {
+          passIndex += 1;
+          return;
+        }
+      }
+      var year = markerElem.getAttribute('year');
+      var point = new google.maps.LatLng(
+        parseFloat(markerElem.getAttribute('lat')),
+        parseFloat(markerElem.getAttribute('lng')));
+      var user_marker_key = markerElem.getAttribute('city');
+      if (user_marker_key.includes('.')){
+        userMarkers[user_marker_key] = index-passIndex;
+      }
+      var infowincontent = document.createElement('div');
+      var heading = document.createElement('strong');
+      var yearFound = document.createElement('text');
+      var whaleImg = document.createElement('img');
+      var knowmoreBtn = document.createElement('button');
+      infowincontent.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+      yearFound.textContent = year;
+      if(name.includes('-user')){
+        var temp = name.split('-');
+        heading.textContent = temp[0];
+        knowmoreBtn.addEventListener("click", function(){
+          temp[0] = temp[0].replace(/ /g, "_");
+          location.href = "./type_page.html#" + temp[0];
+        });
+      }else{
+        if(name !== "other" && name !== "Other"){
+          heading.textContent = name;
+          knowmoreBtn.addEventListener("click", function(){
+            name = name.replace(/ /g, "_");
+            location.href = "./type_page.html#" + name.trim();
+          });
+        }
+        else{
+          heading.textContent = "Unknown (User Uploded)";
+        }
+      }
+      knowmoreBtn.innerHTML = "Know More";
+      knowmoreBtn.style.marginTop = "10px";
+      knowmoreBtn.style.marginLeft = "40%";
+      knowmoreBtn.classList.add("btn-sm");
+      knowmoreBtn.classList.add("btn-primary");
+      whaleImg.style.width = "320px";
+      infowincontent.appendChild(heading);
+      infowincontent.appendChild(document.createElement('br'));
+      infowincontent.appendChild(yearFound);
+      infowincontent.appendChild(document.createElement('br'));
+      infowincontent.appendChild(whaleImg); 
+        
+      if(name.includes('-user') || name === "other" || name === "Other") {
+        whaleImg.src = './assets/photos/'+markerElem.getAttribute('city');
+      }
+      else {
+        whaleImg.src = imgLoc+name.trim()+'.png';
+      }
+
+      if (name !== "other" && name !== "Other") {
+        infowincontent.appendChild(document.createElement('br'));
+        infowincontent.appendChild(knowmoreBtn); 
+      }
+
+      var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	
+      google.maps.event.addListener(marker, 'click', function(evt) {
+        infoWindow.setContent(infowincontent);
+        infoWindow.open(map, marker);
+      });
+      allmarkers.push(marker);
+    });
+    markerCluster = new MarkerClusterer(map,allmarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  });
+  setTimeout(() => {
+    recenter();
+  }, 200);
+}

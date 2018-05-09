@@ -3,7 +3,7 @@ var countPages = 0;
 var page = document.getElementById('currPage');
 page.innerHTML = 1;
 
-loadFromDB('./DB_Gallery_Count.php', function(data) {
+loadFromDB('./DB_Gallery_Count.php','All', function(data) {
 	var xml = data.responseXML;
 	var markers = xml.documentElement.getElementsByTagName('marker');
 	countImages = parseInt(markers[0].getAttribute('total'));
@@ -11,9 +11,9 @@ loadFromDB('./DB_Gallery_Count.php', function(data) {
 	document.getElementById('navtotal').innerHTML = countPages;
 });
 
-displayPage(1);
+displayPage(1,'All');
 
-function loadFromDB(url, callback) {
+function loadFromDB(url, type, callback) {
     var request = window.ActiveXObject ?
       new ActiveXObject('Microsoft.XMLHTTP') :
       new XMLHttpRequest;
@@ -23,11 +23,11 @@ function loadFromDB(url, callback) {
       callback(request, request.status);
       }
     };
-    request.open('GET', url, true);
+    request.open('GET', url+"?type="+type, true);
     request.send(null);
 }
 
-function loadFromDBOnePara(url, page, callback) {
+function loadFromDBOnePara(url, page, type, callback) {
   var request = window.ActiveXObject ?
     new ActiveXObject('Microsoft.XMLHTTP') :
     new XMLHttpRequest;
@@ -37,12 +37,12 @@ function loadFromDBOnePara(url, page, callback) {
     callback(request, request.status);
     }
   };
-  request.open('GET', url+"?page="+page, true);
+  request.open('GET', url+"?page="+page+"&type="+type, true);
   request.send(null);
 }
 
-function displayPage(pageNum) {
-  loadFromDBOnePara('./DB_Gallery.php', pageNum, function(data) {
+function displayPage(pageNum, type) {
+  loadFromDBOnePara('./DB_Gallery.php', pageNum, type, function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var mainDiv = document.getElementById('putpics');
@@ -75,7 +75,7 @@ function nextPage() {
 	while (mainDiv.firstChild) {
 			mainDiv.removeChild(mainDiv.firstChild);
 	}
-	displayPage(parseInt(page.innerHTML));
+	displayPage(parseInt(page.innerHTML),document.getElementById('search-select-name').value);
 }
 
 function previousPage() {
@@ -87,7 +87,7 @@ function previousPage() {
 	while (mainDiv.firstChild) {
 			mainDiv.removeChild(mainDiv.firstChild);
 	}
-	displayPage(parseInt(page.innerHTML));
+	displayPage(parseInt(page.innerHTML),document.getElementById('search-select-name').value);
 }
 
 function addPost() {
@@ -189,14 +189,31 @@ $("#pic").change(function(){
 
 function whaleChange() {
   var whaleType = document.getElementById('search-select-name').value;
+  changeTotalPage(whaleType);
   changeSidebar(whaleType);
   changeMap(whaleType);
 }
+function changeTotalPage(whaleType) {
+  loadFromDB('./DB_Gallery_Count.php',whaleType, function(data) {
+    var xml = data.responseXML;
+    var markers = xml.documentElement.getElementsByTagName('marker');
+    countImages = parseInt(markers[0].getAttribute('total'));
+    countPages = Math.ceil(countImages/6);
+    document.getElementById('navtotal').innerHTML = countPages;
+    if(countPages === 0) {
+      document.getElementById('currPage').innerHTML = "No User Uploaded Photo";
+    }else{
+      document.getElementById('currPage').innerHTML = 1;
+    }
+  });
+}
 
 function changeSidebar(whaleType) {
-  
+	var mainDiv = document.getElementById('putpics');
+	while (mainDiv.firstChild) {
+			mainDiv.removeChild(mainDiv.firstChild);
+	}
+	displayPage(1,document.getElementById('search-select-name').value);
+
 }
 
-function changeMap(whaleType) {
-  
-}

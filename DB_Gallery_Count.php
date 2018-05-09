@@ -17,9 +17,15 @@ if (!$db_selected) {
   die('Not connected : ' . mysqli_error());
 }
 
-
+$type = $_GET['type'];
+if($type == 'All'){
+  $query = "SELECT count(*) as total FROM gallery";
+}
+else {
+  $query = "SELECT count(*) as total FROM gallery where type='$type'";
+}
 // Select all the rows in the markers table
-$query = "SELECT count(*) as total FROM gallery";
+
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
