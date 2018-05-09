@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+  <script src="./assets/jquery.min.js"></script>
+  <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  <link href="./assets/datepicker/bootstrap-datetimepicker.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./assets/selectize/css/selectize.css">
+  <link rel="stylesheet" href="./assets/selectize/css/selectize.default.css">
+  <script src="./assets/selectize/js/standalone/selectize.js"></script>
+  <script type="text/javascript" src="./assets/datepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+  <!-- Bootstrap  End -->
+
+  <!-- Fonts -->
+  <link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
+  <!-- Squad theme CSS -->
+  <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+  <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+
+  <!-- Google Map API -->
+  <style>
+    .jumbotron {
+      margin-bottom: 0px!important;
+    }
+
+    div.polaroid {
+      min-height: 500px;
+      overflow: hidden;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 25px;
+    }
+    #grad1 {
+      padding-top: 5xp;
+      height: 1px;
+      background: white;
+      /* For browsers that do not support gradients */
+      background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
+      /* Standard syntax (must be last) */
+    }
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+    .row-f1{
+      margin-top : -10px
+    }
+    .row-f2{
+      margin-top : -20px
+    }
+    .show {
+    visibility: visible !important; 
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  .predictionTitle{
+    padding-left: 20px;
+  }
+  .predictionSub{
+    padding-left: 30px;
+  }
+  .predictionMon{
+    color: green;
+    font-weight: 600;
+  }
+.selectize-dropdown-content{
+    max-height: 350px !important;
+    /* height: 290px !important; */
+}
+  </style>
+  <script type="text/javascript" src="./src/markerclusterer.js"></script>
+  <script type="text/javascript" src="./src/data.json"></script>
+
+  <!-- Google Map API End -->
+
+
+  <title>Spot</title>
+  <link rel="shortcut icon" href="assets/images/whale.png" />
+</head>
+
+<body style="padding-top: 80px">
+
+
+  <!-- Nav Bar -->
+
+
+  <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <img class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
+        <a class="navbar-brand">
+          <h1>WhaleLovers</h1>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html" style="color:white;">Home</a></li>
+          <li class="active"><a href="#" style="color:white;">Spot</a></li>
+          <li><a href="type_page.html" style="color:white;">Classification</a></li>
+          <li><a href="safety.html" style="color:white">Safety</a></li>
+          <li><a href="gallery.html" style="color:white">Gallery</a></li>	
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Nav Bar End -->
+
+
+  <div class="container">
+    <!-- link nav bar -->
+    <div>
+        <p><a href="index.html">Home</a> -> Spot</p>
+    </div>
+    <!-- link nav bar  end-->
+    <!-- des -->
+    <div class="jumbotron jumbotron-fluid">
+      <h3>Whale Sightings Database</h3>
+      <p class="lead">The Whale Sightings Database records reported sightings of whales and dolphins in Australian waters. The occurrence data has been displayed on the map below, come to find out which species have been found near your home! The different color along with the number on the map indicates the different density of the whale occurrence, the purple color means the highest density while the blue indicates the lowest. The prediction of whale occurrence date and location has been provided based on the analysis of the historical data, if you are going to plan your whale watching trip, you are in the right place!</p>
+    </div>
+    <br/>
+    <!-- des end-->
+    <!-- Control Area -->
+    <div class="panel panel-default"> 
+      <div class="panel-heading"  id="advanced-search-head">
+        <h4 class="panel-title">
+          <a style="display: flex;justify-content: space-between;align-items: center" data-toggle="collapse" href="#advanced-search" aria-expanded="true" aria-controls="advanced-search">
+              Click here to plan your tour!<i class="fa fa-2x fa-angle-down"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="advanced-search" class="panel-collapse collapse" aria-labelledby="advanced-search-head">
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <label id="search-select-name-label" for="search-select-name">Select the Species You like to See</label>
+          <a id="popoverData1" class="btn" href="#" data-content="Choose one/or more specifes to find out their occurrence location from the history data" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+          <button style="float:right;margin-top:5px;background-color: #0077be;color:#fff" onclick="search()">Go!</button>
+          <select id="search-select-name" placeholder="Select one or more option, the default includes all the options" multiple>
+            <option value="Australian humpback dolphin">Australian humpback dolphin</option>
+            <option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+            <option value="Blue whale">Blue whale</option>
+            <option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+            <option value="Common dolphin">Common dolphin</option>
+            <option value="Dwarf minke whale">Dwarf minke whale</option>
+            <option value="Humpback whale">Humpback whale</option>
+            <option value="Killer whale">Killer whale</option>
+            <option value="Spinner dolphin">Spinner dolphin</option>
+            <option value="Southern right whale">Southern right whale</option>
+          </select>
+          <script>
+            $('#search-select-name').selectize({
+              plugins: ['remove_button'],
+            });
+          </script>
+        </div>
+      </div>
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
+          <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <label id="search-select-month-label" for="search-select-month">Pick the Month of Your Trip</label>
+            <a id="popoverData2" class="btn" href="#" data-content="Specify the month you want to go, and find out the occurrence density in this/these month" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>
+            <select id="search-select-month" placeholder="Select one or more option, the default includes all the options" multiple>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+            <script>
+              $('#search-select-month').selectize({
+                plugins: ['remove_button'],
+              });
+            </script>
+          </div>
+        </div>
+      <div class="row" style="padding-left: 1%;padding-right: 1%;">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <label for="search-select-loc">Choose the State You Want to Go</label>
+          <a id="popoverData3"  href="#" data-content="Choose States to see which species can be found in that place" rel="popover" data-placement="right" data-trigger="hover"><i class="fa fa-question-circle"></i></a>  
+          <select id="search-select-loc" placeholder="Select one or more option, the default includes all the options" multiple>
+              <option value="Jervis Bay Territory">Jervis Bay Territory</option>
+              <option value="New South Wales">New South Wales</option>
+              <option value="Northern Territory">Northern Territory</option>
+              <option value="Queensland">Queensland</option>
+              <option value="South Australia">South Australia</option>
+              <option value="Tasmania">Tasmania</option>
+              <option value="Victoria">Victoria</option>
+              <option value="Western Australia">Western Australia</option>
+            </select>
+            <script>
+              $('#search-select-loc').selectize({
+                plugins: ['remove_button'],
+              });
+            </script>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- Control Area End -->
+
+    <!-- Google Map  -->
+    <div class="row-fluid">
+      <div id="map" class="col-md-8"></div>
+      <script>
+        var map;
+        var allmarkers = [];
+        var markerCluster;
+        var heatmap;
+        var heatmapData = [];
+      </script>
+      <script src="./map_all.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
+
+      <div class="col-md-4" >
+        <!-- Container used for displaying small description -->
+
+        <!-- Default Container-->
+        <div class="polaroid" id="defaultFrame">
+          <img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:50%; padding-bottom:5%;"></img>
+          <p style="text-align: center;padding: 10px 10px; color:black;">Select a pin to see which species under there!</p>
+          <div>
+
+          </div>
+          
+        </div>
+
+        <div class="polaroid" style="display:none;" id="markerSelectFrame">
+          <!-- Image Header -->
+          <div style="font-size: 20px; padding:20px 20px 20px 20px; vertical-align:middle;">
+            <b>Image</b>
+            <br/>
+            <div id="grad1"> </div>
+          </div>
+          <!--Img tag used on click of marker-->
+          <img id="img_desc" src="" style="width:100%; padding:20px 20px 20px 20px; display:block;" />
+          <!-- Description Header -->
+          <div style="font-size: 20px; padding:20px 20px 20px 20px; vertical-align:middle;">
+            <b>Description</b>
+            <br/>
+            <div id="grad1"></div>
+          </div>
+          <!-- Paragraph to display description -->
+          <div style="font-size: 5px; padding:10px 20px 0px 20px; vertical-align:middle;">
+            <p id="pdesc">A small description</p>
+          </div>
+          <!-- Link to class -->
+          <div style="text-align:center; width:100%; position: relative; bottom:0; padding: 10px 10px 10px 10px;">
+            <button id="knowmore" class="btn btn-primary" value="" onclick="gotoDes()">Know more</button>
+          </div>
+        </div><!-- Container Polaroid ends here -->
+
+        <div class="polaroid" id="predictionFrame" style="display:none;">
+          
+        </div>
+
+      </div><!--  row col-4 End -->
+    </div><!-- Google Map row End -->
+  
+  </div>
+
+  <div id="snackbar">No occurrence records have been found in the month specified.</div>
+  <!-- Footer -->
+
+  <footer style="bottom:0px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="wow shake" data-wow-delay="0.4s">
+          </div>
+          <p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
+  <!-- Custom Theme JavaScript -->
+  <script src="assets/dp_homepage/js/jquery.easing.min.js"></script>
+  <script src="assets/dp_homepage/js/jquery.scrollTo.js"></script>
+  <script src="assets/dp_homepage/js/wow.min.js"></script>
+  <script src="assets/dp_homepage/js/custom.js"></script>
+  <script src="map_search.js"></script>
+  <script>
+    function gotoDes() {
+      var name = document.getElementById('knowmore').value;
+      name = name.replace(/ /g, "_");
+      location.href = "./type_page.html#" + name;
+    }
+    $('#popoverData1').popover();
+    $('#popoverData2').popover();
+    $('#popoverData3').popover();
+
+   
+</script>
+</body>
+
+</html>

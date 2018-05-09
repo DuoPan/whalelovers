@@ -41,14 +41,14 @@ index=0
 # 				print(index,"YES")
 # 				f2.write(words[0]+','+words[1]+','+words[2]+','+words[3]+','+words[4]+',"","'+g.state_long+'"\n')
 			
-with open('zuihou240.csv', 'r') as f1:
-	with open('aaa2.csv', 'w') as f2:
-		for line in f1.readlines():
-			words = line.split(',')
-			if words[6] != '""\n':
-				pass
-			else:
-				f2.write(line)
+# with open('zuihou240.csv', 'r') as f1:
+# 	with open('aaa2.csv', 'w') as f2:
+# 		for line in f1.readlines():
+# 			words = line.split(',')
+# 			if words[6] != '""\n':
+# 				pass
+# 			else:
+# 				f2.write(line)
 
 
 
@@ -69,3 +69,5 @@ with open('zuihou240.csv', 'r') as f1:
 # 				f2.write(words[0]+','+words[1]+','+words[2]+','+words[3]+','+words[4]+',"'+g.city+'","'+g.state+'"\n')
 
 # 				
+g = geocoder.google([-33.091446,129.55635],key="AIzaSyDoUh_ldqRRF_2xQkzp13OcQgZfYict6zE", method='reverse')
+print(g.json)
