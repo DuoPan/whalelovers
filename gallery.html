@@ -7,20 +7,25 @@
 <script src="./assets/jquery.min.js"></script>
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap  End -->
-
-<!-- Fonts -->
-<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
 <!-- Squad theme CSS -->
 <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
 <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
 
-<link rel="stylesheet" href="./assets/gallery/baguetteBox.min.css">
-<link rel="stylesheet" href="./assets/gallery/thumbnail-gallery.css">
-
-<!-- side comment-->
-
 <style>
+#mainArea {
+	width: 100%; padding: 0;
+}
+#sidebar {
+	height: 600px;
+	overflow-y: scroll;
+	padding: 0 !important;
+}
+#gallery_map {
+	height: 600px;
+	padding: 0!important;
+}
+.row{margin-left: 0px;} 
+
 #progress{
     height:10px;
     border: 1px solid gray;
@@ -49,41 +54,17 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
-.mainbar {
-  display: table-cell;
-}
-.sidebar {
-  /* background-color: olive; */
-  height: 100%;
-  overflow-y:scroll; 
-  display: none;
-  width: 25vw;
-  min-width: 200px;
-  max-width: 25vw;
-  border:1px solid rgb(69, 180, 245);
-  vertical-align: top;
-  /* transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out; */
-}
-.container2 {
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-textarea {
-  resize: vertical;
-  
-}
 #postMap{
-  height: 500px;
+  height: 400px;
   width: 100%;
 }
 </style>
+<script type="text/javascript" src="./src/markerclusterer.js"></script>
+<script type="text/javascript" src="gallery2_map.js"></script>
 <title>Gallery</title>
 <link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
-
 <body style="padding-top: 80px;">
-
 	<!-- Nav Bar -->
   <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
     <div class="container">
@@ -112,156 +93,105 @@ textarea {
   </nav>
   <!-- Nav Bar End -->
 
-	<div style="padding-left:1%; padding-right:1%">
-    <!-- link nav bar -->
-		<div>
-			<p><a href="index.html">Home</a> -> Gallery</p>
+	
+	<!-- link nav bar -->
+	<div style="margin-left: 1%;">
+		<p><a href="index.html">Home</a> -> Gallery</p>
+	</div>
+
+	<div id="mainArea" class="row">
+		<div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
+			<div id="putpics"></div>
+			<div style="width: 100%; display: flex; justify-content: space-between;align-items: center;">
+				<button onclick="previousPage()" class="btn btn-primary" style="flex-grow: 2;">Previous</button>
+				<span id="currPage" style="flex-grow: 1; text-align:center">1</span> / <span id="navtotal" style="flex-grow: 1;text-align:center"></span>
+				<button onclick="nextPage()" class="btn btn-primary" style="flex-grow: 2;">Next</button>
+				<button onclick="addPost()"class="btn btn-primary" style="flex-grow: 1;"><span class="glyphicon glyphicon-eye-open"></span></button>
+			</div>
 		</div>
-		<!-- des -->
-		<div class="jumbotron jumbotron-fluid">
-			<h3>Whale Post Gallery</h3>
-			<p class="lead">Share your whale watching experience with others by uploading a picture of a whale and telling us where you've seen it! For now, there are <span id="destotal" style="color:blue"></span> photos.</p>		  
-		</div>
-    <!-- des end-->
-    <!-- Pagination -->
-    <div style="display: flex; justify-content: space-between; align-content: stretch; align-items: center;">
-      <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item" id='previousButton'>
-            <a class="page-link" onclick="previousPage()">Previous</a>
-          </li>
-          <li class="page-item"><a><span id="currPage">1</span> / <span id="navtotal"></span></a></li>
-          <li class="page-item" id='nextButton'>
-            <a class="page-link" onclick="nextPage()">Next</a>
-          </li>
-        </ul>
-      </nav>
-      <!-- <button type="button" class="btn btn-primary" onclick="clearUpload()">
-        I want to post!
-      </button> -->
-    </div>
-    <!-- Pagination end-->
-    <div class="container2">
-    <div class="mainbar"><!-- main part-->
+		<div id="gallery_map" class="col-md-8 col-sm-8 col-xs-12"></div>
+		<script>
+			var map;
+			var allmarkers = [];
+			var markerCluster;
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
+	</div>
 
-
-    <!-- data-toggle="modal" data-target="#uploadModal"  -->
-    <div class="tz-gallery">
-        <div id="putpics" style="display: flex; flex-wrap: wrap; justify-content: stretch;align-items:flex-end">
-            
-        </div>
-    </div>
-    </div><!-- main part end-->
-    <div class="sidebar" id="commentArea"><!-- sidebar-->
-      <div>
-        <span>Comments For</span>
-        <img id="comImg" style="width:100%"></img>
-      </div>
-      <hr/>
-      <div id="comHistory"></div><!-- get from database-->
-      <hr/>
-
-      <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start;margin:10px;">
-        <label for="commentName">Name:</label>
-        <input name="commentName" type="text" class="form-control" id="commentName">
-        <label for="commentDetail">Message *:</label>
-        <textarea name="commentDetail" class="form-control" id="commentDetail"></textarea>
-        <br/>
-        <div style="align-self: flex-end">
-          <button onclick="postComment()">Post</button>
-          <button onclick="cancelComment()">Close</button>
-        </div>
-        
-      </div>
-    </div><!-- sidebar end-->
-    </div><!-- container2 end-->
-    <!-- Pagination -->
-    <nav aria-label="...">
-      <ul class="pagination">
-        <li class="page-item" id='previousButton'>
-          <a class="page-link" onclick="previousPage()">Previous</a>
-        </li>
-        <li class="page-item"><a><span id="currPage2">1</span> / <span id="navtotal2"></span></a></li>
-        <li class="page-item" id='nextButton'>
-          <a class="page-link" onclick="nextPage()">Next</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- Pagination end-->
-  </div><!-- main part end-->
-
-
-  
-
- 
   <!-- Footer -->
 	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
-				</div>
-			</div>	
-		</div>
+		<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
 	</footer>
-<!-- Footer End -->
+	<!-- Footer End -->
 
-<!-- Modal -->
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Upload Your Photo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="form">
-      <div class="modal-body">    
-          <div class="upload-btn-wrapper">
-            <label for="pic" class="custom-file-upload">
-                <i class="fa fa-cloud-upload"></i>Choose A File
-            </label>
-            <input type="file" name="pic" id="pic" accept="image/*"/>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Upload Your Photo</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form">
+				<div class="modal-body">    
+						<div class="upload-btn-wrapper">
+							<label for="pic" class="custom-file-upload">
+									<i class="fa fa-cloud-upload"></i>Choose A File
+							</label>
+							<input type="file" name="pic" id="pic" accept="image/*"/>
+						</div>
+						<div id="progress">
+							<div class="progress-item"></div>
+						</div>  
+						<div>
+							<p id="tishi"></p>
+						</div>        
+						<div style="display: flex;justify-content: space-around">  
+							<img id="imgPreview" style="max-height:400px;"/>  
+						</div>  
+						<!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->    
+				</div>
+				<div class="modal-footer">
+					<div id="postMap"></div>
+					<script>
+						var postmap;
+						var postmapCenter;
+						var postmapMarker;
+						var postmapInfoWindow;
+          </script>
+          <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start">
+            <label for="select-species">Type: (click <a href="type_page.html">here</a> to know more about differnet types)</label>
+            <select id="select-species" style="width:100%;">
+              <option value="Other">Other</option>
+              <option value="Australian humpback dolphin-user">Australian humpback dolphin</option>
+              <option value="Australian snubfin dolphin-user">Australian snubfin dolphin</option>
+              <option value="Blue whale-user">Blue whale</option>
+              <option value="Common bottlenose dolphin-user">Common bottlenose dolphin</option>
+              <option value="Common dolphin-user">Common dolphin</option>
+              <option value="Dwarf minke whale-user">Dwarf minke whale</option>
+              <option value="Humpback whale-user">Humpback whale</option>
+              <option value="Killer whale-user">Killer whale</option>
+              <option value="Spinner dolphin-user">Spinner dolphin</option>
+              <option value="Southern right whale-user">Southern right whale</option>
+            </select>
+					  <label for="author">Author:</label>
+						<input name="author" type="text" class="form-control" id="author">
+						<label for="des">Description:</label>
+						<input name="des" type="text" class="form-control" id="des">
           </div>
-          <div id="progress">
-            <div class="progress-item"></div>
-          </div>  
-          <div>
-            <p id="tishi"></p>
-          </div>        
-          <div style="display: flex;justify-content: space-around">  
-            <img id="imgPreview" style="max-height:400px;"/>  
-          </div>  
-          <!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->    
-      </div>
-      <div class="modal-footer">
-        <div class="form-group" style="display: flex;flex-direction: column;align-items: flex-start">
-          <label for="author">Author:</label>
-          <input name="author" type="text" class="form-control" id="author">
-          <label for="des">Description:</label>
-          <input name="des" type="text" class="form-control" id="des">
-        </div>
-        <div id="postMap"></div>
-        <script>
-          var postmap;
-          var myCenter;
-          var marker;
-          var infoWindow;
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&callback=initMap"></script>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
+				</div>
+				</form> 
+			</div>
+		</div>
+	</div>
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
-      </div>
-      </form> 
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript" src="./assets/gallery/baguetteBox.min.js"></script>
-<script type="text/javascript" src="gallery.js"></script>
-<script type="text/javascript" src="gallery_map.js"></script>
+	
+<script type="text/javascript" src="gallery2.js"></script>
 </body>
- 
 </html>
