@@ -192,15 +192,15 @@ function showGallerySpot(filename) {
     var latt = markers[0].getAttribute('lat');
     var lngg = markers[0].getAttribute('lng');
     var center = new google.maps.LatLng(latt, lngg);
+    //recenter();
     map.panTo(center);
-    map.setZoom(8);
+    map.setZoom(10);
     google.maps.event.trigger(allmarkers[userMarkers[filename]], 'click');
   });
   location.href = "./gallery.html#gallery_map";
 }
 
 function resizeMap() {
-  console.log('sb4');
   google.maps.event.trigger(postmap, "resize");
   postmapMarker.setMap(null);
   postmap.panTo(postmapCenter);
