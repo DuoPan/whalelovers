@@ -189,7 +189,7 @@ function showGallerySpot(filename) {
     map.setZoom(8);
     google.maps.event.trigger(allmarkers[userMarkers[filename]], 'click');
   });
-  location.href = "./gallery2.html#gallery_map";
+  location.href = "./gallery.html#gallery_map";
 }
 
 function resizeMap() {

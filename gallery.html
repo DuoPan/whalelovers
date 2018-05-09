@@ -17,8 +17,13 @@
 }
 #sidebar {
 	height: 600px;
-	overflow-y: scroll;
 	padding: 0 !important;
+	overflow-y: scroll;
+}
+#sideControl{
+}
+#putpics{
+	
 }
 #gallery_map {
 	height: 600px;
@@ -92,22 +97,36 @@ input[type="file"] {
     <!-- /.container -->
   </nav>
   <!-- Nav Bar End -->
-
 	
 	<!-- link nav bar -->
 	<div style="margin-left: 1%;">
 		<p><a href="index.html">Home</a> -> Gallery</p>
 	</div>
 
+	<div id="sideControl"style="width: 100%;height: 34px; display: flex; justify-content: space-between;align-items: center;background-color: #0077be;color: white">
+		<button onclick="previousPage()" class="btn btn-primary" style="flex-grow: 1;">Previous</button>
+		<span id="currPage" style="flex-grow: 1; text-align:center">1</span> / <span id="navtotal" style="flex-grow: 1;text-align:center"></span>
+		<button onclick="nextPage()" class="btn btn-primary" style="flex-grow: 1;">Next</button>
+		<select id="search-select-name" placeholder="All" style="width: 20%; background-color: #0077be;color: white" onchange="whaleChange()">
+			<option value="All">All types of whales</option>
+			<option value="Other">Unknown whales</option>
+			<option value="Australian humpback dolphin">Australian humpback dolphin</option>
+			<option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+			<option value="Blue whale">Blue whale</option>
+			<option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+			<option value="Common dolphin">Common dolphin</option>
+			<option value="Dwarf minke whale">Dwarf minke whale</option>
+			<option value="Humpback whale">Humpback whale</option>
+			<option value="Killer whale">Killer whale</option>
+			<option value="Spinner dolphin">Spinner dolphin</option>
+			<option value="Southern right whale">Southern right whale</option>
+		</select>
+		<button onclick="addPost()"class="btn btn-primary" style="flex-grow: 1;"><span class="glyphicon glyphicon-eye-open"> post!</span></button>
+	</div>
+
 	<div id="mainArea" class="row">
 		<div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
 			<div id="putpics"></div>
-			<div style="width: 100%; display: flex; justify-content: space-between;align-items: center;">
-				<button onclick="previousPage()" class="btn btn-primary" style="flex-grow: 2;">Previous</button>
-				<span id="currPage" style="flex-grow: 1; text-align:center">1</span> / <span id="navtotal" style="flex-grow: 1;text-align:center"></span>
-				<button onclick="nextPage()" class="btn btn-primary" style="flex-grow: 2;">Next</button>
-				<button onclick="addPost()"class="btn btn-primary" style="flex-grow: 1;"><span class="glyphicon glyphicon-eye-open"></span></button>
-			</div>
 		</div>
 		<div id="gallery_map" class="col-md-8 col-sm-8 col-xs-12"></div>
 		<script>

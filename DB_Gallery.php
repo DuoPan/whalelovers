@@ -19,8 +19,8 @@ if (!$db_selected) {
 
 
 // Select all the rows in the markers table
-$offset = (intval($_GET['page']) - 1) * 12; //casting to int type!
-$query = "SELECT * FROM gallery order by filename desc LIMIT 12 OFFSET $offset";
+$offset = (intval($_GET['page']) - 1) * 6; //casting to int type!
+$query = "SELECT * FROM gallery order by filename desc LIMIT 6 OFFSET $offset";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());

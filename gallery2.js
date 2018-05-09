@@ -7,7 +7,7 @@ loadFromDB('./DB_Gallery_Count.php', function(data) {
 	var xml = data.responseXML;
 	var markers = xml.documentElement.getElementsByTagName('marker');
 	countImages = parseInt(markers[0].getAttribute('total'));
-	countPages = Math.ceil(countImages/12)
+	countPages = Math.ceil(countImages/6);
 	document.getElementById('navtotal').innerHTML = countPages;
 });
 
@@ -186,3 +186,17 @@ $("#pic").change(function(){
   document.getElementById("uploadBtn").disabled = false;
   preview();
 });
+
+function whaleChange() {
+  var whaleType = document.getElementById('search-select-name').value;
+  changeSidebar(whaleType);
+  changeMap(whaleType);
+}
+
+function changeSidebar(whaleType) {
+  
+}
+
+function changeMap(whaleType) {
+  
+}
