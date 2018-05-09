@@ -18,7 +18,9 @@ var customLabel = {
     ['Southern right whale','The southern right whale is a large whale that is easily distinguished from others because of its broad back without a dorsal fin, and wide pectoral fins'],
     ['Spinner dolphin','The spinner dolphin is a slender dolphin with an extremely long, thin beak. The dorsal fin ranges from slightly sickle-shaped to being erect and triangular.']
   ];
-  
+
+var userMarkers = {};
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('gallery_map'), {
     center: new google.maps.LatLng(-25.2744, 133.7751),
@@ -33,13 +35,16 @@ function initMap() {
   downloadUrl('./Db_Connect.php', function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
-    Array.prototype.forEach.call(markers, function(markerElem) {
+    Array.prototype.forEach.call(markers, function(markerElem,index) {
       var name = markerElem.getAttribute('name');
       var year = markerElem.getAttribute('year');
       var point = new google.maps.LatLng(
         parseFloat(markerElem.getAttribute('lat')),
         parseFloat(markerElem.getAttribute('lng')));
-  
+      var user_marker_key = markerElem.getAttribute('city');
+      if (user_marker_key.includes('.')){
+        userMarkers[user_marker_key] = index;
+      }
       var infowincontent = document.createElement('div');
       var heading = document.createElement('strong');
       var yearFound = document.createElement('text');
@@ -182,6 +187,7 @@ function showGallerySpot(filename) {
     var center = new google.maps.LatLng(latt, lngg);
     map.panTo(center);
     map.setZoom(8);
+    google.maps.event.trigger(allmarkers[userMarkers[filename]], 'click');
   });
   location.href = "./gallery2.html#gallery_map";
 }
