@@ -122,9 +122,11 @@ function upload(){
   var url="upload.php";
   var pic = document.getElementById('pic').files[0];
   if(pic===undefined){
+    document.getElementById("tishi").innerHTML = "Please choose a photo first.";
     return;
   }
   if(postmapMarker.position === undefined) {
+    document.getElementById("tishi").innerHTML = "Please pin a location on the map.";
     return;
   }
   document.getElementById("tishi").innerHTML = "Checking Content ...";

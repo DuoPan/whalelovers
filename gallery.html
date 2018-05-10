@@ -99,11 +99,11 @@ input[type="file"] {
 		<p><a href="index.html">Home</a> -> Gallery</p>
 	</div>
 
-	<div id="mainArea" class="row" style="display: flex; flex-direction: row;">
+	<div id="mainArea" class="row">
 		<div id="twoLefts" class="col-md-4 col-sm-4 col-xs-12" style="display: flex; flex-direction: column;">
 			<div id="sideControl" >
 				<ul class="pagination" style="width: 100%;display: flex;justify-content: space-between;margin-top:0%;margin-bottom: 0%;">
-						<select id="search-select-name" placeholder="All" style="background-color: #ffffff; color: #0077be;" onchange="whaleChange()">
+						<select id="search-select-name" style="background-color: #ffffff; color: #0077be;" onchange="whaleChange()">
 								<option value="All">All types of whales</option>
 								<option value="Other">Unknown whales</option>
 								<option value="Australian humpback dolphin">Australian humpback dolphin</option>
@@ -117,12 +117,12 @@ input[type="file"] {
 								<option value="Spinner dolphin">Spinner dolphin</option>
 								<option value="Southern right whale">Southern right whale</option>
 							</select>
-					<li class="page-item" style="flex-grow: 2;">
-						<a class="page-link" style="width: 100%;text-align:center;" onclick="previousPage()">Previous</a>
+					<li class="page-item"style="flex-grow: 1;" >
+						<a class="page-link" style="width: 100%;text-align:center;height: 100%;padding-top: 6px;" onclick="previousPage()"> < </a>
 					</li>
 					<li class="page-item" style="flex-grow: 1;"><a style="width: 100%;text-align:center;" ><span id="currPage">1</span> / <span id="navtotal"></span></a></li>
-					<li class="page-item" style="flex-grow: 2;">
-						<a style="width: 100%;text-align:center;"  class="page-link" onclick="nextPage()">Next</a>
+					<li class="page-item" style="flex-grow: 1;">
+						<a style="width: 100%;text-align:center;height: 100%;"  class="page-link" onclick="nextPage()">></a>
 					</li>
 				</ul>
 			</div>
