@@ -95,6 +95,15 @@ function initMap() {
         infowincontent.appendChild(knowmoreBtn); 
       }
 
+      if (name === "other" || name === "Other" || name.includes('-user')) {
+        infowincontent.appendChild(document.createElement('br'));
+        var author = markerElem.getAttribute('author');
+        var dess = markerElem.getAttribute('state');
+        var comment = document.createElement('text');
+        comment.textContent="Uploaded By: "+author+". "+dess;
+        infowincontent.appendChild(comment); 
+      }
+
       var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	
       google.maps.event.addListener(marker, 'click', function(evt) {
         //Sample Click Event
@@ -304,6 +313,15 @@ function changeMap(whaleType) {
       if (name !== "other" && name !== "Other") {
         infowincontent.appendChild(document.createElement('br'));
         infowincontent.appendChild(knowmoreBtn); 
+      }
+
+      if (name === "other" || name === "Other" || name.includes('-user')) {
+        infowincontent.appendChild(document.createElement('br'));
+        var author = markerElem.getAttribute('author');
+        var dess = markerElem.getAttribute('state');
+        var comment = document.createElement('text');
+        comment.textContent="Uploaded By: "+author+". "+dess;
+        infowincontent.appendChild(comment); 
       }
 
       var marker = new google.maps.Marker({position: point,icon: './assets/images/whale.png'}); 	

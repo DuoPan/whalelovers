@@ -85,7 +85,7 @@ namespace {
 
     // insert in to display
     $dt2 = date("d/m/Y");
-    $query2 = "INSERT INTO spot_display (name, lat, lon, year, city) VALUES ('$name','$lat','$lng','$dt2','$targetFileName')";
+    $query2 = "INSERT INTO spot_display (scientificname,name, lat, lon, year, city,state) VALUES ('$author','$name','$lat','$lng','$dt2','$targetFileName','$des')";
     $result2 = $db_selected->query($query2);
     if (!$result2) {
     	die('Invalid query: ' . mysqli_error($db_selected));
