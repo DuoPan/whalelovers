@@ -149,28 +149,38 @@ function search_advance(searchName,monSearch){
         });	
 		
 		if(heatmapData.length === 0){
-			confirm("No Records Found...!!")
+			var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 		    return;
 		}
 		
 		var neededData;
 		var locData = [];
-		//getting Prediction Details DATA
-		var statesData = $.getJSON('./getData.php',function(jsonData){
+		var whales = [];
+		var predicition = $.getJSON('./getData.php',function(jsonData){
 			neededData = jsonData
-			neededData.forEach(function(pdata){ 
-				var whaleName = JSON.stringify(pdata.Whales)
-				//Comparing whale name
+			neededData.forEach(function(dbdata){
+				var whaleName = JSON.stringify(dbdata.Whale)
+				var dbmonth = dbdata.months
+				var i =0
+				//check in the document for location
 				searchName.forEach(function(sname){
-					if(whaleName === "\""+sname+"\""){
-						locData.push(pdata.State)
-					}//End of IF
-				})//End of NameSearch
-			})//End of JSON data
-			//console.log(locData)
-			loadMarkers(locData)
-		});
-		//map.setZoom(13);
+					  var isNameExist = false;
+					if(whaleName === "\""+sname+"\"" ){
+						monSearch.forEach(function(smon){
+							if(smon === dbmonth){
+								//console.log("smon "+smon+"dbmonth "+dbmonth)
+								locData.push(dbdata.location)
+								whales.push(dbdata.Whale)
+							}
+						})
+					}
+				}) // Search Name
+			})// Data close
+			loadMarkers(locData,whales)
+		}); // Get Json close
+		
 		heatmap = new google.maps.visualization.HeatmapLayer({
 			data: heatmapData,
 			dissipating:true,
@@ -182,50 +192,49 @@ function search_advance(searchName,monSearch){
 	
 }
 
-function loadMarkers(locData){
-	var dbLocPlaces = [];
-	var ausStates = [];
-	$.getJSON('./predictionplace.php',function(jsonData){
-		jsonData.forEach(function(statePlace){
-			var state = statePlace.State
-			locData.forEach(function(pstate){
-				if(pstate === state){
-					var str = statePlace.Spots.split(",")
-					for(var i = 0; i< str.length; i++){
-						dbLocPlaces.push(str[i]+","+pstate)
-					}
-				}
-			})//Search finish
-		})//state search end		
-		drop(dbLocPlaces)
-	})//Prediction place end
+function loadMarkers(locData,whales){
+	clearMarkers();
+	for (var i = 0; i < locData.length; i++) {
+        drop(locData[i],whales[i])
+    }
 }
 
-function drop(dbLocPlaces){
-	
+function drop(dbLocPlaces,whaleN){
 	var geocoder =  new google.maps.Geocoder();
-	dbLocPlaces.forEach(function(element){
-		//console.log("Entered..:"+element)
-		geocoder.geocode({'address': ''+element+',Australia'},function(results,status){
+	geocoder.geocode({'address': ''+dbLocPlaces+',Australia'},function(results,status){
 			if (status == google.maps.GeocoderStatus.OK) {
 				var latLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
-				addMarkerWithTimeout(latLng, dbLocPlaces.length * 200,element);
-			}
-		})	
-		//console.log(latLngPlaces.length)
+				addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN);
+			}else{console.log("Not Ok")}
 	})
-	
-    
 }
 
-function addMarkerWithTimeout(position, timeout,name){
+function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 	window.setTimeout(function() {
-        markers.push(new google.maps.Marker({
+		var infowincontent = document.createElement('div');
+	    var heading = document.createElement('strong');
+		var locationText =  document.createElement('Text')
+		locationText.textContent = "Location: "+dbLocPlaces
+		heading.textContent = whaleN
+		infowincontent.appendChild(heading);
+		infowincontent.appendChild(document.createElement('br'));
+        infowincontent.appendChild(locationText);
+		var infoWindow = new google.maps.InfoWindow({
+			content: infowincontent
+		});
+		
+		
+		var marker = new google.maps.Marker({
 			position: position,
 			map: map,
-			title: name,
 			animation: google.maps.Animation.DROP
-        }));
+        })
+        
+		google.maps.event.addListener(marker, 'click', function() {
+			  infoWindow.open(map, marker);
+			  setTimeout(function () { infoWindow.close(); }, 3000);
+		});
+		markers.push(marker);	
     }, timeout);
 }
 

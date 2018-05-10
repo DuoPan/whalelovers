@@ -19,7 +19,7 @@
 
 
 	// Select all the rows in the markers table
-	$query = "SELECT * FROM prediction";
+	$query = "SELECT * FROM `new_prediction`";
 	$result = $db_selected->query($query);
 	if (!$result) {
 	  die('Invalid query: ' . mysqli_error());
