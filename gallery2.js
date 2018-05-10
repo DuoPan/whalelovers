@@ -201,7 +201,7 @@ function changeTotalPage(whaleType) {
     countPages = Math.ceil(countImages/6);
     document.getElementById('navtotal').innerHTML = countPages;
     if(countPages === 0) {
-      document.getElementById('currPage').innerHTML = "No User Uploaded Photo";
+      document.getElementById('currPage').innerHTML = 0;
     }else{
       document.getElementById('currPage').innerHTML = 1;
     }
