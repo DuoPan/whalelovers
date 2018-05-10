@@ -157,19 +157,13 @@ input[type="file"] {
 									<i class="fa fa-cloud-upload"></i>Choose A File
 							</label>
 							<input type="file" name="pic" id="pic" accept="image/*"/>
-						</div>
-						<div id="progress">
-							<div class="progress-item"></div>
-						</div>  
-						<div>
-							<p id="tishi"></p>
-						</div>        
+						</div>     
 						<div style="display: flex;justify-content: space-around">  
 							<img id="imgPreview" style="max-height:400px;"/>  
-						</div>  
-						<!-- <div id="uploadResult" class="hidden">Upload Successfully!</div> -->    
+						</div>    
 				</div>
 				<div class="modal-footer">
+					<label for="postMap" style="display: flex;flex-direction: row;">Pin the location you have taken the picture of whales.</label>
 					<div id="postMap"></div>
 					<script>
 						var postmap;
@@ -195,8 +189,14 @@ input[type="file"] {
 					  <label for="author">Author:</label>
 						<input name="author" type="text" class="form-control" id="author">
 						<label for="des">Description:</label>
-						<input name="des" type="text" class="form-control" id="des">
-          </div>
+						<input name="des" type="text" class="form-control" id="des">    
+					</div>
+					<div id="progress">
+						<div class="progress-item" style="width:100%;"></div>
+					</div> 
+					<div>
+						<p id="tishi" style="text-align: left;"></p>
+					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<input type="button" id="uploadBtn" class="btn btn-primary btn-sm" onClick="upload()" value="Upload" />
 				</div>
