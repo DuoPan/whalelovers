@@ -15,10 +15,17 @@ namespace Google\Cloud\Vision\V1{
             // echo ($label->getDescription() . ' ');
             if(strcmp($label->getDescription(), 'whale') == 0
               || strcmp($label->getDescription(), 'whales') == 0
+              || strcmp($label->getDescription(), 'Whale') == 0
+              || strcmp($label->getDescription(), 'Whales') == 0
               || strcmp($label->getDescription(), 'dolphins') == 0
               || strcmp($label->getDescription(), 'dolphin') == 0
+              || strcmp($label->getDescription(), 'Dolphin') == 0
+              || strcmp($label->getDescription(), 'Dolphins') == 0
+              || strcmp($label->getDescription(), 'Fish') == 0
               || strcmp($label->getDescription(), 'mammal') == 0
               || strcmp($label->getDescription(), 'marine') == 0
+              || strcmp($label->getDescription(), 'Mammal') == 0
+              || strcmp($label->getDescription(), 'Marine') == 0
               ){
                   $isWhale = true;
                   break;

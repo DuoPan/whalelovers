@@ -99,7 +99,9 @@ function initMap() {
         infowincontent.appendChild(document.createElement('br'));
         var author = markerElem.getAttribute('author');
         var dess = markerElem.getAttribute('state');
-        var comment = document.createElement('text');
+        var comment = document.createElement('div');
+        comment.style.maxWidth = "300px";
+        comment.style.wordBreak = "break-all";
         comment.textContent="Uploaded By: "+author+". "+dess;
         infowincontent.appendChild(comment); 
       }
@@ -319,7 +321,9 @@ function changeMap(whaleType) {
         infowincontent.appendChild(document.createElement('br'));
         var author = markerElem.getAttribute('author');
         var dess = markerElem.getAttribute('state');
-        var comment = document.createElement('text');
+        var comment = document.createElement('div');
+        comment.style.maxWidth = "300px";
+        comment.style.wordBreak = "break-all";
         comment.textContent="Uploaded By: "+author+". "+dess;
         infowincontent.appendChild(comment); 
       }
