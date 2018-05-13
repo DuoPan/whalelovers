@@ -106,6 +106,7 @@ function addPost() {
 
   // do map
   resizeMap();
+  isOnWater = true;
 }
 
 var illegalLetters=['<','>','\\','/','`','%','|','&'];
@@ -121,6 +122,11 @@ function checkIllegal(str) {
 }
 
 function upload(){
+  if(!isOnWater) {
+    //document.getElementById("tishi").innerHTML = "Please pin on the water.";
+    return;
+  }
+
   var authorInput = document.getElementById('author').value;
   if (authorInput===""){
     document.getElementById('author').style.borderColor = 'red';

@@ -21,6 +21,8 @@ var customLabel = {
 
 var userMarkers = {};
 
+var isOnWater = false;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('gallery_map'), {
     center: new google.maps.LatLng(-25.2744, 133.7751),
@@ -68,7 +70,7 @@ function initMap() {
           });
         }
         else{
-          heading.textContent = "Unknown (User Uploded)";
+          heading.textContent = "Unknown (User Uploaded)";
         }
       }
       knowmoreBtn.innerHTML = "Know More";
@@ -219,6 +221,22 @@ function resizeMap() {
 }
 
 function placeMarker(location) {
+  document.getElementById("tishi").innerHTML = "Checking Pin loaction";  
+  fetch("https://api.onwater.io/api/v1/results/"+location.lat().toFixed(6)+","+location.lng().toFixed(6))
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      if(myJson.water) {
+        isOnWater = true;
+        document.getElementById("tishi").innerHTML = "";  
+      }
+      else {
+        isOnWater = false;
+        document.getElementById("tishi").innerHTML = "Please pin on water";  
+      }
+    });
+  
   postmapMarker.setMap(null);
   postmapMarker = new google.maps.Marker({
       position: location, 
@@ -290,7 +308,7 @@ function changeMap(whaleType) {
           });
         }
         else{
-          heading.textContent = "Unknown (User Uploded)";
+          heading.textContent = "Unknown (User Uploaded)";
         }
       }
       knowmoreBtn.innerHTML = "Know More";
