@@ -1,5 +1,5 @@
 <?php
-	require("include/Db_Config.php");
+	require("../include/Db_Config.php");
 	header("Access-Control-Allow-Origin: *");
 	function parseToXML($htmlStr)
 	{
@@ -19,7 +19,7 @@
 
 
 	// Select all the rows in the markers table
-	$query = "SELECT * FROM `new_prediction`";
+	$query = "SELECT name,count(name) as total,months FROM spot_iteration2 group by name,months ORDER BY months,name ASC";
 	$result = $db_selected->query($query);
 	if (!$result) {
 	  die('Invalid query: ' . mysqli_error());

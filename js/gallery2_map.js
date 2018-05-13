@@ -32,7 +32,7 @@ function initMap() {
   var infoWindow = new google.maps.InfoWindow;
   
   //Reading Php File
-  downloadUrl('./Db_Connect.php', function(data) {
+  downloadUrl('./php/Db_Connect.php', function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     Array.prototype.forEach.call(markers, function(markerElem,index) {
@@ -197,7 +197,7 @@ function recenter() {
 }
 
 function showGallerySpot(filename) {
-  loadFromDBOnePara('./DB_LatlngByFilename.php', filename,'nothing', function(data) {
+  loadFromDBOnePara('./php/DB_LatlngByFilename.php', filename,'nothing', function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var latt = markers[0].getAttribute('lat');
@@ -247,7 +247,7 @@ function changeMap(whaleType) {
   clearMap();
   var imgLoc = './assets/images/smallDesc/';
   var infoWindow = new google.maps.InfoWindow;
-  downloadUrl('./Db_Connect.php', function(data) {
+  downloadUrl('./php/Db_Connect.php', function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var passIndex = 0;

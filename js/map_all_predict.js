@@ -8,7 +8,7 @@ function initMap() {
   var imgLoc = './assets/images/smallDesc/'
   var infoWindow = new google.maps.InfoWindow;
   //Reading Php File
-  downloadUrl('./Db_Connect_predict.php', function(data) {
+  downloadUrl('./php/Db_Connect_predict.php', function(data) {
       var xml = data.responseXML;
       var markers = xml.documentElement.getElementsByTagName('marker');
       Array.prototype.forEach.call(markers, function(markerElem) {
@@ -107,7 +107,7 @@ function search_advance(searchName,monSearch){
 	}
 
 	
-    downloadUrl('./Db_Connect_predict.php', function (data) {
+    downloadUrl('./php/Db_Connect_predict.php', function (data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function (markerElem) {
@@ -158,7 +158,7 @@ function search_advance(searchName,monSearch){
 		var neededData;
 		var locData = [];
 		var whales = [];
-		var predicition = $.getJSON('./getData.php',function(jsonData){
+		var predicition = $.getJSON('./php/getData.php',function(jsonData){
 			neededData = jsonData
 			neededData.forEach(function(dbdata){
 				var whaleName = JSON.stringify(dbdata.Whale)
@@ -205,7 +205,7 @@ function drop(dbLocPlaces,whaleN){
 			if (status == google.maps.GeocoderStatus.OK) {
 				var latLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
 				addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN);
-			}else{console.log("Not Ok")}
+            }
 	})
 }
 

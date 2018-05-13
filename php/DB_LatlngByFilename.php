@@ -1,5 +1,5 @@
 <?php
-require("include/Db_Config.php");
+require("../include/Db_Config.php");
 header("Access-Control-Allow-Origin: *");
 function parseToXML($htmlStr)
 {
@@ -17,22 +17,16 @@ if (!$db_selected) {
   die('Not connected : ' . mysqli_error());
 }
 
-$type = $_GET['type'];
-if($type == 'All'){
-  $query = "SELECT count(*) as total FROM gallery";
-}
-else {
-  $query = "SELECT count(*) as total FROM gallery where type='$type'";
-}
+$fn = $_GET['page'];
 // Select all the rows in the markers table
-
+$query = "SELECT * FROM spot_display where city = '$fn'";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
 }
 
 header("Content-type: text/xml");
-// $_GET['page'];
+
 // Start XML file, echo parent node
 echo "<?xml version='1.0' ?>";
 echo '<markers>';
@@ -41,7 +35,11 @@ $ind=0;
 while ($row = @mysqli_fetch_assoc($result)){
   // Add to XML document node
   echo '<marker ';
-  echo 'total="' . $row['total'] . '" ';
+  echo 'name="' . parseToXML($row['name']) . '" ';
+  echo 'lat="' . $row['lat'] . '" ';
+  echo 'lng="' . $row['lon'] . '" ';
+  echo 'year="' . $row['year'] . '" ';
+  echo 'city="' . $row['city'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }

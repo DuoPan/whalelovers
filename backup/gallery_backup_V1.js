@@ -12,7 +12,7 @@ getIP();
 
 var countImages = 0;
 var countPages = 0;
-loadTotalNum('./DB_Gallery_Count.php', function(data) {
+loadTotalNum('../php/DB_Gallery_Count.php', function(data) {
 	var xml = data.responseXML;
 	var markers = xml.documentElement.getElementsByTagName('marker');
 	countImages = parseInt(markers[0].getAttribute('total'));
@@ -62,7 +62,7 @@ function displayPage(pageNum) {
     });
   });
     filenames = [];
-    loadImages('./DB_Gallery.php', pageNum, function(data) {
+    loadImages('../php/DB_Gallery.php', pageNum, function(data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function(markerElem) {
@@ -165,7 +165,7 @@ function upload(){
     return;
   }
   document.getElementById('des').style.borderColor = '';
-  var url="upload.php";
+  var url="../php/upload.php";
   var pic = document.getElementById('pic').files[0];
   if(pic===undefined){
     return;

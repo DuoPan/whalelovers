@@ -3,7 +3,7 @@ var countPages = 0;
 var page = document.getElementById('currPage');
 page.innerHTML = 1;
 
-loadFromDB('./DB_Gallery_Count.php','All', function(data) {
+loadFromDB('./php/DB_Gallery_Count.php','All', function(data) {
 	var xml = data.responseXML;
 	var markers = xml.documentElement.getElementsByTagName('marker');
 	countImages = parseInt(markers[0].getAttribute('total'));
@@ -42,7 +42,7 @@ function loadFromDBOnePara(url, page, type, callback) {
 }
 
 function displayPage(pageNum, type) {
-  loadFromDBOnePara('./DB_Gallery.php', pageNum, type, function(data) {
+  loadFromDBOnePara('./php/DB_Gallery.php', pageNum, type, function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     var mainDiv = document.getElementById('putpics');
@@ -144,7 +144,7 @@ function upload(){
     return;
   }
   document.getElementById('des').style.borderColor = '';
-  var url="upload.php";
+  var url="./php/upload.php";
   var pic = document.getElementById('pic').files[0];
   if(pic===undefined){
     document.getElementById("tishi").innerHTML = "Please choose a photo first.";
@@ -221,7 +221,7 @@ function whaleChange() {
   changeMap(whaleType);
 }
 function changeTotalPage(whaleType) {
-  loadFromDB('./DB_Gallery_Count.php',whaleType, function(data) {
+  loadFromDB('./php/DB_Gallery_Count.php',whaleType, function(data) {
     var xml = data.responseXML;
     var markers = xml.documentElement.getElementsByTagName('marker');
     countImages = parseInt(markers[0].getAttribute('total'));

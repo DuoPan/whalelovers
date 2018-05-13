@@ -1,5 +1,5 @@
 <?php
-require("include/Db_Config.php");
+require("../include/Db_Config.php");
 header("Access-Control-Allow-Origin: *");
 function parseToXML($htmlStr)
 {
@@ -19,9 +19,19 @@ if (!$db_selected) {
 
 // Select all the rows in the markers table
 $imgName = $_GET['imgName'];
-$ip = $_GET['ip'];
+$name = $_GET['name'];
+$message = $_GET['message'];
 
-$query = "INSERT INTO thumbsup (ip, filename) VALUES ('$ip','$imgName')";
+$query1 = "SELECT count(*) as total FROM comment";
+$result1 = $db_selected->query($query1);
+if (!$result1) {
+  die('Invalid query: ' . mysqli_error());
+}
+$row = @mysqli_fetch_assoc($result1);
+$id=$row['total'];
+
+
+$query = "INSERT INTO comment (filename, id, message, name) VALUES ('$imgName','$id','$message', '$name')";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());

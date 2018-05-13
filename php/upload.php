@@ -1,9 +1,9 @@
 <?php
 // do no add any other echo in this file.
 namespace Google\Cloud\Vision\V1{
-    require_once 'include/vendor/autoload.php';
-    putenv('GOOGLE_APPLICATION_CREDENTIALS=./include/FIT5120-458c75cb13b0.json');
-    putenv('TMPDIR=./temp'); // fix temp floder premisson when big file.
+    require_once '../include/vendor/autoload.php';
+    putenv('GOOGLE_APPLICATION_CREDENTIALS=../include/FIT5120-458c75cb13b0.json');
+    putenv('TMPDIR=../temp'); // fix temp floder premisson when big file.
 
     $imageAnnotator = new ImageAnnotatorClient();
     $image = file_get_contents($_FILES['pic']['tmp_name']);
@@ -43,7 +43,7 @@ namespace Google\Cloud\Vision\V1{
 
 namespace {
     $pic = $_FILES['pic']['tmp_name'];
-    $uploadDir = 'assets/photos'; 
+    $uploadDir = '../assets/photos'; 
     // $uploadDir = "/var/www/html/assets/photos"
     if(!file_exists($uploadDir)){        
         mkdir($uploadDir, 0777);    
@@ -56,7 +56,7 @@ namespace {
     // echo $targetFileName;echo"**";"1524973354a7.jpg"
     // echo $targetFile;"assets/photos/1524973354a7.jpg"
 
-    require("include/Db_Config.php");
+    require("../include/Db_Config.php");
     header("Access-Control-Allow-Origin: *");
     function parseToXML($htmlStr)
     {

@@ -1,5 +1,5 @@
 <?php
-require("include/Db_Config.php");
+require("../include/Db_Config.php");
 header("Access-Control-Allow-Origin: *");
 function parseToXML($htmlStr)
 {

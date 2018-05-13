@@ -19,7 +19,7 @@ var found9 = [];
 var found10 = [];
 
 
-	var foundData = $.getJSON('./search_function.php', function(jsonData) { 
+	var foundData = $.getJSON('./php/search_function.php', function(jsonData) { 
 		neededData = jsonData;
 		handleData(nameSearch[0],found1,"chartdiv1",neededData);
 		handleData(nameSearch[1],found2,"chartdiv2",neededData);

@@ -46,7 +46,7 @@ function search_advance(nameSearch, monSearch, locSearch)
 		heatmapData = [];
     }
         
-    downloadUrl('./Db_Connect.php', function (data) {
+    downloadUrl('../php/Db_Connect.php', function (data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function (markerElem) {

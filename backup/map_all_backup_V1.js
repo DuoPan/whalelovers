@@ -34,7 +34,7 @@ function initMap() {
   showCurrentLocation(map);
   
   //Reading Php File
-  downloadUrl('./Db_Connect.php', function(data) {
+  downloadUrl('../php/Db_Connect.php', function(data) {
       var xml = data.responseXML;
       var markers = xml.documentElement.getElementsByTagName('marker');
       Array.prototype.forEach.call(markers, function(markerElem) {
@@ -223,7 +223,7 @@ function resetMap() {
   var imgLoc = './assets/images/smallDesc/'
   var infoWindow = new google.maps.InfoWindow;
 
-  downloadUrl('./Db_Connect.php', function(data) {
+  downloadUrl('../php/Db_Connect.php', function(data) {
       var xml = data.responseXML;
       var markers = xml.documentElement.getElementsByTagName('marker');
       Array.prototype.forEach.call(markers, function(markerElem) {

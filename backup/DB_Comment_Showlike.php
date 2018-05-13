@@ -1,5 +1,5 @@
 <?php
-require("include/Db_Config.php");
+require("../include/Db_Config.php");
 header("Access-Control-Allow-Origin: *");
 function parseToXML($htmlStr)
 {
@@ -18,24 +18,32 @@ if (!$db_selected) {
 }
 
 // Select all the rows in the markers table
-$imgName = $_GET['imgName'];
-$name = $_GET['name'];
-$message = $_GET['message'];
+$ip = $_GET['ip'];
 
-$query1 = "SELECT count(*) as total FROM comment";
-$result1 = $db_selected->query($query1);
-if (!$result1) {
-  die('Invalid query: ' . mysqli_error());
-}
-$row = @mysqli_fetch_assoc($result1);
-$id=$row['total'];
+$query = "SELECT filename FROM thumbsup WHERE ip = '$ip'";
 
-
-$query = "INSERT INTO comment (filename, id, message, name) VALUES ('$imgName','$id','$message', '$name')";
 $result = $db_selected->query($query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error());
 }
+
+header("Content-type: text/xml");
+// $_GET['page'];
+// Start XML file, echo parent node
+echo "<?xml version='1.0' ?>";
+echo '<markers>';
+$ind=0;
+// Iterate through the rows, printing XML nodes for each
+while ($row = @mysqli_fetch_assoc($result)){
+  // Add to XML document node
+  echo '<marker ';
+  echo 'filename="' . parseToXML($row['filename']) . '" ';
+  echo '/>';
+  $ind = $ind + 1;
+}
+
+// End XML file
+echo '</markers>';
 $db_selected->close();
 
 ?>
