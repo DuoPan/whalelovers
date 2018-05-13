@@ -108,14 +108,39 @@ function addPost() {
   resizeMap();
 }
 
+var illegalLetters=['<','>','\\','/','`','%','|','&'];
+function checkIllegal(str) {
+  isLeagal = true;
+  illegalLetters.forEach(function(letter) {
+    if(str.includes(letter)) {
+      isLeagal = false;
+      return isLeagal;
+    }
+  });
+  return isLeagal;
+}
+
 function upload(){
-  if (document.getElementById('author').value===""){
+  var authorInput = document.getElementById('author').value;
+  if (authorInput===""){
     document.getElementById('author').style.borderColor = 'red';
     return;
   }
+  if (!checkIllegal(authorInput)){
+    document.getElementById('author').style.borderColor = 'red';
+    document.getElementById("tishi").innerHTML = "Author text field contains illegal information.";
+    return;
+  }
   document.getElementById('author').style.borderColor = '';
-  if (document.getElementById('des').value===""){
+
+  var desInput = document.getElementById('des').value;
+  if (desInput===""){
     document.getElementById('des').style.borderColor = 'red';
+    return;
+  }
+  if (!checkIllegal(desInput)){
+    document.getElementById('des').style.borderColor = 'red';
+    document.getElementById("tishi").innerHTML = "Description text field contains illegal information.";
     return;
   }
   document.getElementById('des').style.borderColor = '';
