@@ -215,10 +215,16 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 	    var heading = document.createElement('strong');
 		var locationText =  document.createElement('Text')
 		locationText.textContent = "Location: "+dbLocPlaces
+		btn.appendChild(document.createTextNode("Add To List"))
+		btn.setAttribute("class","btn btn-primary");
+		btn.onclick = addToList;
 		heading.textContent = whaleN
 		infowincontent.appendChild(heading);
 		infowincontent.appendChild(document.createElement('br'));
         infowincontent.appendChild(locationText);
+		infowincontent.appendChild(document.createElement('br'));
+		infowincontent.appendChild(document.createElement('br'));
+		infowincontent.appendChild(btn)
 		var infoWindow = new google.maps.InfoWindow({
 			content: infowincontent
 		});
