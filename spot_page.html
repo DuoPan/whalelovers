@@ -317,18 +317,33 @@
 				<!--Description ends here!!-->
 			</div>
 		</div>
-		<div id="map" class="col-md-9" style="height:600px;"></div>
-		<!--Column 2-->
-		<script>
-			var map;
-			var heatmap;
-			var heatmapData = [];
-			var markers = [];
-			var latLngPlaces = [];
-		</script>
-		<script src="./js/map_all_predict.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
-	</div>
+		<div id="map" class="col-md-6" style="height:600px;"></div>
+			<!--Column 2-->
+			<script>
+				var map;
+				var heatmap;
+				var heatmapData = [];
+				var markers = [];
+				var latLngPlaces = [];
+			</script>
+			<script src="./js/map_all_predict.js"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
+		</div>
+		<!-- Left side panel-->
+			<div class="col-md-3">
+				<div class="row">
+					<div class="polaroid">
+							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:200px;">
+								<!--Logo on top-->
+								<img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:2px; padding-bottom:5%;"></img>	
+								<!--Description section-->
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;"><!--Description Content-->
+									<h5>Select the whale type and months to plan your trip..!!</h5>
+								</div>
+						</div>		
+					</div>
+				</div>	
+			</div> <!-- Left side panel ends here -->
 	<div id="snackbar">No records have been found with the provided Search criteria. Please try with other Months are whale types</div>
 	<!--Content Ends -->
 	<!-- Footer -->

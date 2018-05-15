@@ -213,9 +213,10 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 	window.setTimeout(function() {
 		var infowincontent = document.createElement('div');
 	    var heading = document.createElement('strong');
-		var locationText =  document.createElement('Text')
-		locationText.textContent = "Location: "+dbLocPlaces
-		btn.appendChild(document.createTextNode("Add To List"))
+		var locationText =  document.createElement('Text');
+		var btn = document.createElement('Button');
+		locationText.textContent = "Location: "+dbLocPlaces;
+		btn.appendChild(document.createTextNode("Add To List"));
 		btn.setAttribute("class","btn btn-primary");
 		btn.onclick = addToList;
 		heading.textContent = whaleN
@@ -255,4 +256,8 @@ function recenter() {
     var center = new google.maps.LatLng(-25.2744, 133.7751);
     map.panTo(center);
     map.setZoom(4);
+}
+
+function addToList(){
+	alert("clicked!!")
 }
