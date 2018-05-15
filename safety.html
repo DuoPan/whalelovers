@@ -1,238 +1,308 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-<script src="./assets/jquery.min.js"></script>
-<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- Bootstrap  End -->
 
-<!-- Fonts -->
-<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/71991e4b10.js"></script>
-<!-- Squad theme CSS -->
-<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
-<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
-<style>
-	
-.tab .nav-tabs{
-	padding-left: 15px;
-	border-bottom: 4px solid #0077be;
-}
-.tab .nav-tabs li a{
-	color: #fff;
-	padding: 10px 20px;
-	margin-right: 10px;
-	background: #0077be;
-	text-shadow: 1px 1px 2px #000;
-	border: none;
-	border-radius: 0;
-	opacity: 0.5;
-	position: relative;
-	transition: all 0.3s ease 0s;
-}
-.tab .nav-tabs li a:hover{
-	background: #0077be;
-	opacity: 0.8;
-}
-.tab .nav-tabs li.active a{
-	opacity: 1;
-}
-.tab .nav-tabs li.active a,
-.tab .nav-tabs li.active a:hover,
-.tab .nav-tabs li.active a:focus{
-	color: #fff;
-	background: #0077be;
-	border: none;
-	border-radius: 0;
-}
-.tab .nav-tabs li a:before,
-.tab .nav-tabs li a:after{
-	content: "";
-	border-top: 42px solid transparent;
-	position: absolute;
-	top: -2px;
-}
-.tab .nav-tabs li a:before{
-	border-right: 15px solid #0077be;
-	left: -15px;
-}
-.tab .nav-tabs li a:after{
-	border-left: 15px solid #0077be;
-	right: -15px;
-}
-.tab .nav-tabs li a i,
-.tab .nav-tabs li.active a i{
-	display: inline-block;
-	padding-right: 5px;
-	font-size: 15px;
-	text-shadow: none;
-}
-.tab .nav-tabs li a span{
-	display: inline-block;
-	font-size: 14px;
-	/* letter-spacing: -9px; */
-	/* opacity: 0; */
-	transition: all 0.3s ease 0s;
-}
-.tab .nav-tabs li a:hover span,
-.tab .nav-tabs li.active a span{
-	/* letter-spacing: 1px; */
-	/* opacity: 1; */
-	transition: all 0.3s ease 0s;
-}
-.tab .tab-content{
-	padding: 30px;
-	background: #fff;
-	font-size: 16px;
-	color: #6c6c6c;
-	line-height: 25px;
-}
-.tab .tab-content h3{
-	font-size: 24px;
-	margin-top: 0;
-}
-@media only screen and (max-width: 479px){
-	.tab .nav-tabs li{
-		width: 100%;
-		margin-bottom: 5px;
-		text-align: center;
-	}
-	/* .tab .nav-tabs li a span{
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+	<script src="./assets/jquery.min.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap  End -->
+
+	<!-- Fonts -->
+	<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
+	<script src="https://use.fontawesome.com/71991e4b10.js"></script>
+	<!-- Squad theme CSS -->
+	<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+	<style>
+		.tab .nav-tabs {
+			padding-left: 15px;
+			border-bottom: 4px solid #0077be;
+		}
+
+		.tab .nav-tabs li a {
+			color: #fff;
+			padding: 10px 20px;
+			margin-right: 10px;
+			background: #0077be;
+			text-shadow: 1px 1px 2px #000;
+			border: none;
+			border-radius: 0;
+			opacity: 0.5;
+			position: relative;
+			transition: all 0.3s ease 0s;
+		}
+
+		.tab .nav-tabs li a:hover {
+			background: #0077be;
+			opacity: 0.8;
+		}
+
+		.tab .nav-tabs li.active a {
+			opacity: 1;
+		}
+
+		.tab .nav-tabs li.active a,
+		.tab .nav-tabs li.active a:hover,
+		.tab .nav-tabs li.active a:focus {
+			color: #fff;
+			background: #0077be;
+			border: none;
+			border-radius: 0;
+		}
+
+		.tab .nav-tabs li a:before,
+		.tab .nav-tabs li a:after {
+			content: "";
+			border-top: 42px solid transparent;
+			position: absolute;
+			top: -2px;
+		}
+
+		.tab .nav-tabs li a:before {
+			border-right: 15px solid #0077be;
+			left: -15px;
+		}
+
+		.tab .nav-tabs li a:after {
+			border-left: 15px solid #0077be;
+			right: -15px;
+		}
+
+		.tab .nav-tabs li a i,
+		.tab .nav-tabs li.active a i {
+			display: inline-block;
+			padding-right: 5px;
+			font-size: 15px;
+			text-shadow: none;
+		}
+
+		.tab .nav-tabs li a span {
+			display: inline-block;
+			font-size: 14px;
+			/* letter-spacing: -9px; */
+			/* opacity: 0; */
+			transition: all 0.3s ease 0s;
+		}
+
+		.tab .nav-tabs li a:hover span,
+		.tab .nav-tabs li.active a span {
+			/* letter-spacing: 1px; */
+			/* opacity: 1; */
+			transition: all 0.3s ease 0s;
+		}
+
+		.tab .tab-content {
+			padding: 30px;
+			background: #fff;
+			font-size: 16px;
+			color: #6c6c6c;
+			line-height: 25px;
+		}
+
+		.tab .tab-content h3 {
+			font-size: 24px;
+			margin-top: 0;
+		}
+
+		@media only screen and (max-width: 479px) {
+			.tab .nav-tabs li {
+				width: 100%;
+				margin-bottom: 5px;
+				text-align: center;
+			}
+			/* .tab .nav-tabs li a span{
 		letter-spacing: 1px;
 		opacity: 1;
 	} */
-}
-</style>
-<title>Safety</title>
-<link rel="shortcut icon" href="assets/images/whale.png" />
+		}
+	</style>
+	<title>Safety</title>
+	<link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 
 <body style="padding-top: 80px">
 
 	<!-- Nav Bar -->
-  <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
-    <div class="container">
-      <div class="navbar-header">
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
+		<div class="container">
+			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-		  		<i class="fa fa-bars"></i>
+					<i class="fa fa-bars"></i>
 				</button>
-        		<img style="display:inline;" class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
+				<img style="display:inline;" class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
 				<a class="navbar-brand">
 					<h1>WhaleLovers</h1>
 				</a>
-    	</div>
+			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html"  style="color:white">Home</a></li>
-					<li><a href="spot_page.html" style="color:white">Prediction</a></li>
-					<li><a href="type_page.html" style="color:white">Classification</a></li>	
-					<li class="active"><a href="" style="color:white">Safety</a></li>					
-					<li><a href="gallery.html" style="color:white">Gallery</a></li>	
+					<li>
+						<a href="index.html" style="color:white">Home</a>
+					</li>
+					<li>
+						<a href="spot_page.html" style="color:white">Prediction</a>
+					</li>
+					<li>
+						<a href="type_page.html" style="color:white">Classification</a>
+					</li>
+					<li class="active">
+						<a href="" style="color:white">Safety</a>
+					</li>
+					<li>
+						<a href="gallery.html" style="color:white">Gallery</a>
+					</li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
-    <!-- /.container -->
-  </nav>
-  <!-- Nav Bar End -->
+		<!-- /.container -->
+	</nav>
+	<!-- Nav Bar End -->
 
-<!-- main content-->
-<div style="padding-left:1%; padding-right:1%">
-	<!-- link nav bar -->
-	<div>
-		<!-- <span class="glyphicon glyphicon-arrow-right"></span> -->
-		<p><a href="index.html">Home</a> -> Safety</p>
-	</div>
-	<!-- link nav bar  end-->
-	<!-- des -->
-	<div class="jumbotron jumbotron-fluid">
-		<h3>Water safety around marine mammals</h3>
-		<p class="lead">Seeing whales, dolphins and seals is a special experience, but they may see humans as a threat or be harmed by human activity. Follow the rules for the safety of all.</p>		  
-    </div>
-    <br/>
-    <!-- des end-->
-	<div class="row">
-		<div class="col-md-12">
-			<div class="tab" role="tabpanel">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#Section1" role="tab" data-toggle="tab"><i class="fa fa-grav"></i><span>Swimming and Surfing</span></a></li>
-					<li role="presentation"><a href="#Section2" role="tab" data-toggle="tab"><i class="fa fa-ship"></i><span>Boating</span></a></li>
-					<li role="presentation"><a href="#Section3" role="tab" data-toggle="tab"><i class="fa fa-telegram"></i><span>Flying</span></a></li>
-					<li role="presentation"><a href="#Section4" role="tab" data-toggle="tab"><i class="fa fa-id-card-o"></i><span>Licensed tour operators</span></a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content tabs">
-					<div role="tabpanel" class="tab-pane fade in active" id="Section1" Style="text-align: justify; text-justify: inter-word;">
-						<h3>Swimming and Surfing</h3>
-						<p>Keep a safe distance. You must not swim or surf within 30 metres of a dolphin or 50 metres of a whale. These distances are sufficient to allow the animals to move away from you and to give you a chance to get out of their way.</p>
-						<p>Swimming with dolphins. Swimming with dolphins is only legal if conducted as part of a licensed tour and only if the dolphins choose to approach you. In all other situations you must stay at least 30 metres away when swimming.</p>
-						<p>It is illegal to touch marine mammals. These are wild animals that generally don't like being touched by humans, and can bite, scratch or slap you with their fins.</p>
-						<p>Never attempt to feed marine mammals. Wild animals rarely (if ever) need to be fed by humans. Some animals such as seals may also become dependent on handouts and can become aggressive towards people.</p>
-					</div>
-					<div role="tabpanel" class="tab-pane fade" id="Section2" Style="text-align: justify; text-justify: inter-word;">
-						<h3>Boating</h3>
-						<p>Boating is a great way to see whales, dolphins and seals. However boats can disturb the way marine mammals feed and behave.</p>
-						<p>To reduce these impacts there are limits on how close boats can get to marine mammals, as well as restrictions on the way they may operate when close by.</p>
-						<p>When in the caution zone, all vessels (motorised or not) must:</p>
-						<ul>
-							<li>avoid sudden changes in direction</li>
-							<li>maintain a constant speed not exceeding 5 knots (8 kilometres per hour)</li>
-							<li>leave the caution zone if a marine mammal shows any sign of disturbance</li>
-							<li>not approach whales, dolphins or seals from directly in front of the animal</li>
-							<li>not approach whales, dolphins or seals from directly behind the animal</li>
-							<li>not be in the known path of a whale, dolphin or seal</li>
-							<li>not form a barrier between a marine mammal and its group</li>
-							<li>not come between a mother and her young.</li>
-						</ul>
-						<p>If a marine mammal approaches you – if a dolphin decides to ride the bow wave of your boat or if it takes an interest in your vessel, for example – you are not committing an offence.</p>
-						<p>However, if you deliberately approach closer than the minimum prescribed distances you may be liable for prosecution.</p>
-						<p>In a narrow waterway (that is, waterways less than 300 metres wide), you cannot approach closer than 30 metres to a whale or dolphin, unless navigating for safe passage.</p>
-						<p>There are no restrictions on how close you can get to a seal in the water but there are restrictions on boating around protected areas and seal breeding colonies, how you operate your boat around a seal and approaching seals on land.</p>
-						<p>Licensed tour operators are permitted to approach closer than distances detailed above, subject to a range of operating conditions.</p>
-						<p>By taking these small steps, you'll not only be doing the right thing by the animals, you'll be helping to make sure future generations can enjoy the sights and sounds of whales, dolphins and seals for a long time to come.</p>
-					</div>
-					<div role="tabpanel" class="tab-pane fade" id="Section3" Style="text-align: justify; text-justify: inter-word;">
-						<h3>Flying</h3>
-						<p>Viewing marine mammals from the air is one of the best ways to get an appreciation of their size and magnificence, but aircraft, like boats, can disturb the way marine mammals feed and behave.</p>
-						<p>To reduce these impacts, there are limits on how close aircraft can get to whales, dolphins and seals, and restrictions on the way aircraft may operate when close to marine mammals.</p>
-						<p>These restrictions apply to both fixed-wing aircraft, helicopters and drones.</p>
-						<p>When in the 500m caution zone, all aircraft must:</p>
-						<ul>
-							<li>avoid sudden changes in direction</li>
-							<li>maintain a constant speed not exceeding 5 knots (8 kilometres per hour)</li>
-							<li>leave the caution zone if a marine mammal shows any sign of disturbance</li>
-							<li>not approach whales, dolphins or seals from directly in front of the animal</li>
-							<li>not approach whales, dolphins or seals from directly behind the animal</li>
-							<li>not be in the known path of a whale, dolphin or seal</li>
-							<li>not form a barrier between a marine mammal and its group</li>
-							<li>not come between a mother and her young.</li>
-						</ul>
-					</div>
-					<div role="tabpanel" class="tab-pane fade" id="Section4" Style="text-align: justify; text-justify: inter-word;">
-						<h3>Licensed tour operators</h3>
-						<p>You don't need your own boat to see many of these wonderful animals. Whale, dolphin and seal watching allow you to spend the day viewing seal colonies, migrating whales or playful dolphins. You can even swim with dolphins in Port Phillip Bay.</p>
-						<p>Free and paid tourist opportunities:</p>
-						<ul>
-							<li>Land-based viewing of southern right whales and the occasional humpback whale at Logan's Beach at Warrnambool on the south-west coast. A viewing platform overlooks the beach, which is just a few minutes from the city. This is one of the best places in the world to see these whales and it's free.</li>
-							<li>Land-based viewing of seals on Seal Rocks, Phillip Island where the largest seal-breeding colony in Victoria is found. At the Nobbies Centre there are viewing platforms with coin-operated binoculars, as well as interactive cameras that can zoom up close to the seals, offering a spectacular view of these animals in their natural environment. Other wildlife based attractions on Phillip Island are the Penguin Parade and the Koala Conservation Centre.</li>
-							<li>Swimming with dolphins in Port Phillip Bay. If you're keen to don a wetsuit and hang onto a 'mermaid' line, you've a chance to swim with dolphins in their natural environment. If swimming isn't your thing, most tours also offer viewing from the comfort of the boat.</li>
-							<li>Numerous boat charters offer whale and seal watching tours along Victoria's coastline. These include boat cruises, sea kayak tours, swimming or scuba diving with seals or viewing from aircraft. Boat-based viewing of dolphins in the Gippsland Lakes is also available. Seal swimming tours are also on offer.</li>
-						</ul>
+	<!-- main content-->
+	<div style="padding-left:1%; padding-right:1%">
+		<!-- link nav bar -->
+		<div>
+			<!-- <span class="glyphicon glyphicon-arrow-right"></span> -->
+			<p>
+				<a href="index.html">Home</a> -> Safety</p>
+		</div>
+		<!-- link nav bar  end-->
+		<!-- des -->
+		<div class="jumbotron jumbotron-fluid">
+			<h3>Water safety around marine mammals</h3>
+			<p class="lead">Seeing whales, dolphins and seals is a special experience, but they may see humans as a threat or be harmed by human activity.
+				Follow the rules for the safety of all.</p>
+		</div>
+		<br/>
+		<!-- des end-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tab" role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#Section1" role="tab" data-toggle="tab">
+								<i class="fa fa-grav"></i>
+								<span>Swimming and Surfing</span>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#Section2" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boating</span>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#Section3" role="tab" data-toggle="tab">
+								<i class="fa fa-telegram"></i>
+								<span>Flying</span>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#Section4" role="tab" data-toggle="tab">
+								<i class="fa fa-id-card-o"></i>
+								<span>Licensed tour operators</span>
+							</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content tabs">
+						<div role="tabpanel" class="tab-pane fade in active" id="Section1" Style="text-align: justify; text-justify: inter-word;">
+							<h3>Swimming and Surfing</h3>
+							<p>Keep a safe distance. You must not swim or surf within 30 metres of a dolphin or 50 metres of a whale. These distances
+								are sufficient to allow the animals to move away from you and to give you a chance to get out of their way.</p>
+							<p>Swimming with dolphins. Swimming with dolphins is only legal if conducted as part of a licensed tour and only if the
+								dolphins choose to approach you. In all other situations you must stay at least 30 metres away when swimming.</p>
+							<p>It is illegal to touch marine mammals. These are wild animals that generally don't like being touched by humans, and
+								can bite, scratch or slap you with their fins.</p>
+							<p>Never attempt to feed marine mammals. Wild animals rarely (if ever) need to be fed by humans. Some animals such as
+								seals may also become dependent on handouts and can become aggressive towards people.</p>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="Section2" Style="text-align: justify; text-justify: inter-word;">
+							<h3>Boating</h3>
+							<p>Boating is a great way to see whales, dolphins and seals. However boats can disturb the way marine mammals feed and
+								behave.</p>
+							<p>To reduce these impacts there are limits on how close boats can get to marine mammals, as well as restrictions on
+								the way they may operate when close by.</p>
+							<p>When in the caution zone, all vessels (motorised or not) must:</p>
+							<ul>
+								<li>avoid sudden changes in direction</li>
+								<li>maintain a constant speed not exceeding 5 knots (8 kilometres per hour)</li>
+								<li>leave the caution zone if a marine mammal shows any sign of disturbance</li>
+								<li>not approach whales, dolphins or seals from directly in front of the animal</li>
+								<li>not approach whales, dolphins or seals from directly behind the animal</li>
+								<li>not be in the known path of a whale, dolphin or seal</li>
+								<li>not form a barrier between a marine mammal and its group</li>
+								<li>not come between a mother and her young.</li>
+							</ul>
+							<p>If a marine mammal approaches you – if a dolphin decides to ride the bow wave of your boat or if it takes an interest
+								in your vessel, for example – you are not committing an offence.</p>
+							<p>However, if you deliberately approach closer than the minimum prescribed distances you may be liable for prosecution.</p>
+							<p>In a narrow waterway (that is, waterways less than 300 metres wide), you cannot approach closer than 30 metres to
+								a whale or dolphin, unless navigating for safe passage.</p>
+							<p>There are no restrictions on how close you can get to a seal in the water but there are restrictions on boating around
+								protected areas and seal breeding colonies, how you operate your boat around a seal and approaching seals on land.</p>
+							<p>Licensed tour operators are permitted to approach closer than distances detailed above, subject to a range of operating
+								conditions.</p>
+							<p>By taking these small steps, you'll not only be doing the right thing by the animals, you'll be helping to make sure
+								future generations can enjoy the sights and sounds of whales, dolphins and seals for a long time to come.</p>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="Section3" Style="text-align: justify; text-justify: inter-word;">
+							<h3>Flying</h3>
+							<p>Viewing marine mammals from the air is one of the best ways to get an appreciation of their size and magnificence,
+								but aircraft, like boats, can disturb the way marine mammals feed and behave.</p>
+							<p>To reduce these impacts, there are limits on how close aircraft can get to whales, dolphins and seals, and restrictions
+								on the way aircraft may operate when close to marine mammals.</p>
+							<p>These restrictions apply to both fixed-wing aircraft, helicopters and drones.</p>
+							<p>When in the 500m caution zone, all aircraft must:</p>
+							<ul>
+								<li>avoid sudden changes in direction</li>
+								<li>maintain a constant speed not exceeding 5 knots (8 kilometres per hour)</li>
+								<li>leave the caution zone if a marine mammal shows any sign of disturbance</li>
+								<li>not approach whales, dolphins or seals from directly in front of the animal</li>
+								<li>not approach whales, dolphins or seals from directly behind the animal</li>
+								<li>not be in the known path of a whale, dolphin or seal</li>
+								<li>not form a barrier between a marine mammal and its group</li>
+								<li>not come between a mother and her young.</li>
+							</ul>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="Section4" Style="text-align: justify; text-justify: inter-word;">
+							<h3>Licensed tour operators</h3>
+							<p>You don't need your own boat to see many of these wonderful animals. Whale, dolphin and seal watching allow you to
+								spend the day viewing seal colonies, migrating whales or playful dolphins. You can even swim with dolphins in Port
+								Phillip Bay.</p>
+							<p>Free and paid tourist opportunities:</p>
+							<ul>
+								<li>Land-based viewing of southern right whales and the occasional humpback whale at Logan's Beach at Warrnambool on
+									the south-west coast. A viewing platform overlooks the beach, which is just a few minutes from the city. This is
+									one of the best places in the world to see these whales and it's free.</li>
+								<li>Land-based viewing of seals on Seal Rocks, Phillip Island where the largest seal-breeding colony in Victoria is found.
+									At the Nobbies Centre there are viewing platforms with coin-operated binoculars, as well as interactive cameras
+									that can zoom up close to the seals, offering a spectacular view of these animals in their natural environment.
+									Other wildlife based attractions on Phillip Island are the Penguin Parade and the Koala Conservation Centre.</li>
+								<li>Swimming with dolphins in Port Phillip Bay. If you're keen to don a wetsuit and hang onto a 'mermaid' line, you've
+									a chance to swim with dolphins in their natural environment. If swimming isn't your thing, most tours also offer
+									viewing from the comfort of the boat.</li>
+								<li>Numerous boat charters offer whale and seal watching tours along Victoria's coastline. These include boat cruises,
+									sea kayak tours, swimming or scuba diving with seals or viewing from aircraft. Boat-based viewing of dolphins in
+									the Gippsland Lakes is also available. Seal swimming tours are also on offer.</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
 	</div>
+	<!-- container -->
 
-
-
-</div><!-- container -->
-   
 	<!-- Footer -->
 
 	<footer>
@@ -240,14 +310,14 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
 					<div class="wow shake" data-wow-delay="0.4s">
-					
+
 					</div>
 					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</footer>
-<!-- Footer End -->
+	<!-- Footer End -->
 
 </body>
 
