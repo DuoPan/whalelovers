@@ -1,250 +1,296 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		  <!-- Bootstrap -->
-		  <script src="./assets/jquery.min.js"></script>
-		  <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-		  <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-		  
-		  <link rel="stylesheet" href="./assets/selectize/css/selectize.css">
-		  <link rel="stylesheet" href="./assets/selectize/css/selectize.default.css">
-		  <script src="./assets/selectize/js/standalone/selectize.js"></script>
-		  
-		  <!-- Bootstrap  End -->
 
-		  <!-- Fonts -->
-		  <link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		  <link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
-		  <!-- Squad theme CSS -->
-		  <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
-		  <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
-		  
-		  <!-- Fonts -->
-		  <link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		  <link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
-		  <script src="https://use.fontawesome.com/71991e4b10.js"></script>
-		  
-		  <!-- Squad theme CSS -->
-		  <link href="assets/dp_homepage/css/style.css" rel="stylesheet">
-		 <link href="assets/dp_homepage/color/default.css" rel="stylesheet">
-		 
-		<style>
-		 <!--Demo-->
-		  
-			.jumbotron {
-			  margin-bottom: 0px!important;
-			}
-			
-			
-			div.cbgColor{
-				background-color:#eee;
-			}
-			
-			div.polaroid {
-			  
-			  min-height: 600px;
-			  overflow: hidden;
-			  width: 100%;
-			  background-color: white;
-			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			  margin-bottom: 25px;
-			}
-			#grad1 {
-			  padding-top: 5xp;
-			  height: 1px;
-			  background: white;
-			  /* For browsers that do not support gradients */
-			  background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
-			  /* Standard syntax (must be last) */
-			}
-			#pac-input:focus {
-			  border-color: #4d90fe;
-			}
-			.row-f1{
-			  margin-top : -10px
-			}
-			.row-f2{
-			  margin-top : -20px
-			}
-			
-			.tab .nav-tabs{
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<script src="./assets/jquery.min.js"></script>
+	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+	<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="./assets/selectize/css/selectize.css">
+	<link rel="stylesheet" href="./assets/selectize/css/selectize.default.css">
+	<script src="./assets/selectize/js/standalone/selectize.js"></script>
+
+	<!-- Bootstrap  End -->
+
+	<!-- Fonts -->
+	<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
+	<!-- Squad theme CSS -->
+	<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+
+	<!-- Fonts -->
+	<link href="assets/dp_homepage/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/dp_homepage/css/animate.css" rel="stylesheet" />
+	<script src="https://use.fontawesome.com/71991e4b10.js"></script>
+
+	<!-- Squad theme CSS -->
+	<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+
+	<style>
+		.jumbotron {
+			margin-bottom: 0px !important;
+		}
+		div.cbgColor {
+			background-color: #eee;
+		}
+		div.polaroid {
+
+			min-height: 600px;
+			overflow: hidden;
+			width: 100%;
+			background-color: white;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			margin-bottom: 25px;
+		}
+
+		#grad1 {
+			padding-top: 5xp;
+			height: 1px;
+			background: white;
+			/* For browsers that do not support gradients */
+			background: linear-gradient(to right, white, blue, blue, blue, blue, blue, white);
+			/* Standard syntax (must be last) */
+		}
+
+		#pac-input:focus {
+			border-color: #4d90fe;
+		}
+
+		.row-f1 {
+			margin-top: -10px
+		}
+
+		.row-f2 {
+			margin-top: -20px
+		}
+
+		.tab .nav-tabs {
 			padding-left: 15px;
 			border-bottom: 4px #0077be;
-			}
-			
-			#redCricle{
-				background: #f43030;
-				width:20px;
-				height:20px;
-				border-radius:10%;
-				
-			}
-			
-			#greenCircle{
-				background:#95ef2d;
-				width:20px;
-				height:20px;
-				border-radius:10%;
-			}
-			
-			#yellowCircle{
-				background:#fff42d;
-				width:20px;
-				height:20px;
-				border-radius:10%;
-			}
-			.show {
-				visibility: visible !important; 
-				-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-				animation: fadein 0.5s, fadeout 0.5s 2.5s;
-			}
-			
-			#snackbar {
-				visibility: hidden; /* Hidden by default. Visible on click */
-				min-width: 250px; /* Set a default minimum width */
-				margin-left: -125px; /* Divide value of min-width by 2 */
-				background-color: #333; /* Black background color */
-				color: #fff; /* White text color */
-				text-align: center; /* Centered text */
-				border-radius: 2px; /* Rounded borders */
-				padding: 16px; /* Padding */
-				position: fixed; /* Sit on top of the screen */
-				z-index: 1; /* Add a z-index if needed */
-				left: 50%; /* Center the snackbar */
-				bottom: 30px; /* 30px from the bottom */
-			}
-		</style>
-		<script type="text/javascript" src="./src/markerclusterer.js"></script>
-		<script type="text/javascript" src="./src/data.json"></script>
-		<!-- Google Map API End -->
-		<title>Spot</title>
-		<link rel="shortcut icon" href="assets/images/whale.png" />
-	</head>
-	<body style="padding-top: 80px">
-		<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
-			<div class="container">
-			  <div class="navbar-header">
+		}
+
+		#redCricle {
+			background: #f43030;
+			width: 20px;
+			height: 20px;
+			border-radius: 10%;
+
+		}
+
+		#greenCircle {
+			background: #95ef2d;
+			width: 20px;
+			height: 20px;
+			border-radius: 10%;
+		}
+
+		#yellowCircle {
+			background: #fff42d;
+			width: 20px;
+			height: 20px;
+			border-radius: 10%;
+		}
+
+		.show {
+			visibility: visible !important;
+			-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
+
+		#snackbar {
+			visibility: hidden;
+			/* Hidden by default. Visible on click */
+			min-width: 250px;
+			/* Set a default minimum width */
+			margin-left: -125px;
+			/* Divide value of min-width by 2 */
+			background-color: #333;
+			/* Black background color */
+			color: #fff;
+			/* White text color */
+			text-align: center;
+			/* Centered text */
+			border-radius: 2px;
+			/* Rounded borders */
+			padding: 16px;
+			/* Padding */
+			position: fixed;
+			/* Sit on top of the screen */
+			z-index: 1;
+			/* Add a z-index if needed */
+			left: 50%;
+			/* Center the snackbar */
+			bottom: 30px;
+			/* 30px from the bottom */
+		}
+	</style>
+	<script type="text/javascript" src="./src/markerclusterer.js"></script>
+	<script type="text/javascript" src="./src/data.json"></script>
+	<!-- Google Map API End -->
+	<title>Spot</title>
+	<link rel="shortcut icon" href="assets/images/whale.png" />
+</head>
+
+<body style="padding-top: 80px">
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation" style="background-color:#0077be">
+		<div class="container">
+			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-				  <i class="fa fa-bars"></i>
+					<i class="fa fa-bars"></i>
 				</button>
 				<img class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
 				<a class="navbar-brand">
-				  <h1>WhaleLovers</h1>
+					<h1>WhaleLovers</h1>
 				</a>
-			  </div>
-
-			  <!-- Collect the nav links, forms, and other content for toggling -->
-			  <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html"  style="color:white">Home</a></li>
-						<li class="active"><a href="" style="color:white">Prediction</a></li>
-						<li><a href="type_page.html" style="color:white">Classification</a></li>	
-						<li><a href="safety.html" style="color:white">Safety</a></li>					
-						<li><a href="gallery.html" style="color:white">Gallery</a></li>	
-					</ul>
-			  </div><!-- /.navbar-collapse -->
-			</div><!-- /.container -->
-	  </nav><!-- Nav Bar End -->
-	  <!-- Content -->
-	  <div>
-			<div style="padding-left:1%;">
-				<p><a href="index.html">Home</a> -> Prediction</p>
 			</div>
-				<!--Divide container into two parts column 1 and 2-->
-			<div class="col-md-3 wrapper"> <!-- column 1-->
-			  <div class="row">
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="index.html" style="color:white">Home</a>
+					</li>
+					<li class="active">
+						<a href="" style="color:white">Prediction</a>
+					</li>
+					<li>
+						<a href="type_page.html" style="color:white">Classification</a>
+					</li>
+					<li>
+						<a href="safety.html" style="color:white">Safety</a>
+					</li>
+					<li>
+						<a href="gallery.html" style="color:white">Gallery</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+	<!-- Nav Bar End -->
+	<!-- Content -->
+	<div>
+		<div style="padding-left:1%;">
+			<p>
+				<a href="index.html">Home</a> -> Prediction</p>
+		</div>
+		<!--Divide container into two parts column 1 and 2-->
+		<div class="col-md-3 wrapper">
+			<!-- column 1-->
+			<div class="row">
 				<!--search container-->
 				<div class="polaroid">
 					<!--Logo on top-->
-					<img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:5%;"></img>	
+					<img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:5%;"></img>
 					<!--Description section-->
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;"><!--Description Content-->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;">
+						<!--Description Content-->
 						<h5>Select the whale type and months to plan your trip..!!</h5>
 					</div>
 					<!--Search Heading-->
 					<div class="col-md-12" style="position: relative; padding-bottom:2px;">
-						<b style="font-size:18px; color:#0077be;">Search</b><!--Search Heading-->
+						<b style="font-size:18px; color:#0077be;">Search</b>
+						<!--Search Heading-->
 					</div>
 					<!-- Dropdown for whale type -->
 					<div class="col-md-12" style="padding-top:10px; background-color:#eee;">
-					  <label id="search-select-name-label" for="search-select-name">Select Whale Type</label>
-					  <select id="search-select-name" placeholder="Select one or two species" multiple>
-						<option value="Australian humpback dolphin">Australian humpback dolphin</option>
-						<option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
-						<option value="Blue whale">Blue whale</option>
-						<option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
-						<option value="Common dolphin">Common dolphin</option>
-						<option value="Dwarf minke whale">Dwarf minke whale</option>
-						<option value="Humpback whale">Humpback whale</option>
-						<option value="Killer whale">Killer whale</option>
-						<option value="Spinner dolphin">Spinner dolphin</option>
-						<option value="Southern right whale">Southern right whale</option>
-					  </select>
-					  <script>
-						$('#search-select-name').selectize({
-						  plugins: ['remove_button'],
-							maxItems: 2,
-						});
-					  </script>
-					</div> <!-- Dropdown ends here -->
-					
+						<label id="search-select-name-label" for="search-select-name">Select Whale Type</label>
+						<select id="search-select-name" placeholder="Select one or two species" multiple>
+							<option value="Australian humpback dolphin">Australian humpback dolphin</option>
+							<option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+							<option value="Blue whale">Blue whale</option>
+							<option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+							<option value="Common dolphin">Common dolphin</option>
+							<option value="Dwarf minke whale">Dwarf minke whale</option>
+							<option value="Humpback whale">Humpback whale</option>
+							<option value="Killer whale">Killer whale</option>
+							<option value="Spinner dolphin">Spinner dolphin</option>
+							<option value="Southern right whale">Southern right whale</option>
+						</select>
+						<script>
+							$('#search-select-name').selectize({
+								plugins: ['remove_button'],
+								maxItems: 2,
+							});
+						</script>
+					</div>
+					<!-- Dropdown ends here -->
+
 					<!--Months -->
 					<div class="col-md-12" style="background-color:#eee;">
 						<label>Select Months</label>
-					</div><!-- Months label ends here -->
+					</div>
+					<!-- Months label ends here -->
 					<!-- Checkboxes for months-->
-						<div class="form-check" > 
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="jan"><input type="checkbox" class="form-check-input" value="1" id="jan">Jan</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="feb"><input type="checkbox" class="form-check-input" value="2" id="feb">Feb</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="mar"><input type="checkbox" class="form-check-input" value="3" id="mar">Mar</label>
-							</div>
-							
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="apr"><input type="checkbox" class="form-check-input" value="4" id="apr">Apr</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="may"><input type="checkbox" class="form-check-input" value="5" id="may">May</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="jun"><input type="checkbox" class="form-check-input" value="6" id="jun">Jun</label>
-							</div>
-							
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="jul"><input type="checkbox" class="form-check-input" value="7" id="jul">Jul</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="aug"><input type="checkbox" class="form-check-input" value="8" id="aug">Aug</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="sep"><input type="checkbox" class="form-check-input" value="9" id="sep">Sep</label>
-							</div>
-							
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="oct"><input type="checkbox" class="form-check-input" value="10" id="oct">Oct</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="nov"><input type="checkbox" class="form-check-input" value="11" id="nov">Nov</label>
-							</div>
-							<div class="col-md-4" style="background-color:#eee;">
-							<label class="form-check-label checkbox-inline" for="dec"><input type="checkbox" class="form-check-input" value="12" id="dec">Dec</label>
-							</div>
+					<div class="form-check">
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="jan">
+								<input type="checkbox" class="form-check-input" value="1" id="jan">Jan</label>
 						</div>
-					<!-- Check box ends here -->  
-					
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="feb">
+								<input type="checkbox" class="form-check-input" value="2" id="feb">Feb</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="mar">
+								<input type="checkbox" class="form-check-input" value="3" id="mar">Mar</label>
+						</div>
+
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="apr">
+								<input type="checkbox" class="form-check-input" value="4" id="apr">Apr</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="may">
+								<input type="checkbox" class="form-check-input" value="5" id="may">May</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="jun">
+								<input type="checkbox" class="form-check-input" value="6" id="jun">Jun</label>
+						</div>
+
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="jul">
+								<input type="checkbox" class="form-check-input" value="7" id="jul">Jul</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="aug">
+								<input type="checkbox" class="form-check-input" value="8" id="aug">Aug</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="sep">
+								<input type="checkbox" class="form-check-input" value="9" id="sep">Sep</label>
+						</div>
+
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="oct">
+								<input type="checkbox" class="form-check-input" value="10" id="oct">Oct</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="nov">
+								<input type="checkbox" class="form-check-input" value="11" id="nov">Nov</label>
+						</div>
+						<div class="col-md-4" style="background-color:#eee;">
+							<label class="form-check-label checkbox-inline" for="dec">
+								<input type="checkbox" class="form-check-input" value="12" id="dec">Dec</label>
+						</div>
+					</div>
+					<!-- Check box ends here -->
+
 					<div class="col-md-12" style="text-align:center; width:100%; bottom:0px; background-color:#eee; padding-top:10px; padding-bottom:10px;">
 						<button id="knowmore" class="btn btn-primary" value="" onclick="searchMap()" style="border-radius:4px;">Search</button>
-					</div> 
-				
-				<!--Legend container-->
+					</div>
+
+					<!--Legend container-->
 					<div class="col-md-12 col-sm-12 col-xs-12" style="position: relative; padding-top:15px; padding-bottom:15px;">
 						<div style="position: relative; padding-top:2px;">
-							<b style="font-size:18px; color:#0077be;">Occurence Density Legend</b><!--Legend Heading-->
+							<b style="font-size:18px; color:#0077be;">Occurence Density Legend</b>
+							<!--Legend Heading-->
 						</div>
 						<div style="padding-top:10px;">
 							<div class="col-md-4">
@@ -267,32 +313,33 @@
 							</div>
 						</div>
 					</div>
-				</div> <!--Description ends here!!-->
-			  </div>	
-			</div>
-			<div id="map" class="col-md-9" style="height:600px;"></div><!--Column 2-->
-				<script>
-					var map;
-					var heatmap;
-					var heatmapData = [];
-					var markers = [];
-					var latLngPlaces = [];
-				</script>
-				<script src="./js/map_all_predict.js"></script>
-				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
-		</div>	
-		<div id="snackbar">No records have been found with the provided Search criteria. Please try with other Months are whale types</div>
-	  <!--Content Ends -->
-	  <!-- Footer -->
-	  <footer style="bottom:0px; padding-top:25px; padding-bottom:25px;">
-			<div class="container">
-			  <div class="row">
-				<div class="col-md-12 col-lg-12">
-				  <div class="wow shake" data-wow-delay="0.4s">
-				  </div>
-				  <p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
 				</div>
-			  </div>
+				<!--Description ends here!!-->
+			</div>
+		</div>
+		<div id="map" class="col-md-9" style="height:600px;"></div>
+		<!--Column 2-->
+		<script>
+			var map;
+			var heatmap;
+			var heatmapData = [];
+			var markers = [];
+			var latLngPlaces = [];
+		</script>
+		<script src="./js/map_all_predict.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
+	</div>
+	<div id="snackbar">No records have been found with the provided Search criteria. Please try with other Months are whale types</div>
+	<!--Content Ends -->
+	<!-- Footer -->
+	<footer style="bottom:0px; padding-top:25px; padding-bottom:25px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow shake" data-wow-delay="0.4s">
+					</div>
+					<p>&copy;Copyright 2018 - Asiadock. All rights reserved. </p>
+				</div>
 			</div>
 	  </footer>
 	  <!--Footer ends here-->
@@ -303,4 +350,5 @@
   <script src="assets/dp_homepage/js/custom.js"></script>
   <!--  rahul -->
 	</body>
+
 </html>
