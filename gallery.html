@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-<script src="./assets/jquery.min.js"></script>
-<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- Bootstrap  End -->
-<!-- Squad theme CSS -->
-<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
-<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
-
-<style>
-#mainArea {
-	width: 100%; padding: 0;
-}
-#sidebar {
-	height: 535px;
-	padding: 0 !important;
-	overflow-y: scroll;
-	/* margin-top: 50px; */
-}
-#gallery_map {
-	height: 600px;
-	padding: 0!important;
-}
-.row{margin-left: 0px;} 
-
-#progress{
-    height:10px;
-    border: 1px solid gray;
-    position: relative;
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-#progress .progress-item{
-    height:100%;
-    position: absolute;
-    background: rgb(11, 15, 228);
-    border-radius: 5px;
-    transition: width .3s linear;
-}
-.upload-btn-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-content: stretch;
-}
-input[type="file"] {
-    display: none;
-}
-.custom-file-upload {
-    border: 1px solid #ccc;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-#postMap{
-  height: 400px;
-  width: 100%;
-}
-</style>
-<script type="text/javascript" src="./src/markerclusterer.js"></script>
-<script type="text/javascript" src="js/gallery2_map.js"></script>
-<title>Gallery</title>
-<link rel="shortcut icon" href="assets/images/whale.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+	<script src="./assets/jquery.min.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap  End -->
+	<!-- Squad theme CSS -->
+	<link href="assets/dp_homepage/css/style.css" rel="stylesheet">
+	<link href="assets/dp_homepage/color/default.css" rel="stylesheet">
+	<style>
+	#mainArea {
+		width: 100%; padding: 0;
+	}
+	#sidebar {
+		height: 535px;
+		padding: 0 !important;
+		overflow-y: scroll;
+		/* margin-top: 50px; */
+	}
+	#gallery_map {
+		height: 600px;
+		padding: 0!important;
+	}
+	.row {
+		margin-left: 0px;
+	} 
+	#progress{
+			height:10px;
+			border: 1px solid gray;
+			position: relative;
+			border-radius: 5px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+	}
+	#progress .progress-item{
+			height:100%;
+			position: absolute;
+			background: rgb(11, 15, 228);
+			border-radius: 5px;
+			transition: width .3s linear;
+	}
+	.upload-btn-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-content: stretch;
+	}
+	input[type="file"] {
+			display: none;
+	}
+	.custom-file-upload {
+			border: 1px solid #ccc;
+			padding: 6px 12px;
+			cursor: pointer;
+	}
+	#postMap{
+		height: 400px;
+		width: 100%;
+	}
+	</style>
+	<script type="text/javascript" src="./src/markerclusterer.js"></script>
+	<script type="text/javascript" src="js/gallery2_map.js"></script>
+	<title>Gallery</title>
+	<link rel="shortcut icon" href="assets/images/whale.png" />
 </head>
 <body style="padding-top: 80px;">
 	<!-- Nav Bar -->
@@ -73,7 +73,7 @@ input[type="file"] {
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
 		  		<i class="fa fa-bars"></i>
 				</button>
-        		<img style="display:inline;" class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
+        <img style="display:inline;" class="navbar-left" src="assets/images/logo_white.png" height="50px"></img>
 				<a class="navbar-brand">
 					<h1>WhaleLovers</h1>
 				</a>
@@ -93,7 +93,6 @@ input[type="file"] {
     <!-- /.container -->
   </nav>
   <!-- Nav Bar End -->
-	
 	<!-- link nav bar -->
 	<div style="margin-left: 1%;">
 		<p><a href="index.html">Home</a> -> Gallery</p>
@@ -103,20 +102,20 @@ input[type="file"] {
 		<div id="twoLefts" class="col-md-4 col-sm-4 col-xs-12" style="display: flex; flex-direction: column;">
 			<div id="sideControl" >
 				<ul class="pagination" style="width: 100%;display: flex;justify-content: space-between;margin-top:0%;margin-bottom: 0%;">
-						<select id="search-select-name" style="background-color: #ffffff; color: #0077be;" onchange="whaleChange()">
-								<option value="All">All types of whales</option>
-								<option value="Other">Unknown whales</option>
-								<option value="Australian humpback dolphin">Australian humpback dolphin</option>
-								<option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
-								<option value="Blue whale">Blue whale</option>
-								<option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
-								<option value="Common dolphin">Common dolphin</option>
-								<option value="Dwarf minke whale">Dwarf minke whale</option>
-								<option value="Humpback whale">Humpback whale</option>
-								<option value="Killer whale">Killer whale</option>
-								<option value="Spinner dolphin">Spinner dolphin</option>
-								<option value="Southern right whale">Southern right whale</option>
-							</select>
+					<select id="search-select-name" style="background-color: #ffffff; color: #0077be;" onchange="whaleChange()">
+						<option value="All">All types of whales</option>
+						<option value="Other">Unknown whales</option>
+						<option value="Australian humpback dolphin">Australian humpback dolphin</option>
+						<option value="Australian snubfin dolphin">Australian snubfin dolphin</option>
+						<option value="Blue whale">Blue whale</option>
+						<option value="Common bottlenose dolphin">Common bottlenose dolphin</option>
+						<option value="Common dolphin">Common dolphin</option>
+						<option value="Dwarf minke whale">Dwarf minke whale</option>
+						<option value="Humpback whale">Humpback whale</option>
+						<option value="Killer whale">Killer whale</option>
+						<option value="Spinner dolphin">Spinner dolphin</option>
+						<option value="Southern right whale">Southern right whale</option>
+					</select>
 					<li class="page-item"style="flex-grow: 1;" >
 						<a class="page-link" style="width: 100%;text-align:center;height: 100%;padding-top: 6px;" onclick="previousPage()"> < </a>
 					</li>
@@ -147,8 +146,6 @@ input[type="file"] {
 	</footer>
 	<!-- Footer End -->
 
-
-
 	<!-- Modal -->
 	<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -161,15 +158,15 @@ input[type="file"] {
 				</div>
 				<form id="form">
 				<div class="modal-body">    
-						<div class="upload-btn-wrapper">
-							<label for="pic" class="custom-file-upload">
-									<i class="fa fa-cloud-upload"></i>Choose A File
-							</label>
-							<input type="file" name="pic" id="pic" accept="image/*"/>
-						</div>     
-						<div style="display: flex;justify-content: space-around">  
-							<img id="imgPreview" style="max-height:400px;"/>  
-						</div>    
+					<div class="upload-btn-wrapper">
+						<label for="pic" class="custom-file-upload">
+							<i class="fa fa-cloud-upload"></i>Choose A File
+						</label>
+						<input type="file" name="pic" id="pic" accept="image/*"/>
+					</div>     
+					<div style="display: flex;justify-content: space-around">  
+						<img id="imgPreview" style="max-height:400px;"/>  
+					</div>    
 				</div>
 				<div class="modal-footer">
 					<label for="postMap" style="display: flex;flex-direction: row;">Pin the location you have taken the picture of whales.</label>
@@ -213,7 +210,6 @@ input[type="file"] {
 			</div>
 		</div>
 	</div>
-
 	
 <script type="text/javascript" src="js/gallery2.js"></script>
 </body>
