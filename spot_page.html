@@ -75,23 +75,23 @@
 
 		#redCricle {
 			background: #f43030;
-			width: 20px;
-			height: 20px;
+			width: 30px;
+			height: 30px;
 			border-radius: 10%;
 
 		}
 
 		#greenCircle {
 			background: #95ef2d;
-			width: 20px;
-			height: 20px;
+			width: 30px;
+			height: 30px;
 			border-radius: 10%;
 		}
 
 		#yellowCircle {
 			background: #fff42d;
-			width: 20px;
-			height: 20px;
+			width: 30px;
+			height: 30px;
 			border-radius: 10%;
 		}
 
@@ -185,18 +185,12 @@
 			<div class="row">
 				<!--search container-->
 				<div class="polaroid">
-					<!--Logo on top-->
-					<img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:5%;"></img>
-					<!--Description section-->
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;">
-						<!--Description Content-->
-						<h5>Select the whale type and months to plan your trip..!!</h5>
+					
+					<!--Search Heading-->
+					<div class="col-md-12" style="position: relative; padding-bottom:2px;background-color:#eee">
+						<b style="font-size:18px; color:#0077be;">Search</b>
 					</div>
 					<!--Search Heading-->
-					<div class="col-md-12" style="position: relative; padding-bottom:2px;">
-						<b style="font-size:18px; color:#0077be;">Search</b>
-						<!--Search Heading-->
-					</div>
 					<!-- Dropdown for whale type -->
 					<div class="col-md-12" style="padding-top:10px; background-color:#eee;">
 						<label id="search-select-name-label" for="search-select-name">Select Whale Type</label>
@@ -218,76 +212,75 @@
 								maxItems: 2,
 							});
 						</script>
+						<br />
 					</div>
 					<!-- Dropdown ends here -->
-
 					<!--Months -->
 					<div class="col-md-12" style="background-color:#eee;">
-						<label>Select Months</label> <span onclick="clearAll()" style="float: right;background-color: #0077be;color: #eee;">&nbsp;Clear&nbsp;</span><span onclick="selectAll()" style="float: right;color: #0077be;background-color: #eee;">&nbsp;Select All&nbsp;</span>
+						<label>Select Months</label> <span onclick="clearAll()" style="float: right;background-color: #0077be;color: #eee;">&nbsp;Clear&nbsp;</span><span onclick="selectAll()" style="float: right;background-color: #0077be;color: #eee;margin-right:5px">&nbsp;Select All&nbsp;</span>
 					</div>
 					<!-- Months label ends here -->
 					<!-- Checkboxes for months-->
 					<div class="form-check">
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="jan">
-								<input type="checkbox" class="form-check-input" value="1" id="jan">Jan</label>
+								<input type="checkbox" class="form-check-input" value="1" id="jan">January</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="feb">
-								<input type="checkbox" class="form-check-input" value="2" id="feb">Feb</label>
+								<input type="checkbox" class="form-check-input" value="2" id="feb">February</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="mar">
-								<input type="checkbox" class="form-check-input" value="3" id="mar">Mar</label>
+								<input type="checkbox" class="form-check-input" value="3" id="mar">March</label>
 						</div>
-
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="apr">
-								<input type="checkbox" class="form-check-input" value="4" id="apr">Apr</label>
+								<input type="checkbox" class="form-check-input" value="4" id="apr">April</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="may">
 								<input type="checkbox" class="form-check-input" value="5" id="may">May</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="jun">
-								<input type="checkbox" class="form-check-input" value="6" id="jun">Jun</label>
+								<input type="checkbox" class="form-check-input" value="6" id="jun">June</label>
 						</div>
 
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="jul">
-								<input type="checkbox" class="form-check-input" value="7" id="jul">Jul</label>
+								<input type="checkbox" class="form-check-input" value="7" id="jul">July</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="aug">
-								<input type="checkbox" class="form-check-input" value="8" id="aug">Aug</label>
+								<input type="checkbox" class="form-check-input" value="8" id="aug">August</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="sep">
-								<input type="checkbox" class="form-check-input" value="9" id="sep">Sep</label>
+								<input type="checkbox" class="form-check-input" value="9" id="sep">September</label>
 						</div>
 
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="oct">
-								<input type="checkbox" class="form-check-input" value="10" id="oct">Oct</label>
+								<input type="checkbox" class="form-check-input" value="10" id="oct">October</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="nov">
-								<input type="checkbox" class="form-check-input" value="11" id="nov">Nov</label>
+								<input type="checkbox" class="form-check-input" value="11" id="nov">November</label>
 						</div>
-						<div class="col-md-4" style="background-color:#eee;">
+						<div class="col-md-6" style="background-color:#eee;padding-top: 5px;">
 							<label class="form-check-label checkbox-inline" for="dec">
-								<input type="checkbox" class="form-check-input" value="12" id="dec">Dec</label>
+								<input type="checkbox" class="form-check-input" value="12" id="dec">December</label>
 						</div>
 					</div>
 					<!-- Check box ends here -->
 
 					<div class="col-md-12" style="text-align:center; width:100%; bottom:0px; background-color:#eee; padding-top:10px; padding-bottom:10px;">
-						<button id="knowmore" class="btn btn-primary" value="" onclick="searchMap()" style="border-radius:4px;">Search</button>
+						<button id="knowmore" class="btn btn-primary btn-sm" value="" onclick="searchMap()" style="border-radius:4px;">Search</button>
 					</div>
 
 					<!--Legend container-->
-					<div class="col-md-12 col-sm-12 col-xs-12" style="position: relative; padding-top:15px; padding-bottom:15px;">
+					<div class="col-md-12 col-sm-12 col-xs-12" style="position: relative; margin-top:80px; padding-bottom:15px;">
 						<div style="position: relative; padding-top:2px;">
 							<b style="font-size:18px; color:#0077be;">Occurence Density Legend</b>
 							<!--Legend Heading-->
@@ -330,13 +323,16 @@
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
 		</div>
 		<!-- right side panel-->
-			<div class="col-md-3" style="height: 600px; overflow-y: scroll;">
+			<div class="col-md-3">
 				<div class="row">
-					<div class="polaroid">
+					<div class="polaroid" style="height: 600px; overflow-y: scroll;">
 						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:10px;">
-							<h5>List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
+							<h5 class="hidden" id="rightTop">List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
 							<div id="addedList"></div>
 							<img id="rightImg" src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:200px; "></img>
+							<div id="rightDes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;">
+								<h5>Select the whale type and months to plan your trip..!!</h5>
+							</div>
 						</div>		
 					</div>
 				</div>	
@@ -373,6 +369,8 @@
 		}
 		function clearList() {
 			document.getElementById("rightImg").classList.remove("hidden");
+			document.getElementById("rightDes").classList.remove("hidden");
+			document.getElementById("rightTop").classList.add("hidden");
 			document.getElementById("addedList").innerHTML="";
 		}
 	</script>

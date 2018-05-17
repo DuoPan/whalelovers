@@ -265,8 +265,11 @@ function recenter() {
 
 function addToList() {
     var info = document.getElementById("addedList");
-    if(info.innerHTML === "")
+    if(info.innerText === "") {
         document.getElementById("rightImg").classList.add("hidden");
+        document.getElementById("rightDes").classList.add("hidden");
+        document.getElementById("rightTop").classList.remove("hidden");
+    } 
     var t = prevInfoWindow.content.innerText.split('\n');
     this.style.display = "none";
     var t2 = t[1].split(':');
