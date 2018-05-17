@@ -209,6 +209,8 @@ function drop(dbLocPlaces,whaleN){
 	})
 }
 
+var prevInfoWindow=null;
+
 function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 	window.setTimeout(function() {
 		var infowincontent = document.createElement('div');
@@ -237,8 +239,10 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
         })
         
 		google.maps.event.addListener(marker, 'click', function() {
-			  infoWindow.open(map, marker);
-			  // setTimeout(function () { infoWindow.close(); }, 3000);
+              if(prevInfoWindow !== null)
+                prevInfoWindow.close();
+              infoWindow.open(map, marker);
+              prevInfoWindow = infoWindow;
 		});
 		markers.push(marker);	
     }, timeout);
