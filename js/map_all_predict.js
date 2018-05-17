@@ -81,6 +81,8 @@ function CenterControl(controlDiv, map) {
 }
 
 function searchMap(){
+    recenter();
+
 	var searchName = $('#search-select-name').val()
 	if(searchName === null){
 		searchName = ["allnames"]
@@ -219,15 +221,15 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 		var btn = document.createElement('Button');
 		locationText.textContent = "Location: "+dbLocPlaces;
 		btn.appendChild(document.createTextNode("Add To List"));
-		btn.setAttribute("class","btn btn-primary");
+		btn.setAttribute("class","btn btn-primary btn-sm");
 		btn.onclick = addToList;
-		heading.textContent = whaleN
+		heading.textContent = whaleN;
 		infowincontent.appendChild(heading);
 		infowincontent.appendChild(document.createElement('br'));
         infowincontent.appendChild(locationText);
 		infowincontent.appendChild(document.createElement('br'));
 		infowincontent.appendChild(document.createElement('br'));
-		infowincontent.appendChild(btn)
+		infowincontent.appendChild(btn);
 		var infoWindow = new google.maps.InfoWindow({
 			content: infowincontent
 		});
@@ -261,6 +263,10 @@ function recenter() {
     map.setZoom(4);
 }
 
-function addToList(){
-	alert("clicked!!")
+function addToList() {
+    var info = document.getElementById("addedList");
+    var t = prevInfoWindow.content.innerText.split('\n');
+    info.innerHTML= info.innerHTML + "<strong>"+ t[0] + "</strong>" + "<p>"+ t[1]+"</p>";
+    this.style.display = "none";
+
 }

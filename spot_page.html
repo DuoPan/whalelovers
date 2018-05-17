@@ -293,19 +293,19 @@
 							<!--Legend Heading-->
 						</div>
 						<div style="padding-top:10px;">
-							<div class="col-md-4">
+							<div class="col-md-4" style="display: flex; flex-direction: column;align-items: center;">
 								<div class="control-label" id="redCricle"></div>
 								<div>
 									<label for="redCricle" style="font-size: 0.80em;">Highest</label>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4" style="display: flex; flex-direction: column;align-items: center;">
 								<div class="control-label" id="yellowCircle"></div>
 								<div>
 									<label for="yellowCircle" style="font-size: 0.80em;">Medium</label>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4" style="display: flex; flex-direction: column;align-items: center;">
 								<div class="control-label" id="greenCircle"></div>
 								<div>
 									<label for="greenCircle" style="font-size: 0.80em;">Lowest</label>
@@ -329,21 +329,17 @@
 			<script src="./js/map_all_predict.js"></script>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqgZF9VqcM8fgtgwEMu2a_o32KY1GJrRI&libraries=visualization&callback=initMap"></script>
 		</div>
-		<!-- Left side panel-->
-			<div class="col-md-3">
+		<!-- right side panel-->
+			<div class="col-md-3" style="height: 600px; overflow-y: scroll;">
 				<div class="row">
 					<div class="polaroid">
-							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:200px;">
-								<!--Logo on top-->
-								<img src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:2px; padding-bottom:5%;"></img>	
-								<!--Description section-->
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;"><!--Description Content-->
-									<h5>Select the whale type and months to plan your trip..!!</h5>
-								</div>
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:10px;">
+							<h5>List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
+							<div id="addedList"></div>
 						</div>		
 					</div>
 				</div>	
-			</div> <!-- Left side panel ends here -->
+			</div> <!-- right side panel ends here -->
 	<div id="snackbar">No records have been found with the provided Search criteria. Please try with other Months are whale types</div>
 	<!--Content Ends -->
 	<!-- Footer -->
@@ -373,6 +369,9 @@
 			$(".form-check-input:checked").each(function () {
 				$(this).prop("checked", false);
 			});
+		}
+		function clearList() {
+			document.getElementById("addedList").innerHTML="";
 		}
 	</script>
 	</body>
