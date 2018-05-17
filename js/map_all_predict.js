@@ -266,7 +266,8 @@ function recenter() {
 function addToList() {
     var info = document.getElementById("addedList");
     var t = prevInfoWindow.content.innerText.split('\n');
-    info.innerHTML= info.innerHTML + "<strong>"+ t[0] + "</strong>" + "<p>"+ t[1]+"</p>";
     this.style.display = "none";
-
+    var t2 = t[1].split(':');
+    var t3 = t2[1].split(',');
+    info.innerHTML= info.innerHTML + "<strong>"+ t[0] + "</strong>" + "<p>Locations: <a target='_blank' href='https://www.google.com/maps/search/?api=1&query="+t3[0]+"+"+t3[1]+"'>"+ t2[1]+"</a></p>";
 }
