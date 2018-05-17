@@ -336,6 +336,7 @@
 						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:10px;">
 							<h5>List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
 							<div id="addedList"></div>
+							<img id="rightImg" src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:200px; "></img>
 						</div>		
 					</div>
 				</div>	
@@ -371,6 +372,7 @@
 			});
 		}
 		function clearList() {
+			document.getElementById("rightImg").classList.remove("hidden");
 			document.getElementById("addedList").innerHTML="";
 		}
 	</script>

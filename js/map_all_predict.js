@@ -265,6 +265,8 @@ function recenter() {
 
 function addToList() {
     var info = document.getElementById("addedList");
+    if(info.innerHTML === "")
+        document.getElementById("rightImg").classList.add("hidden");
     var t = prevInfoWindow.content.innerText.split('\n');
     this.style.display = "none";
     var t2 = t[1].split(':');
