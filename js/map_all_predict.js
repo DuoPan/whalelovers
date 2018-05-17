@@ -202,10 +202,10 @@ function loadMarkers(locData,whales){
 function drop(dbLocPlaces,whaleN){
 	var geocoder =  new google.maps.Geocoder();
 	geocoder.geocode({'address': ''+dbLocPlaces+',Australia'},function(results,status){
-			if (status == google.maps.GeocoderStatus.OK) {
-				var latLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
-				addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN);
-            }
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
+            addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN);
+        }
 	})
 }
 
@@ -230,7 +230,6 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 			content: infowincontent
 		});
 		
-		
 		var marker = new google.maps.Marker({
 			position: position,
 			map: map,
@@ -239,7 +238,7 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
         
 		google.maps.event.addListener(marker, 'click', function() {
 			  infoWindow.open(map, marker);
-			  setTimeout(function () { infoWindow.close(); }, 3000);
+			  // setTimeout(function () { infoWindow.close(); }, 3000);
 		});
 		markers.push(marker);	
     }, timeout);

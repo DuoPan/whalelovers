@@ -223,7 +223,7 @@
 
 					<!--Months -->
 					<div class="col-md-12" style="background-color:#eee;">
-						<label>Select Months</label>
+						<label>Select Months</label> <span onclick="clearAll()" style="float: right;background-color: #0077be;color: #eee;">&nbsp;Clear&nbsp;</span><span onclick="selectAll()" style="float: right;color: #0077be;background-color: #eee;">&nbsp;Select All&nbsp;</span>
 					</div>
 					<!-- Months label ends here -->
 					<!-- Checkboxes for months-->
@@ -363,7 +363,18 @@
   <script src="assets/dp_homepage/js/jquery.scrollTo.js"></script>
   <script src="assets/dp_homepage/js/wow.min.js"></script>
   <script src="assets/dp_homepage/js/custom.js"></script>
-  <!--  rahul -->
+	<script>
+		function selectAll() {
+			$(".form-check-input").each(function () {
+			  $(this).prop("checked", true);
+			});
+		}
+		function clearAll() {
+			$(".form-check-input:checked").each(function () {
+				$(this).prop("checked", false);
+			});
+		}
+	</script>
 	</body>
 
 </html>
