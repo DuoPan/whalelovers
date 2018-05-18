@@ -134,7 +134,7 @@ function upload(){
   }
   if (!checkIllegal(authorInput)){
     document.getElementById('author').style.borderColor = 'red';
-    document.getElementById("tishi").innerHTML = "Author text field contains illegal information.";
+    document.getElementById("tishi").innerHTML = "Sensitive author detected, please input again.";
     return;
   }
   document.getElementById('author').style.borderColor = '';
@@ -146,18 +146,18 @@ function upload(){
   }
   if (!checkIllegal(desInput)){
     document.getElementById('des').style.borderColor = 'red';
-    document.getElementById("tishi").innerHTML = "Description text field contains illegal information.";
+    document.getElementById("tishi").innerHTML = "Sensitive descprition detected, please input again.";
     return;
   }
   document.getElementById('des').style.borderColor = '';
   var url="./php/upload.php";
   var pic = document.getElementById('pic').files[0];
   if(pic===undefined){
-    document.getElementById("tishi").innerHTML = "Please choose a photo first.";
+    document.getElementById("tishi").innerHTML = "Please upload a photo.";
     return;
   }
   if(postmapMarker.position === undefined) {
-    document.getElementById("tishi").innerHTML = "Please pin a location on the map.";
+    document.getElementById("tishi").innerHTML = "Please specify the location on the map.";
     return;
   }
   document.getElementById("tishi").innerHTML = "Checking Content ...";
@@ -177,7 +177,7 @@ function upload(){
       if(xhr.responseText === "good")
         document.getElementById("tishi").innerHTML = "Upload Successfully.";
       else 
-        document.getElementById("tishi").innerHTML = "There seems no whales in this photo, upload failed.";
+        document.getElementById("tishi").innerHTML = "Content checking failed, please upload a picture of whales.";
     }
   }
   xhr.upload.onprogress = function (event) {

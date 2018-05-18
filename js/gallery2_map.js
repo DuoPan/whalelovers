@@ -233,7 +233,7 @@ function placeMarker(location) {
       }
       else {
         isOnWater = false;
-        document.getElementById("tishi").innerHTML = "Please pin on water";  
+        document.getElementById("tishi").innerHTML = "Please specify the location over water";  
       }
     });
   
