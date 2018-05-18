@@ -160,6 +160,7 @@ function search_advance(searchName,monSearch){
 		var neededData;
 		var locData = [];
 		var whales = [];
+		var operators = [];
 		var predicition = $.getJSON('./php/getData.php',function(jsonData){
 			neededData = jsonData
 			neededData.forEach(function(dbdata){
@@ -175,12 +176,13 @@ function search_advance(searchName,monSearch){
 								//console.log("smon "+smon+"dbmonth "+dbmonth)
 								locData.push(dbdata.location)
 								whales.push(dbdata.Whale)
+								operators.push(dbdata.Operator)
 							}
 						})
 					}
 				}) // Search Name
 			})// Data close
-			loadMarkers(locData,whales)
+			loadMarkers(locData,whales,operators)
 		}); // Get Json close
 		
 		heatmap = new google.maps.visualization.HeatmapLayer({
@@ -194,32 +196,34 @@ function search_advance(searchName,monSearch){
 	
 }
 
-function loadMarkers(locData,whales){
+function loadMarkers(locData,whales,operators){
 	clearMarkers();
 	for (var i = 0; i < locData.length; i++) {
-        drop(locData[i],whales[i])
+        drop(locData[i],whales[i],operators[i])
     }
 }
 
-function drop(dbLocPlaces,whaleN){
+function drop(dbLocPlaces,whaleN,operatorInfo){
 	var geocoder =  new google.maps.Geocoder();
 	geocoder.geocode({'address': ''+dbLocPlaces+',Australia'},function(results,status){
         if (status == google.maps.GeocoderStatus.OK) {
             var latLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
-            addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN);
+            addMarkerWithTimeout(latLng, 200,dbLocPlaces,whaleN,operatorInfo);
         }
 	})
 }
 
 var prevInfoWindow=null;
 
-function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
+function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN,operatorInfo){
 	window.setTimeout(function() {
 		var infowincontent = document.createElement('div');
 	    var heading = document.createElement('strong');
 		var locationText =  document.createElement('Text');
+		var operatorText =  document.createElement('Text');
 		var btn = document.createElement('Button');
 		locationText.textContent = "Location: "+dbLocPlaces;
+		operatorText.textContent = "Tour Operator: "+operatorInfo;
 		btn.appendChild(document.createTextNode("Add To List"));
 		btn.setAttribute("class","btn btn-primary btn-sm");
 		btn.onclick = addToList;
@@ -227,6 +231,8 @@ function addMarkerWithTimeout(position, timeout,dbLocPlaces,whaleN){
 		infowincontent.appendChild(heading);
 		infowincontent.appendChild(document.createElement('br'));
         infowincontent.appendChild(locationText);
+		infowincontent.appendChild(document.createElement('br'));
+		infowincontent.appendChild(operatorText);
 		infowincontent.appendChild(document.createElement('br'));
 		infowincontent.appendChild(document.createElement('br'));
 		infowincontent.appendChild(btn);
@@ -269,10 +275,15 @@ function addToList() {
         document.getElementById("rightImg").classList.add("hidden");
         document.getElementById("rightDes").classList.add("hidden");
         document.getElementById("rightTop").classList.remove("hidden");
+		document.getElementById("dnwld").classList.remove("hidden");
     } 
     var t = prevInfoWindow.content.innerText.split('\n');
+	console.log(t)
     this.style.display = "none";
     var t2 = t[1].split(':');
     var t3 = t2[1].split(',');
-    info.innerHTML= info.innerHTML + "<strong>"+ t[0] + "</strong>" + "<p>Locations: <a target='_blank' href='https://www.google.com/maps/search/?api=1&query="+t3[0]+"+"+t3[1]+"'>"+ t2[1]+"</a></p>";
+	var opDisplay = t[2].split(':');
+    info.innerHTML= info.innerHTML + "<strong>"+ t[0] + "</strong>" + 
+					"<p>Locations: <a target='_blank' href='https://www.google.com/maps/search/?api=1&query="+t3[0]+"+"+t3[1]+"'>"+ t2[1]+
+					"</a><br>Tour Operator: "+opDisplay[1]+"&nbsp &nbsp <img src='../assets/images/webicon.png'></img></p>";
 }

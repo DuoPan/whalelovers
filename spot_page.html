@@ -127,6 +127,12 @@
 			bottom: 30px;
 			/* 30px from the bottom */
 		}
+		
+		.clearSelect: hover{
+			background-color: white;
+			color:	#0077be;
+		}
+		
 	</style>
 	<script type="text/javascript" src="./src/markerclusterer.js"></script>
 	<script type="text/javascript" src="./src/data.json"></script>
@@ -217,7 +223,7 @@
 					<!-- Dropdown ends here -->
 					<!--Months -->
 					<div class="col-md-12" style="background-color:#eee;">
-						<label>Select Months</label> <span onclick="clearAll()" style="float: right;background-color: #0077be;color: #eee;">&nbsp;Clear&nbsp;</span><span onclick="selectAll()" style="float: right;background-color: #0077be;color: #eee;margin-right:5px">&nbsp;Select All&nbsp;</span>
+						<label>Select Months</label> <a href="#" onclick="clearAll()" class="clearSelect" style="float: right;background-color: #0077be; color: #eee; border-radius:4px;">&nbsp;Clear&nbsp;</a><a href="#" onclick="selectAll()" style="float: right;background-color: #0077be;color: #eee; border-radius:4px; margin-right:5px">&nbsp;Select All&nbsp;</a>
 					</div>
 					<!-- Months label ends here -->
 					<!-- Checkboxes for months-->
@@ -327,8 +333,12 @@
 				<div class="row">
 					<div class="polaroid" style="height: 600px; overflow-y: scroll;">
 						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:10px;">
-							<h5 class="hidden" id="rightTop">List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
+							<h5 class="hidden" id="rightTop">Trip Advisory &nbsp&nbsp<button class="btn btn-primary btn-sm" onclick="clearList()" style="border-radius:4px; right:0">Clear</button></h5>
+							<form action="./php/form.php" target="_blank" method="post">
 							<div id="addedList"></div>
+							<input type="hidden" id="hiddeninput" name="hiddeninput">
+							<center><input id="dnwld" type = "submit" class = "btn btn-primary btn-sm hidden" style="position:relative; bottom:   0;" value="Download"></input></center>
+							</form>
 							<img id="rightImg" src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:200px; "></img>
 							<div id="rightDes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;">
 								<h5>Select the whale type and months to plan your trip..!!</h5>
@@ -337,6 +347,17 @@
 					</div>
 				</div>	
 			</div> <!-- right side panel ends here -->
+			<script>
+				$(function(){
+					$('#dnwld').click(function(){
+						var mySave = $('#addedList').html();
+						console.log(mySave)
+						$('#hiddeninput').val(mySave);
+					});
+				});
+			</script>
+			
+			
 	<div id="snackbar">No records have been found with the provided Search criteria. Please try with other Months are whale types</div>
 	<!--Content Ends -->
 	<!-- Footer -->
@@ -371,6 +392,7 @@
 			document.getElementById("rightImg").classList.remove("hidden");
 			document.getElementById("rightDes").classList.remove("hidden");
 			document.getElementById("rightTop").classList.add("hidden");
+			document.getElementById("dnwld").classList.add("hidden");
 			document.getElementById("addedList").innerHTML="";
 		}
 	</script>
