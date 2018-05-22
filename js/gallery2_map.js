@@ -221,7 +221,7 @@ function resizeMap() {
 }
 
 function placeMarker(location) {
-  document.getElementById("tishi").innerHTML = "Checking Pin loaction";  
+  document.getElementById("tishi").innerHTML = "Checking loaction";  
   fetch("https://api.onwater.io/api/v1/results/"+location.lat().toFixed(6)+","+location.lng().toFixed(6))
     .then(function(response) {
       return response.json();
