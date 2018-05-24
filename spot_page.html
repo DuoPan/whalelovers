@@ -332,8 +332,10 @@
 				<div class="row">
 					<div class="polaroid" style="height: 600px; overflow-y: scroll;">
 						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-top:10px;">
-							<h5 class="hidden" id="rightTop">List <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
+							<h5 class="hidden" id="rightTop">Trip Advisory <button style="float:right;background-color: #0077be;color: #eee;" onclick="clearList()">Clear</button></h5>
+							<span class="hidden" id="rightTop2" style="font-size: 10px;">Click links will redirect to Google Map.</span>
 							<div id="addedList"></div>
+							<center><button id="dnwld" class = "btn btn-primary btn-sm hidden" style="position:relative; bottom:   0;" onclick="printDiv()">Download</button></center>
 							<img id="rightImg" src="./assets/images/whale-icon.gif" alt="Norway" style="width:30%; display:block; margin-left:auto; margin-right:auto; padding-top:200px; "></img>
 							<div id="rightDes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:10px; text-align:center;">
 								<h5>Select the whale type and months to plan your trip..!!</h5>
@@ -376,7 +378,25 @@
 			document.getElementById("rightImg").classList.remove("hidden");
 			document.getElementById("rightDes").classList.remove("hidden");
 			document.getElementById("rightTop").classList.add("hidden");
+			document.getElementById("rightTop2").classList.add("hidden");
+			document.getElementById("dnwld").classList.add("hidden");
 			document.getElementById("addedList").innerHTML="";
+		}
+
+		function printDiv(){
+			var prtContent = document.getElementById("addedList");
+			var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+			WinPrint.document.write('<img src="./assets/images/logo_title.png" style="height:100px;width:100px;"></img><br><br>');
+			WinPrint.document.write('<div style="padding-left:38px;">'+prtContent.innerHTML+'<br><br><br></div>');
+			WinPrint.document.write('<div style="padding-left:38px; font-size:"10"; "><i>Team Asia Dock Wishes you a Happy Whale Watching..!!</i><br></div>');
+			WinPrint.document.write('<div style="padding-left:38px; font-size:"10"; ">For more information visit <a href="https://www.whalelovers.tk">www.whalelovers.tk</a><br></div>');
+			WinPrint.document.write('<div style=" position: fixed; text-align: center; bottom:0; width:100%;">&copy;Copyright 2018 - Asiadock. All rights reserved.</div>')
+			WinPrint.document.close();
+			WinPrint.focus();
+			setTimeout(function() {
+				WinPrint.print();
+				WinPrint.close();
+			}, 250);	
 		}
 	</script>
 	</body>

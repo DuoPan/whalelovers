@@ -269,6 +269,8 @@ function addToList() {
         document.getElementById("rightImg").classList.add("hidden");
         document.getElementById("rightDes").classList.add("hidden");
         document.getElementById("rightTop").classList.remove("hidden");
+        document.getElementById("rightTop2").classList.remove("hidden");
+        document.getElementById("dnwld").classList.remove("hidden");
     } 
     var t = prevInfoWindow.content.innerText.split('\n');
     this.style.display = "none";
